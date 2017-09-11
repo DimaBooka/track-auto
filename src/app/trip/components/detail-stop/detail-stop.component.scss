@@ -1,0 +1,98 @@
+.stop {
+  background-color: white;
+  margin: 10px 0;
+  border: 1px solid rgb(229, 236, 238);
+  padding: 10px 5px 5px 5px;
+  width: 100%;
+  min-height: 100px;
+  position: relative;
+
+  .liner, .info, .timing {
+    margin: 0;
+    padding: 0;
+  }
+
+  .liner {
+
+    .icon{
+      img {
+        position: absolute;
+        top: 0;
+        right: 14px;
+        height: 22px;
+        z-index: 1
+      }
+    }
+
+    .index {
+      position: absolute;
+      top: 1px;
+      right: 21px;
+      font-size: 12px;
+      z-index: 1
+    }
+
+    .line {
+      width: 1px;
+      border: 1px dashed #535353;
+      position: absolute;
+      z-index: 1;
+      top: 24px;
+
+      .solid {
+        border: 1px solid #535353;
+      };
+    }
+
+    .distance {
+      position: absolute;
+      top: 57px;
+      right: 10px;
+      font-size: 10px;
+      border: 1px solid gray;
+      border-radius: 15px;
+      padding: 0 4px;
+      color: white;
+      background: #464a4e;
+      z-index: 1;
+    }
+  }
+
+  .info {
+
+    .pickup {
+      color: rgb(14, 114, 182);
+      font-size: 15px;
+      font-weight: 700;
+    }
+
+    .address {
+      color: #5e5e5e;
+      font-size: 15px;
+      font-weight: 700;
+
+      &.small {
+        font-size: 13px;
+      }
+    }
+  }
+
+  .timing {
+    margin-right: 10px;
+
+    .time {
+      font-size: 12px;
+      font-weight: 700;
+      color: #828282;
+    }
+
+    .waiting {
+      font-size: 11px;
+      color: #adbcbd;
+    }
+
+    .time, .waiting {
+      white-space: nowrap;
+    }
+  }
+}

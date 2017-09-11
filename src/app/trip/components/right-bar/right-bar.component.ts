@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-right-bar',
@@ -11,9 +12,13 @@ export class RightBarComponent implements OnInit {
   @Input() driverName: string;
   @Input() driverMobile: string;
   @Input() horizontal: boolean = false;
-  constructor() { }
+  @Input() orderId: number;
+  constructor(private router: Router) {}
 
-  ngOnInit() {
+  ngOnInit() {}
+
+  moveToDetails() {
+    this.router.navigate(['current', this.orderId]);
   }
 
 }

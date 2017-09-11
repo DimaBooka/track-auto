@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { trigger, state, style, transition, animate, keyframes } from '@angular/animations';
+import { SidebarService } from '../services/sidebar.service';
 
 @Component({
   selector: 'app-sidebar',
@@ -9,8 +10,7 @@ import { trigger, state, style, transition, animate, keyframes } from '@angular/
 export class SidebarComponent implements OnInit {
 
   private showMenu: boolean = true;
-
-  constructor() { }
+  constructor(private sidebarService: SidebarService) {}
 
   ngOnInit() {
   }

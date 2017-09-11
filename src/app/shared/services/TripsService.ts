@@ -7,6 +7,7 @@ import 'rxjs/add/operator/map'
 import 'rxjs/add/operator/catch'
 import { AllTrips } from '../models/all-trips.model';
 import { TripsSummary } from '../models/trips-summary.model';
+import { Trip } from '../models/trip.model';
 
 
 @Injectable()
@@ -31,8 +32,18 @@ export class TripsService {
     this._currentTab = tab;
   }
 
+  public getTripDetails(id: number) {
+    return this._http.get(`${API_DETAIL_TRIP}/${id}`).map((resp: any) => {
+        let response = resp._body;
+        let trip = new Trip();
+        trip.createByJson(JSON.parse(response));
+        return trip;
+      })
+        .catch(HandleError);
+  }
+
   public getAllTrip() {
-    return this._http.get(API_ALL_TRIPS, this._options).map((resp: any) => {
+    return this._http.get(API_ALL_TRIPS).map((resp: any) => {
         let response = resp._body;
         let alltrips = new AllTrips();
         alltrips.createByJson(JSON.parse(response));

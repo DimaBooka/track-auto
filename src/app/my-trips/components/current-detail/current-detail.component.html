@@ -1,0 +1,60 @@
+<div class="current-trip d-flex justify-content-stretch">
+
+  <div class="sidebar d-flex flex-column align-items-stretch justify-content-start">
+
+    <div class="head d-flex align-items-center justify-content-start">
+      <div class="logo" (click)="moveTostartPage()">
+        <img src="/assets/Assets-Common/Logo.png" alt="">
+      </div>
+      <span>
+        Tracking trip: <span>{{ trip.orderId }}</span>
+      </span>
+    </div>
+
+    <div class="main-info d-flex flex-column align-items-start justify-content-start">
+      <span class="direction">{{ trip.headerFrom }} to {{ trip.headerTo }}, {{ trip.city }}</span>
+
+      <app-distance-done *ngIf="!isPast" [small]="true" [estimation]="trip.estimatedDistance" [finished]="trip.finishedDistance"></app-distance-done>
+      <span class="past" *ngIf="isPast">{{ trip.estimatedDistance }}kms</span>
+
+      <div class="d-flex w-100 align-items-center justify-content-between">
+
+        <div class="driver-holder d-flex flex-column align-items-start justify-content-center">
+          <div class="driver-name-hor d-flex align-items-start justify-content-center">
+            <div class="driver-hor d-flex align-items-center justify-content-center">
+              <img src="/assets/Assets-Where-Section/Contact@2x.png" alt="">
+              <span class="label">Driver: </span>
+            </div>
+
+            <span class="name">{{ trip.drivenName }}</span>
+          </div>
+
+          <div class="driver-mobile-hor d-flex align-items-center justify-content-start">
+            <div class="driver-hor d-flex align-items-center justify-content-center">
+              <img src="/assets/Assets-Where-Section/MakeCall@2x.png" alt="">
+            </div>
+
+            <span class="mobile">{{ trip.driverMobile }}</span>
+          </div>
+        </div>
+
+        <div class="truck-type-hor d-flex align-items-center justify-content-center">
+          <div class="crop" style="background-color: rgb(216, 216, 216)">
+            <img src="" alt="">
+          </div>
+
+          <span>{{ trip.truckType }}</span>
+        </div>
+
+      </div>
+
+    </div>
+
+    <app-detail-stops [trip]="trip"></app-detail-stops>
+
+  </div>
+
+  <div class="map">
+    <app-map [trip]="trip"></app-map>
+  </div>
+</div>

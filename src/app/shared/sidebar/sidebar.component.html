@@ -1,4 +1,4 @@
-<nav class="d-flex flex-column align-items-between d-xs-block bg-light sidebar animate" [ngClass]="{'hide-menu': !showMenu, 'show-menu': showMenu }">
+<nav *ngIf="sidebarService.showSidebar" class="d-flex flex-column align-items-between d-xs-block bg-light sidebar animate" [ngClass]="{'hide-menu': !showMenu, 'show-menu': showMenu }">
 
   <div>
     <div class="logo d-flex align-items-center" routerLink="/" routerLinkActive="active"
@@ -41,9 +41,9 @@
 
 </nav>
 
-<div class="toggler animate d-xs-block d-sm-block d-md-block d-lg-none d-xl-none" (click)="showMenu = !showMenu"
+<div *ngIf="sidebarService.showSidebar" class="toggler animate d-xs-block d-sm-block d-md-block d-lg-none d-xl-none" (click)="showMenu = !showMenu"
      [ngClass]="{'move-left': !showMenu, 'move-right': showMenu }">
   <img [src]="showMenu ? '/assets/Assets-Common/BlackCancel@2x.png' : '/assets/Assets-Common/LogoDark@2x.png'"  alt="">
 </div>
 
-<div class="space d-xs-none d-sm-none d-md-none d-lg-block d-xl-block"></div>
+<div *ngIf="sidebarService.showSidebar" class="space d-xs-none d-sm-none d-md-none d-lg-block d-xl-block"></div>

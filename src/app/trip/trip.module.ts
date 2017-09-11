@@ -12,6 +12,8 @@ import { FilterSearchBarComponent } from './components/filter-search-bar/filter-
 import { FormsModule } from '@angular/forms';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { ChartComponent } from './components/chart/chart.component';
+import { DetailStopsComponent } from './components/detail-stops/detail-stops.component';
+import { DetailStopComponent } from './components/detail-stop/detail-stop.component';
 
 
 @NgModule({
@@ -30,7 +32,9 @@ import { ChartComponent } from './components/chart/chart.component';
     ListTripsComponent,
     SummaryComponent,
     FilterSearchBarComponent,
-    ChartComponent
+    ChartComponent,
+    DetailStopsComponent,
+    DetailStopComponent
   ],
   exports: [
     DistanceDoneComponent,
@@ -41,7 +45,9 @@ import { ChartComponent } from './components/chart/chart.component';
     ListTripsComponent,
     SummaryComponent,
     FilterSearchBarComponent,
-    ChartComponent
+    ChartComponent,
+    DetailStopsComponent,
+    DetailStopComponent
   ]
 })
 export class TripModule { }

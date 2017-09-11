@@ -1,3 +1,5 @@
+import { LocationStop } from './location.model';
+
 export class BaseClass {
 
   public createByJson(json: JSON) {
@@ -7,6 +9,12 @@ export class BaseClass {
     this._address = json["address"] || "";
     this._waitingDuration = json["waiting_duration"] || "";
     this._time = json["time"] || "";
+
+    if(json["location"]) {
+      let location = new LocationStop();
+      location.createByJson(json["location"]);
+      this._location = location;
+    }
   }
 
   constructor(
@@ -15,6 +23,7 @@ export class BaseClass {
     private _name: string = "",
     private _address: string = "",
     private _waitingDuration: string = "",
+    private _location: LocationStop = new LocationStop(),
     private _time: string = ""
   ) {}
 
@@ -56,6 +65,14 @@ export class BaseClass {
 
   public set waitingDuration(waitingDuration: string) {
     this._waitingDuration = waitingDuration;
+  }
+
+  public get location() {
+    return this._location;
+  }
+
+  public set location(location: LocationStop) {
+    this._location = location;
   }
 
   public get time(){

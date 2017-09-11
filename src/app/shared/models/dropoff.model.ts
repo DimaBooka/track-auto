@@ -1,4 +1,5 @@
 import { BaseClass } from './base.class';
+import { LocationStop } from './location.model';
 
 export class DropOff extends BaseClass {
 
@@ -8,8 +9,9 @@ export class DropOff extends BaseClass {
     name: string = "",
     address: string = "",
     waitingDuration: string = "",
+    location: LocationStop = new LocationStop(),
     time: string = ""
   ) {
-    super(status, distance, name, address, waitingDuration, time)
+    super(status, distance, name, address, waitingDuration, location, time)
   }
 }

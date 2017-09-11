@@ -1,0 +1,113 @@
+.current-trip {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  background-color: white;
+
+  .sidebar {
+    width: 350px;
+    height: 100%;
+    background-color: rgb(240, 245, 247);
+    box-shadow: 0 0 5px 3px #cecece;
+    position: absolute;
+
+    .head {
+      font-size: 17px;
+      font-weight: 700;
+      color: darkslategray;
+      background: white;
+      border-bottom: 1px solid #e4e4e4;
+
+      .logo {
+        img {
+          padding: 10px;
+
+          &:hover {
+            cursor: pointer;
+            background-color: rgb(240, 245, 247);
+          }
+        }
+      }
+    }
+
+    .main-info {
+      padding: 10px 10px 10px 14px;
+      background-color: white;
+      border-bottom: 1px solid #e4e4e4;
+
+      app-distance-done {
+        margin: 8px 0;
+      }
+
+      .past {
+        font-size: 15px;
+        font-weight: 600;
+        color: #fc3446;
+        padding: 8px 0;
+      }
+
+      .direction {
+        font-size: 14px;
+        font-weight: 700;
+        color: rgb(14, 114, 182);
+      }
+
+      .truck-type-hor {
+        margin-left: 10px;
+        padding-right: 15px;
+
+        span {
+          font-size: 15px;
+          font-weight: 600;
+          color: #5e5e5e;
+        }
+      }
+
+      .driver-name-hor, .driver-mobile-hor {
+        margin: 5px 0;
+
+        .name, .mobile {
+          font-size: 14px;
+          font-weight: 700;
+          color: #5e5e5e;
+          padding: 0 16px 0 7px;
+        }
+
+        img {
+          height: 22px;
+        }
+
+        .name {
+          padding-top: 1px;
+        }
+
+        .label {
+          color: #747e7f;
+          font-size: 14px;
+          padding: 0 0 0 7px;
+        }
+      }
+
+      .crop {
+        position: relative;
+        width: 35px;
+        height: 35px;
+        overflow: hidden;
+        border-radius: 50%;
+        margin: 0 10px 0 0;
+
+        img {
+          width: 100%;
+          height: auto;
+        }
+      }
+    }
+
+  }
+
+  .map {
+    margin-left: 350px;
+    width: calc(100% - 350px);
+    background-color: #00c3ff;
+  }
+}

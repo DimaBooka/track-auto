@@ -5,6 +5,10 @@
     font-weight: 400;
     color: rgb(88, 81, 81);
     padding: 0 8px 3px 0;
+
+    &.small-txt {
+      font-size: 14px;
+    }
   }
 
   .progress-distance {

@@ -6,6 +6,7 @@ import { UpcomingComponent } from './components/upcoming/upcoming.component';
 import { MytripsMainComponent } from './components/mytrips-main/mytrips-main.component';
 import { SharedModule } from "../shared/shared.module";
 import { TripModule } from '../trip/trip.module';
+import { CurrentDetailComponent } from './components/current-detail/current-detail.component';
 
 @NgModule({
   imports: [
@@ -13,7 +14,18 @@ import { TripModule } from '../trip/trip.module';
     TripModule,
     SharedModule
   ],
-  declarations: [CurrentComponent, PastComponent, UpcomingComponent, MytripsMainComponent],
-  exports: [CurrentComponent, PastComponent, UpcomingComponent, MytripsMainComponent]
+  declarations: [
+    CurrentComponent,
+    PastComponent,
+    UpcomingComponent,
+    MytripsMainComponent,
+    CurrentDetailComponent],
+  exports: [
+    CurrentComponent,
+    PastComponent,
+    UpcomingComponent,
+    MytripsMainComponent,
+    CurrentDetailComponent
+  ]
 })
 export class MyTripsModule { }

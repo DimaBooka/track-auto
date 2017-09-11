@@ -7,6 +7,8 @@ import { TripsService } from './services/TripsService';
 import { HttpModule } from '@angular/http';
 import { TripModule } from '../trip/trip.module';
 import { FormsModule } from '@angular/forms';
+import { DetailResolver } from './resolvers/details.resolver';
+import { SidebarService } from './services/sidebar.service';
 
 @NgModule({
   imports: [
@@ -18,7 +20,6 @@ import { FormsModule } from '@angular/forms';
   ],
   declarations: [HeaderComponent, SidebarComponent],
   exports: [HeaderComponent, SidebarComponent],
-  providers: [TripsService]
-
+  providers: [TripsService, DetailResolver, SidebarService]
 })
 export class SharedModule { }

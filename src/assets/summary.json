@@ -1,0 +1,31 @@
+{
+  "total_cost": 4523,
+  "total_distance": 98413,
+  "number_trips": 15,
+  "data": [
+    {
+      "date": "20-Aug-2017",
+      "trips": 1,
+      "distance": 20,
+      "costs": 135
+    },
+    {
+      "date": "21-Aug-2017",
+      "trips": 0,
+      "distance": 0,
+      "costs": 0
+    },
+    {
+      "date": "22-Aug-2017",
+      "trips": 2,
+      "distance": 33,
+      "costs": 256
+    },
+    {
+      "date": "23-Aug-2017",
+      "trips": 3,
+      "distance": 12,
+      "costs": 2506
+    }
+  ]
+}

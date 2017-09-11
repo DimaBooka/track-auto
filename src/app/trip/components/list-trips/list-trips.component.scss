@@ -1,0 +1,187 @@
+.trips-holder {
+  padding-bottom: 10px;
+
+  .trip {
+    margin: 30px 42px;
+    box-shadow: 1px 1px 3px 0 #cecece;
+    background-color: white;
+    position: relative;
+
+    .trip-main-info {
+      width: 100%;
+      padding: 17px 17px;
+
+      .direction {
+        font-size: 18px;
+        font-weight: 600;
+      }
+    }
+
+    .trip-details {
+      width: 100%;
+
+      .direction {
+        width: calc(100% - 220px);
+
+        app-map {
+          background-color: cadetblue;
+          height: 300px;
+          max-height: 300px;
+          margin: 0;
+          overflow: hidden;
+        }
+
+        app-stops {
+          min-height: 145px;
+        }
+      }
+
+      .right-bar {
+        width: 220px;
+      }
+    }
+  }
+
+  .trip-nomap {
+    margin: 30px 42px;
+    box-shadow: 1px 1px 3px 0 #cecece;
+    background-color: white;
+    position: relative;
+
+    .trip-main-info-nomap {
+      padding: 13px 15px;
+
+      .date {
+        padding: 3px 7px;
+        background: #87e9ff;
+        font-size: 16px;
+        font-weight: 700;
+        margin-right: 12px;
+      }
+
+      .direction {
+        font-size: 17px;
+        font-weight: 600;
+      }
+
+      .button-flat {
+        border: none;
+
+        .more-arrow {
+          height: 25px;
+          -ms-transform: rotate(270deg); /* IE 9 */
+          -webkit-transform: rotate(270deg); /* Chrome, Safari, Opera */
+          transform: rotate(270deg);
+        }
+
+        &:hover {
+          padding: 8px 8px;
+        }
+      }
+    }
+
+    .direction-nomap {
+      padding: 13px 15px;
+    }
+
+    .hor-bar-nomap {
+      padding: 13px 15px;
+    }
+
+    .action-buttons-nomap {
+      padding: 25px 15px;
+
+      .price {
+        padding: 7px 20px 7px 9px;
+        background: rgb(255, 230, 238);
+        color: #fc3446;
+        font-size: 16px;
+        font-weight: 800;
+        margin-right: 12px;
+
+        &.paid {
+          background: rgb(247, 251, 252);
+          color: #5e5e5e;
+
+          img {
+            opacity: 0.7;
+          }
+        }
+
+        .rupee {
+          height: 13px;
+        }
+      }
+
+      .second-group button {
+        margin: 0 8px;
+
+        &.button-flat-out {
+          margin-left: 17px;
+        }
+      }
+
+    }
+
+    .line-bottom-nomap {
+      border-bottom: 1px solid rgb(243, 243, 243);
+    }
+
+    .button-flat {
+      padding: 8px 8px;
+      border: 1px solid rgba(0, 0, 0, 0.39);
+      font-size: 13px;
+      background-color: white;
+      font-weight: 600;
+      color: #646464;
+      outline: none;
+      cursor: pointer;
+
+      &.button-blue {
+        border: 1px solid rgb(128, 230, 247);
+        background-color: rgb(247, 251, 252);
+        color: rgb(14, 134, 172);
+      }
+
+      &:hover {
+        background-color: rgb(135, 233, 255);
+        border: none;
+        padding: 9px 9px;
+        color: black;
+      }
+
+      &[disabled] {
+        padding: 6px 8px;
+        border:none;
+        background-color: white;
+        color: #adbcbd;
+        font-size: 17px;
+
+        &:hover {
+          border:none;
+          background-color: white;
+          color: #adbcbd;
+          cursor: inherit;
+          padding: 6px 8px;
+        }
+      }
+    }
+
+    .button-flat-out {
+      padding: 9px 26px;
+      background-color: rgb(135, 233, 255);
+      border: none;
+      color: black;
+      margin-left: 6px;
+      font-weight: 800;
+
+      &:hover {
+        padding: 8px 25px;
+        background-color: white;
+        color: #646464;
+        border: 1px solid rgba(0, 0, 0, 0.39);
+      }
+    }
+  }
+
+}

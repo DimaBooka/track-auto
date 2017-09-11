@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="16px" height="16px" viewBox="0 0 16 16" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 46.2 (44496) - http://www.bohemiancoding.com/sketch -->
+    <title>LocSaved@1x</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Assets" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Assets-Where-Section" transform="translate(-689.000000, -70.000000)">
+            <g id="LocSaved" transform="translate(689.250000, 70.000000)">
+                <polygon id="Stroke-40" stroke="#0180A8" fill="#0AD1F2" opacity="0.492130888" stroke-linecap="round" stroke-linejoin="round" points="8 2 9.71428571 6.28720349 14 6.28720349 11.0668571 9.63465197 12.2857143 14.0041698 8 11.4318477 3.71428571 14.0041698 5.20057143 9.63465197 2 6.28720349 6.28571429 6.28720349"></polygon>
+                <rect id="bounds" stroke="#979797" stroke-width="0.01" x="0.005" y="0.005" width="15.99" height="15.99"></rect>
+            </g>
+        </g>
+    </g>
+</svg>

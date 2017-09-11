@@ -1,0 +1,84 @@
+.summary-holder {
+  margin: 30px 42px;
+  box-shadow: 1px 1px 3px 0 #cecece;
+  background-color: white;
+  position: relative;
+
+  .filter-holder {
+    padding: 12px 15px 0 12px;
+
+    .label {
+      color: gray;
+      font-size: 17px;
+    }
+
+    #dropdownFirst, #dropdownSecond {
+      min-width: 125px;
+      padding: 8px 12px 8px 12px;
+      border: none;
+      outline: none;
+      font-size: 14px;
+      color: gray;
+      background-color: white !important;
+      cursor: pointer;
+
+      &:hover {
+        color: black;
+        background-color: rgb(135, 233, 255) !important;
+      }
+    }
+
+    .dropdown-item {
+      font-weight: 700 !important;
+      color: #5e5e5e !important;
+      background-color: white !important;
+      margin: 10px 0 !important;
+      outline: none;
+
+      &:hover, &.active {
+        color: #fc3446 !important;
+        background-color: white !important;
+        cursor: pointer;
+      }
+    }
+
+    .dropdown-menu {
+      border-radius: 0;
+      box-shadow: 1px 1px 3px 0 #cecece;
+      padding: 0;
+      margin: 0;
+    }
+  }
+
+  .statistic-holder {
+    padding: 0 15px 15px 15px;
+
+    .trips {
+      font-size: 40px;
+      font-weight: 600;
+      color: #535353;
+    }
+
+    .label {
+      font-size: 22px;
+      font-weight: 300;
+      color: #5e5e5e;
+      white-space: nowrap;
+
+      .cost, .distance {
+        font-weight: 600;
+        color: #535353;
+      }
+
+      img {
+        padding-bottom: 7px;
+        height: 26px;
+        opacity: 0.6;
+      }
+    }
+  }
+
+  .chart {
+    width: 100%;
+  }
+}

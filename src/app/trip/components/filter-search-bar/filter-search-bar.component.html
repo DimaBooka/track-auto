@@ -1,0 +1,21 @@
+<div class="filter-holder d-flex align-items-center justify-content-between">
+  <span class="label">Trip Details</span>
+
+  <div class="params-holder">
+
+    <div ngbDropdown placement="bottom-right" class="d-inline-block">
+      <button class="button-flat" id="dropdownFirst" ngbDropdownToggle>{{ firstParamLabel }}</button>
+      <div ngbDropdownMenu aria-labelledby="dropdownFirst">
+        <button class="dropdown-item"  [ngClass]="{'active': opt1.value === firstParamVal}" (click)="selectFirstParam(opt1)" *ngFor="let opt1 of firstOptions">{{ opt1.label}}</button>
+      </div>
+    </div>
+
+    <div ngbDropdown placement="bottom-right" class="d-inline-block">
+      <button class="button-flat" id="dropdownSecond" ngbDropdownToggle>{{ secondParamLabel }}</button>
+      <div ngbDropdownMenu aria-labelledby="dropdownSecond">
+        <button class="dropdown-item" [ngClass]="{'active': opt2.value === secondParamVal}" (click)="selectSecondParam(opt2)" *ngFor="let opt2 of secondOptions">{{ opt2.label}}</button>
+      </div>
+    </div>
+
+  </div>
+</div>

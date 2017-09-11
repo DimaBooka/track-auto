@@ -1,0 +1,26 @@
+<div class="trips-header d-flex flex-column">
+
+  <div class="trips-head d-flex flex-row align-items-center justify-content-between">
+
+    <h1>My Trips</h1>
+
+    <div class="button-holder">
+      <button class="button-flat">Quick Book</button>
+      <button class="button-flat button-flat-out">Book a new trip</button>
+    </div>
+
+  </div>
+
+  <ul class="nav">
+    <li class="nav-item" (click)="changeTab(tabs.Current)">
+      <a class="nav-link" [ngClass]="{active: currentTab === tabs.Current}">Current</a>
+    </li>
+    <li class="nav-item" (click)="changeTab(tabs.PastTrips)">
+      <a class="nav-link" [ngClass]="{active: currentTab === tabs.PastTrips}">Past trips</a>
+    </li>
+    <li class="nav-item" (click)="changeTab(tabs.Upcoming)">
+      <a class="nav-link" [ngClass]="{active: currentTab === tabs.Upcoming}">Upcoming</a>
+    </li>
+  </ul>
+
+</div>

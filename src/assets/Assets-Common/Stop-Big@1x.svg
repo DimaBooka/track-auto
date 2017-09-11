@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="40px" height="40px" viewBox="0 0 40 40" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 46.2 (44496) - http://www.bohemiancoding.com/sketch -->
+    <title>Stop-Big@1x</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Assets" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Assets-Common" transform="translate(-255.000000, -357.000000)">
+            <g id="Stop-Big" transform="translate(255.000000, 357.000000)">
+                <g id="Group" transform="translate(4.000000, 1.000000)">
+                    <g id="Shadow" transform="translate(6.600000, 28.826087)" fill="#C9D2D6">
+                        <path d="M19.8,4.844634 C19.8,7.51914323 15.3682617,9.68926799 9.90141408,9.68926799 C4.43173832,9.68926799 0,7.51914323 0,4.844634 C0,2.1680055 4.43173832,0 9.90141408,0 C15.3682617,0 19.8,2.1680055 19.8,4.844634" id="Fill-1"></path>
+                    </g>
+                    <path d="M10.7047569,32.8376585 L16.5,37.3043478 L22.2952431,32.8376585 C28.5491089,30.4263894 33,24.2256175 33,16.9565217 C33,7.59169337 25.6126984,0 16.5,0 C7.38730163,0 0,7.59169337 0,16.9565217 C0,24.2256175 4.4508911,30.4263894 10.7047569,32.8376585 Z" id="Combined-Shape" fill="#141515"></path>
+                    <rect id="Rectangle" fill="#D8D8D8" x="6.6" y="6.7826087" width="6.6" height="6.7826087"></rect>
+                    <ellipse id="Oval-2" fill="#FC3446" cx="16.5" cy="16.9565217" rx="14.85" ry="15.2608696"></ellipse>
+                </g>
+                <rect id="bounds" stroke="#979797" stroke-width="0.01" x="0.005" y="0.005" width="39.99" height="39.99"></rect>
+            </g>
+        </g>
+    </g>
+</svg>

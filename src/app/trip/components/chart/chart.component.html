@@ -1,0 +1,14 @@
+<div class="chart-holder">
+  <div class="d-flex align-items-end justify-content-center" >
+    <div class="line d-flex flex-column align-items-center justify-content-center" *ngFor="let d of data.dataToChart">
+      <div class="fill-line" *ngIf="by === 'trips'" [ngStyle]="{height: (getHeight(d.trips, data.maxTrips) + 'px')}"></div>
+      <div class="fill-line" *ngIf="by === 'distance'" [ngStyle]="{height: (getHeight(d.distance, data.maxDistance) + 'px')}"></div>
+      <span class="label">{{ d.date.substring(0, d.date.indexOf("-")) }}</span>
+      <div class="tooltip-info flex-column align-items-center justify-content-center">
+        <span>{{ getDate(d.date) }}</span>
+        <span>{{ d.trips }} {{ (d.trips > 1 ? 'trips' : 'trip' ) }} | {{ d.distance }} kms</span>
+        <span><img src="/assets/Assets/Black_Indian_Rupee_symbol.png" alt="">{{ d.costs }}</span>
+      </div>
+    </div>
+  </div>
+</div>

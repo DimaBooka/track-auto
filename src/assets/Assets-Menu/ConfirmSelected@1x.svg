@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="40px" height="40px" viewBox="0 0 40 40" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 46.2 (44496) - http://www.bohemiancoding.com/sketch -->
+    <title>ConfirmSelected@1x</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Assets" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Assets-Menu" transform="translate(-663.000000, -289.000000)">
+            <g id="ConfirmSelected" transform="translate(663.000000, 289.000000)">
+                <rect id="Rectangle" stroke="#979797" stroke-width="0.01" x="0.005" y="0.005" width="39.99" height="39.99"></rect>
+                <g id="Done-Icon" transform="translate(6.000000, 6.000000)">
+                    <circle id="Oval" stroke="#FC3446" stroke-width="2" cx="14" cy="14" r="13"></circle>
+                    <path d="M11.5839816,15.8755402 L8.49841544,12.8101412 L6.46153846,14.8671852 L10.5554595,18.9611063 C10.8176318,19.2434457 11.2008067,19.3846154 11.5839816,19.3846154 C11.9671564,19.3846154 12.3301642,19.2232786 12.6125036,18.9611063 L20.9213483,10.6522616 L18.8643042,8.61538462 L11.5839816,15.8755402 Z" id="Shape" fill="#FC3446" fill-rule="nonzero"></path>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

@@ -1,0 +1,49 @@
+<nav class="d-flex flex-column align-items-between d-xs-block bg-light sidebar animate" [ngClass]="{'hide-menu': !showMenu, 'show-menu': showMenu }">
+
+  <div>
+    <div class="logo d-flex align-items-center" routerLink="/" routerLinkActive="active"
+         [routerLinkActiveOptions]="{exact:true}">
+      <img src="/assets/Assets-Common/BlackLogo@2x.png" alt="">
+    </div>
+
+    <ul class="nav nav-pills flex-column">
+      <li class="nav-item">
+        <a class="nav-link" routerLink="my_trips" routerLinkActive="active"
+           [routerLinkActiveOptions]="{exact:true}">My trips</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link">Saved Locations</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link">Saved routes</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link">Drafts</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link">Notifications</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link">Settings</a>
+      </li>
+    </ul>
+  </div>
+
+  <div class="user-profile d-flex align-items-center justify-content-start">
+
+    <div class="crop">
+      <img src="https://image.freepik.com/free-icon/business-person-silhouette-wearing-tie_318-49988.jpg" alt="">
+    </div>
+
+    <span class="user-text">Mithun Srivatsa</span>
+
+  </div>
+
+</nav>
+
+<div class="toggler animate d-xs-block d-sm-block d-md-block d-lg-none d-xl-none" (click)="showMenu = !showMenu"
+     [ngClass]="{'move-left': !showMenu, 'move-right': showMenu }">
+  <img [src]="showMenu ? '/assets/Assets-Common/BlackCancel@2x.png' : '/assets/Assets-Common/LogoDark@2x.png'"  alt="">
+</div>
+
+<div class="space d-xs-none d-sm-none d-md-none d-lg-block d-xl-block"></div>

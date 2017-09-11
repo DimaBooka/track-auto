@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="20px" height="20px" viewBox="0 0 20 20" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 46.2 (44496) - http://www.bohemiancoding.com/sketch -->
+    <title>Ghost-Marker@1x</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <path d="M0.5528,7.7376 C0.5528,11.1344 2.868,13.9896 6.0064,14.8128 C6.5792,15.3872 7.8672,16.8808 7.8672,16.8808 C7.8672,16.8808 8.8912,15.6512 9.7272,14.8128 C12.8664,13.9912 15.1808,11.1352 15.1808,7.7376 C15.1808,3.6976 11.9072,0.424 7.8672,0.424 C3.8272,0.424 0.5528,3.6976 0.5528,7.7376 Z" id="path-1"></path>
+        <path d="M13.4337067,6.91938667 C13.4337067,10.4537867 10.5681067,13.3193867 7.03370667,13.3193867 C3.49930667,13.3193867 0.633706667,10.4537867 0.633706667,6.91938667 C0.633706667,3.38498667 3.49930667,0.519386667 7.03370667,0.519386667 C10.5681067,0.519386667 13.4337067,3.38498667 13.4337067,6.91938667" id="path-3"></path>
+    </defs>
+    <g id="Assets" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Assets-Common" transform="translate(-185.000000, -344.000000)">
+            <g id="Ghost-Marker" transform="translate(185.000000, 344.000000)">
+                <g id="Ghost" transform="translate(2.500000, 0.000000)">
+                    <g id="Group-5" transform="translate(0.000000, 0.571200)">
+                        <path d="M10.66744,16.88088 C10.66744,17.89048 9.41384,18.70968 7.86744,18.70968 C6.32024,18.70968 5.06664,17.89048 5.06664,16.88088 C5.06664,15.87048 6.32024,15.05208 7.86744,15.05208 C9.41384,15.05208 10.66744,15.87048 10.66744,16.88088" id="Fill-1" fill="#303232"></path>
+                        <path d="M15.18112,7.73792 C15.18112,11.13552 12.86592,13.99072 9.72752,14.81312 C8.89072,15.65152 7.86672,16.88112 7.86672,16.88112 C7.86672,16.88112 6.57872,15.38752 6.00592,14.81312 C2.86832,13.98992 0.55232,11.13472 0.55232,7.73792 C0.55232,3.69792 3.82752,0.42352 7.86672,0.42352 C11.90672,0.42352 15.18112,3.69792 15.18112,7.73792" id="Fill-3" fill="#757E7F"></path>
+                    </g>
+                    <g id="Group-9" transform="translate(0.000000, 0.571200)">
+                        <mask id="mask-2" fill="white">
+                            <use xlink:href="#path-1"></use>
+                        </mask>
+                        <g id="Clip-7"></g>
+                        <path d="M14.26704,7.75272 C14.26704,11.28712 11.40144,14.15272 7.86704,14.15272 C4.33264,14.15272 1.46704,11.28712 1.46704,7.75272 C1.46704,4.21832 4.33264,1.35272 7.86704,1.35272 C11.40144,1.35272 14.26704,4.21832 14.26704,7.75272" id="Fill-8" fill="#C5F4FF" mask="url(#mask-2)"></path>
+                        <g id="Rect" mask="url(#mask-2)">
+                            <g transform="translate(0.833333, 0.833333)">
+                                <mask id="mask-4" fill="white">
+                                    <use xlink:href="#path-3"></use>
+                                </mask>
+                                <use id="Mask" stroke="none" fill="#C5F4FF" fill-rule="evenodd" xlink:href="#path-3"></use>
+                                <g id="Rect" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" mask="url(#mask-4)" opacity="0.503453351">
+                                    <g transform="translate(7.820168, 7.625060) rotate(-45.000000) translate(-7.820168, -7.625060) translate(-3.429832, -0.291607)" fill="#0180A8">
+                                        <rect id="Rectangle-6" style="mix-blend-mode: multiply;" x="0" y="0" width="1.50583359" height="15.8112527"></rect>
+                                        <rect id="Rectangle-6-Copy" style="mix-blend-mode: multiply;" x="2.90410764" y="0" width="1.50583359" height="15.8112527"></rect>
+                                        <rect id="Rectangle-6-Copy-3" style="mix-blend-mode: multiply;" x="5.80821529" y="0" width="1.50583359" height="15.8112527"></rect>
+                                        <rect id="Rectangle-6-Copy-2" style="mix-blend-mode: multiply;" x="8.71232293" y="0" width="1.50583359" height="15.8112527"></rect>
+                                        <rect id="Rectangle-6-Copy-7" style="mix-blend-mode: multiply;" x="11.6164306" y="0" width="1.50583359" height="15.8112527"></rect>
+                                        <rect id="Rectangle-6-Copy-6" style="mix-blend-mode: multiply;" x="14.5205382" y="0" width="1.50583359" height="15.8112527"></rect>
+                                        <rect id="Rectangle-6-Copy-5" style="mix-blend-mode: multiply;" x="17.4246459" y="0" width="1.50583359" height="15.8112527"></rect>
+                                        <rect id="Rectangle-6-Copy-4" style="mix-blend-mode: multiply;" x="20.3287535" y="0" width="1.50583359" height="15.8112527"></rect>
+                                    </g>
+                                </g>
+                            </g>
+                        </g>
+                    </g>
+                </g>
+                <rect id="bounds" stroke="#979797" stroke-width="0.01" x="0.005" y="0.005" width="19.99" height="19.99"></rect>
+            </g>
+        </g>
+    </g>
+</svg>

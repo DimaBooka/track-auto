@@ -1,0 +1,73 @@
+.trips-header {
+  padding: 40px 42px 0 42px;
+  background-color: white;
+
+  .trips-head {
+    margin: 8px 0 15px 0;
+
+    h1 {
+      font-size: 33px;
+      font-weight: 300;
+    }
+
+    .button-holder {
+
+      .button-flat {
+        padding: 8px 8px;
+        border: 1px solid rgba(0, 0, 0, 0.39);
+        font-size: 13px;
+        background-color: white;
+        font-weight: 600;
+        color: #646464;
+        outline: none;
+        cursor: pointer;
+
+        &:hover {
+          background-color: rgb(135, 233, 255);
+          border: none;
+          padding: 9px 9px;
+          color: black;
+        }
+      }
+
+      .button-flat-out {
+        padding: 9px 26px;
+        background-color: rgb(135, 233, 255);
+        border: none;
+        color: black;
+        margin-left: 6px;
+        font-weight: 800;
+
+        &:hover {
+          padding: 8px 25px;
+          background-color: white;
+          color: #646464;
+          border: 1px solid rgba(0, 0, 0, 0.39);
+        }
+      }
+    }
+  }
+
+  ul.nav {
+
+    .nav-item {
+      margin: 8px 45px 0 0;
+      cursor: pointer;
+
+      .nav-link {
+        text-transform: uppercase;
+        font-weight: 800;
+        letter-spacing: 1px;
+        padding: 0 0 11px 0;
+        font-size: 15px;
+        color: rgb(156, 151, 151);
+
+        &.active, &:hover {
+          border-bottom: 5px solid rgb(252, 52, 70);
+          padding-bottom: 5px;
+          color: rgb(252, 52, 70);
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,54 @@
+.chart-holder {
+  margin: 10px;
+
+  .line {
+    width: 15px;
+    height: 150px;
+    background-color: white;
+    position: relative;
+    margin: 0 5px;
+
+    .fill-line {
+      background-color: #5e5e5e;
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 15px;
+      margin-bottom: 25px;
+    }
+
+    .label {
+      position: absolute;
+      bottom: 0;
+    }
+
+    .tooltip-info {
+      display: none;
+      position: absolute;
+      z-index: 1;
+      top: 0;
+      width: 160px;
+      color: #5e5e5e;
+      background: white;
+      border-radius: 2px;
+      box-shadow: 1px 1px 11px 0px;
+
+      img {
+        height: 13px;
+        opacity: 0.6;
+      }
+    }
+
+    &:hover {
+
+      .fill-line {
+        background-color: #87e9ff;
+      }
+
+      .tooltip-info {
+        display: flex;
+      }
+    }
+
+  }
+}

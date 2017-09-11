@@ -1,0 +1,37 @@
+<div class="summary-holder" *ngIf="summary">
+
+  <div class="filter-holder d-flex align-items-center justify-content-between">
+    <span class="label">Summary</span>
+
+    <div class="params-holder">
+
+      <div ngbDropdown placement="bottom-right" class="d-inline-block">
+        <button class="button-flat" id="dropdownFirst" ngbDropdownToggle>{{ firstParamLabel }}</button>
+        <div ngbDropdownMenu aria-labelledby="dropdownFirst">
+          <button class="dropdown-item"  [ngClass]="{'active': opt1.value === firstParamVal}" (click)="selectFirstParam(opt1)" *ngFor="let opt1 of firstOptions">{{ opt1.label}}</button>
+        </div>
+      </div>
+
+      <div ngbDropdown placement="bottom-right" class="d-inline-block">
+        <button class="button-flat" id="dropdownSecond" ngbDropdownToggle>{{ secondParamLabel }}</button>
+        <div ngbDropdownMenu aria-labelledby="dropdownSecond">
+          <button class="dropdown-item" [ngClass]="{'active': opt2.value === secondParamVal}" (click)="selectSecondParam(opt2)" *ngFor="let opt2 of secondOptions">{{ opt2.label}}</button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="d-flex align-items-start justify-content-center">
+    <div class="statistic-holder d-flex flex-column align-items-start justify-content-center">
+      <span class="trips">{{ summary.numTrips }} {{(summary.numTrips > 1 ? 'Trips' : 'Trip' ) }}</span>
+      <span class="label">Total distance <span class="distance">{{ summary.totralDistance }} kms</span></span>
+      <span class="label">Total cost <img src="/assets/Assets/Black_Indian_Rupee_symbol.png" alt=""><span class="cost">{{ summary.totalCost }}</span></span>
+    </div>
+
+    <div class="chart d-flex align-items-start justify-content-center">
+      <app-chart [data]="summary" [by]="firstParamVal"></app-chart>
+    </div>
+  </div>
+
+</div>

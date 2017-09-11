@@ -1,0 +1,158 @@
+.right-bar-holder {
+
+  margin: 0 14px 14px 14px;
+  border-left: 1px solid #cecece;
+
+  .truck-type {
+    margin: 0 10px 15px 15px;
+
+    span {
+      font-size: 20px;
+      font-weight: 600;
+      color: #747e7f;
+    }
+  }
+
+  .driver-name {
+    margin-left: 15px;
+    padding: 7px 0;
+    border-bottom: 1px solid #e4e4e4;
+    color: #747e7f;
+
+    .driver {
+
+      img {
+        height: 22px;
+      }
+
+      span {
+        font-size: 14px;
+        padding-left: 7px;
+      }
+    }
+
+    .name {
+      font-size: 21px;
+      padding-left: 29px;
+      font-weight: 700;
+      color: #5e5e5e;
+    }
+  }
+
+  .driver-mobile {
+    margin: 15px;
+
+    .driver {
+      img {
+        height: 28px;
+      }
+    }
+
+    span {
+      color: #464646;
+      font-size: 16px;
+      font-weight: 600;
+    }
+  }
+
+  .button-holder {
+    margin: 0 0 0 15px;
+
+    .button-flat {
+      padding: 8px 8px;
+      border: 1px solid rgb(128, 230, 247);
+      font-size: 13px;
+      background-color: rgb(247, 251, 252);
+      font-weight: 600;
+      color: rgb(14, 134, 172);
+      outline: none;
+      cursor: pointer;
+      width: 100%;
+
+      &:hover {
+        background-color: rgb(135, 233, 255);
+        border: none;
+        padding: 9px 9px;
+        color: black;
+      }
+    }
+  }
+
+  .crop {
+    position: relative;
+    width: 45px;
+    height: 45px;
+    overflow: hidden;
+    border-radius: 50%;
+    margin: 0 10px 0 0;
+
+    img {
+      width: 100%;
+      height: auto;
+    }
+  }
+}
+
+.first-section {
+  height: 300px;
+}
+
+.second-section {
+  margin: 15px 8px;
+  height: 115px;
+
+  img {
+    height: 60px;
+  }
+  .text {
+    line-height: 1;
+
+    span {
+      color: #646464;
+    }
+  }
+}
+
+
+.right-bar-holder-hor {
+  .truck-type-hor {
+    margin-right: 21px;
+
+    span {
+      font-size: 17px;
+      font-weight: 600;
+      color: #5e5e5e;
+    }
+  }
+
+  .driver-name-hor, .driver-mobile-hor {
+    .name, .mobile {
+      font-size: 16px;
+      font-weight: 700;
+      color: #5e5e5e;
+      padding: 0 16px 0 7px;
+    }
+
+    .name {
+      padding-top: 4px;
+    }
+
+    .label {
+      color: #747e7f;
+    }
+  }
+
+  .crop {
+    position: relative;
+    width: 35px;
+    height: 35px;
+    overflow: hidden;
+    border-radius: 50%;
+    margin: 0 10px 0 0;
+
+    img {
+      width: 100%;
+      height: auto;
+    }
+  }
+}

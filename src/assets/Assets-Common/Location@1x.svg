@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="20px" height="20px" viewBox="0 0 20 20" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 46.2 (44496) - http://www.bohemiancoding.com/sketch -->
+    <title>Location@1x</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Assets" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Assets-Common" transform="translate(-502.000000, -344.000000)">
+            <g id="Location" transform="translate(502.000000, 344.000000)">
+                <rect id="Rectangle-7" stroke="#979797" stroke-width="0.01" x="0.005" y="0.005" width="19.99" height="19.99"></rect>
+                <g id="ic_my_location" transform="translate(2.500000, 2.083333)">
+                    <polygon id="Bounds" points="0 0 15 0 15 15 0 15"></polygon>
+                    <path d="M7.5,5 C6.11875,5 5,6.11875 5,7.5 C5,8.88125 6.11875,10 7.5,10 C8.88125,10 10,8.88125 10,7.5 C10,6.11875 8.88125,5 7.5,5 L7.5,5 Z M13.0875,6.875 C12.8,4.26875 10.73125,2.2 8.125,1.9125 L8.125,0.625 L6.875,0.625 L6.875,1.9125 C4.26875,2.2 2.2,4.26875 1.9125,6.875 L0.625,6.875 L0.625,8.125 L1.9125,8.125 C2.2,10.73125 4.26875,12.8 6.875,13.0875 L6.875,14.375 L8.125,14.375 L8.125,13.0875 C10.73125,12.8 12.8,10.73125 13.0875,8.125 L14.375,8.125 L14.375,6.875 L13.0875,6.875 L13.0875,6.875 Z M7.5,11.875 C5.08125,11.875 3.125,9.91875 3.125,7.5 C3.125,5.08125 5.08125,3.125 7.5,3.125 C9.91875,3.125 11.875,5.08125 11.875,7.5 C11.875,9.91875 9.91875,11.875 7.5,11.875 L7.5,11.875 Z" id="Shape" fill="#757E7F"></path>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

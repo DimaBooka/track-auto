@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="26px" height="26px" viewBox="0 0 26 26" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 46.2 (44496) - http://www.bohemiancoding.com/sketch -->
+    <title>Cancel@1x</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Assets" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Assets-Common" transform="translate(-274.000000, -79.000000)">
+            <g id="Cancel" transform="translate(275.000000, 80.000000)">
+                <g id="ic_clear">
+                    <polygon id="Bounds" stroke="#979797" stroke-width="0.01" points="0 0 24 0 24 24 0 24"></polygon>
+                    <polygon id="Shape" fill="#C9D2D6" points="19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12"></polygon>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

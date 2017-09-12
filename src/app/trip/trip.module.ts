@@ -14,6 +14,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { ChartComponent } from './components/chart/chart.component';
 import { DetailStopsComponent } from './components/detail-stops/detail-stops.component';
 import { DetailStopComponent } from './components/detail-stop/detail-stop.component';
+import { UserListComponent } from './components/user-list/user-list.component';
 
 
 @NgModule({
@@ -34,7 +35,8 @@ import { DetailStopComponent } from './components/detail-stop/detail-stop.compon
     FilterSearchBarComponent,
     ChartComponent,
     DetailStopsComponent,
-    DetailStopComponent
+    DetailStopComponent,
+    UserListComponent
   ],
   exports: [
     DistanceDoneComponent,
@@ -47,7 +49,8 @@ import { DetailStopComponent } from './components/detail-stop/detail-stop.compon
     FilterSearchBarComponent,
     ChartComponent,
     DetailStopsComponent,
-    DetailStopComponent
+    DetailStopComponent,
+    UserListComponent
   ]
 })
 export class TripModule { }

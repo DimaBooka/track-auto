@@ -219,71 +219,184 @@
         padding-top: 7px;
       }
     }
+  }
+}
 
-    .button-flat {
-      padding: 8px 8px;
-      border: 1px solid rgba(0, 0, 0, 0.39);
-      font-size: 13px;
+
+.button-flat {
+  padding: 8px 8px;
+  border: 1px solid rgba(0, 0, 0, 0.39);
+  font-size: 13px;
+  background-color: white;
+  font-weight: 600;
+  color: #646464;
+  outline: none;
+  cursor: pointer;
+
+  &.button-blue {
+    border: 1px solid rgb(128, 230, 247);
+    background-color: rgb(247, 251, 252);
+    color: rgb(14, 134, 172);
+  }
+
+  &:hover {
+    background-color: rgb(135, 233, 255);
+    border: none;
+    padding: 9px 9px;
+    color: black;
+  }
+
+  &[disabled] {
+    padding: 6px 8px;
+    border:none;
+    background-color: white;
+    color: #adbcbd;
+    font-size: 17px;
+
+    &:hover {
+      border:none;
       background-color: white;
-      font-weight: 600;
-      color: #646464;
-      outline: none;
-      cursor: pointer;
+      color: #adbcbd;
+      cursor: inherit;
+      padding: 6px 8px;
+    }
+  }
 
-      &.button-blue {
-        border: 1px solid rgb(128, 230, 247);
-        background-color: rgb(247, 251, 252);
-        color: rgb(14, 134, 172);
-      }
+  &.empty {
+    padding: 3px 8px;
+    margin: 5px 0 7px 11px;
+    background: transparent;
+    color: white;
+    border-color: white;
+    font-size: 12px;
+    font-weight: 700;
 
-      &:hover {
-        background-color: rgb(135, 233, 255);
-        border: none;
-        padding: 9px 9px;
-        color: black;
-      }
+    &:hover {
+      border: none;
+      background-color: #87e9ff;
+      color: black;
+      padding: 4px 9px;
+    }
+  }
+}
 
-      &[disabled] {
-        padding: 6px 8px;
-        border:none;
-        background-color: white;
-        color: #adbcbd;
-        font-size: 17px;
+.button-flat-out {
+  padding: 9px 26px;
+  background-color: rgb(135, 233, 255);
+  border: none;
+  color: black;
+  margin-left: 6px;
+  font-weight: 800;
 
-        &:hover {
-          border:none;
-          background-color: white;
-          color: #adbcbd;
-          cursor: inherit;
-          padding: 6px 8px;
-        }
-      }
+  &:hover {
+    padding: 8px 25px;
+    background-color: white;
+    color: #646464;
+    border: 1px solid rgba(0, 0, 0, 0.39);
+  }
+}
 
-      &.empty {
-        padding: 3px 8px;
-        margin: 5px 0 7px 11px;
-        background: transparent;
-        color: white;
-        border-color: white;
-        font-size: 12px;
-        font-weight: 700;
+.modal-content {
+  border-radius: 0;
+  box-shadow: 0 1px 12px 1px;
+  border: none;
+}
+
+.modal-header {
+  padding: 20px 0 0 35px;
+  border: none;
+
+  h4 {
+    font-size: 17px;
+    font-weight: 800;
+    color: rgb(12, 133, 171);
+  }
+}
+
+.modal-body {
+  padding: 0 33px 0 33px;
+
+  .order-id {
+    font-size: 14px;
+    font-weight: 600;
+  }
+}
+
+.modal-footer {
+  border: none;
+  padding: 25px 30px;
+
+  .button-flat {
+    padding: 7px 21px;
+    font-weight: 800;
+
+    &:hover {
+      padding: 8px 22px;
+    }
+  }
+}
+
+
+.modal-header.black {
+  padding: 0;
+  background-color: rgba(45, 47, 48, 0.94);
+
+  .header-holder {
+
+
+    .checker {
+      position: relative;
+      height: 100px;
+      background-color: rgb(41, 49, 51);
+
+      img {
+        position: absolute;
+        margin-top: 35px;
+        height: 110px;
       }
     }
 
-    .button-flat-out {
-      padding: 9px 26px;
-      background-color: rgb(135, 233, 255);
-      border: none;
-      color: black;
-      margin-left: 6px;
-      font-weight: 800;
+    .head-modal {
+      padding: 30px 0 20px 0;
 
-      &:hover {
-        padding: 8px 25px;
-        background-color: white;
-        color: #646464;
-        border: 1px solid rgba(0, 0, 0, 0.39);
+      .modal-title {
+        color: white;
+        font-weight: 200;
+        font-size: 22px;
+      }
+      .order-id {
+        color: white;
+        font-size: 12px;
+        font-weight: 800;
+        text-transform: uppercase;
+      }
+    }
+  ;
+  }
+}
+
+.modal-body.black {
+  background-color: rgba(45, 47, 48, 0.94);
+
+  .paid-money {
+
+    .label {
+      color: white;
+      font-size: 17px;
+      font-weight: 300;
+
+      .currency {
+        font-weight: 800;
+
+        img {
+          height: 17px;
+        }
       }
     }
   }
+}
+
+.modal-footer.black {
+  background-color: rgba(45, 47, 48, 0.94);
+
 }

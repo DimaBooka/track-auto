@@ -9,7 +9,6 @@ import { SharedModule } from './shared/shared.module';
 import { MyTripsModule } from "./my-trips/my-trips.module";
 import { TripModule } from './trip/trip.module';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 
 @NgModule({
   declarations: [
@@ -21,7 +20,6 @@ import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
     NgbModule.forRoot(),
     MyTripsModule,
     TripModule,
-    BrowserAnimationsModule,
     SharedModule
   ],
   providers: [],

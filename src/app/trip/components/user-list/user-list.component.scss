@@ -1,0 +1,87 @@
+.add-user {
+  padding: 14px 0;
+
+  input {
+    border: 1px solid rgba(0, 0, 0, 0.39);
+    padding: 5px 5px 6px 5px;
+    border-right: none;
+
+    &:focus {
+      outline: none;
+    }
+  }
+
+  .show-form {
+
+    .show-form-add {
+      padding: 10px 0;
+      cursor: pointer;
+
+      span {
+        font-size: 16px;
+        font-weight: 600;
+      }
+
+      img {
+        height: 18px;
+        padding-right: 5px;
+      }
+    }
+  }
+
+  .button-flat {
+    padding: 8px 8px;
+    border: 1px solid rgba(0, 0, 0, 0.39);
+    font-size: 13px;
+    background-color: white;
+    font-weight: 600;
+    color: #646464;
+    outline: none;
+    cursor: pointer;
+
+    &.button-blue {
+      border: 1px solid rgb(128, 230, 247);
+      background-color: rgb(247, 251, 252);
+      color: rgb(14, 134, 172);
+    }
+
+    &:hover {
+      background-color: rgb(135, 233, 255);
+      border: none;
+      padding: 9px 9px;
+      color: black;
+    }
+
+    &[disabled] {
+      padding: 6px 8px;
+      border:none;
+      background-color: white;
+      color: #adbcbd;
+      font-size: 17px;
+
+      &:hover {
+        border:none;
+        background-color: white;
+        color: #adbcbd;
+        cursor: inherit;
+        padding: 6px 8px;
+      }
+    }
+  }
+}
+
+.list-group {
+  padding: 10px 0;
+
+  .list-group-item {
+    padding: 11px 5px;
+    margin: 10px 0;
+    background-color: rgb(240, 245, 247);
+    border-radius: 0;
+
+    img {
+      height: 25px;
+    }
+  }
+}
+

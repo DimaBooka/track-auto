@@ -1,0 +1,24 @@
+<div class="user-list">
+  <ul class="list-group" *ngIf="users.length > 0">
+    <li class="list-group-item d-flex align-items-center justify-content-between" *ngFor="let user of users;let i = index;">
+      <span class="user-holder">
+        <span class="username">{{ user }}</span>
+      </span>
+      <span (click)="removeUser(i)"><img src="/assets/Assets-Common/Cancel.png" alt=""></span>
+    </li>
+  </ul>
+  <div class="add-user">
+    <form class="d-flex align-items-center justify-content-start" (submit)="addUser()" *ngIf="showAddForm">
+      <input class="user" type="text" name="user" placeholder="Email email" [(ngModel)]="user">
+      <input class="button-flat user-add" type="submit" value="Add">
+    </form>
+
+    <div class="show-form d-flex align-items-start justify-content-star" (click)="showAddForm = !showAddForm" *ngIf="!showAddForm">
+
+      <span class="show-form-add d-flex align-items-center justify-content-center">
+        <img src="/assets/Assets-Where-Section/AddStop.png" alt=""><span>Add email id</span>
+      </span>
+    </div>
+  </div>
+</div>
+

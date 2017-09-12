@@ -82,7 +82,7 @@
 
     </div>
 
-    <div class="user d-flex align-items-center justify-content-center">
+    <div class="user d-flex align-items-center justify-content-center" (click)="tripDoneOpen(tripDone)">
       <img class="notifications" src="/assets/Assets-Common/Notifications.png">
       <div class="user-profile d-flex align-items-center justify-content-start">
 
@@ -107,9 +107,100 @@
 
       <div class="buttons d-flex align-items-center justify-content-center" *ngIf="isPast">
         <button class="button-flat">Print Invoice</button>
-        <button class="button-flat">Email Invoice</button>
+        <button class="button-flat" (click)="open(shareContent, trip)">Email Invoice</button>
         <button class="button-flat button-flat-out">Rebook</button>
       </div>
     </div>
   </div>
 </div>
+
+<ng-template #shareContent let-c="close" let-d="dismiss">
+  <div class="modal-header">
+    <h4 class="modal-title">Share invoice</h4>
+  </div>
+  <div class="modal-body">
+    <span class="order-id">Trip ID : {{ shareTrip.orderId }}</span>
+    <app-user-list (setUsersList)="setUsersList($event)"></app-user-list>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="button-flat" (click)="d('Cross click')">Cancel</button>
+    <button type="button" class="button-flat button-blue" (click)="c('Close click')">Share</button>
+  </div>
+</ng-template>
+
+<ng-template #tripDone let-c="close" let-d="dismiss">
+
+  <div class="modal-header black">
+    <div class="header-holder w-100 d-flex flex-column align-items-center justify-content-center">
+
+      <div class="checker w-100 d-flex justify-content-center">
+        <img src="/assets/Assets-Common/Done-Marker-Withoutlag@2x.png" alt="">
+      </div>
+
+      <div class="head-modal d-flex flex-column align-items-center justify-content-center">
+        <h4 class="modal-title">Your trip is complete</h4>
+        <span class="order-id">Booking ID : {{ trip.orderId }}</span>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="modal-body black">
+
+    <div class="paid-money d-flex flex-column align-items-start justify-content-start">
+
+      <div class="d-flex align-items-center justify-content-start">
+        <div class="d-flex flex-column align-items-start justify-content-start">
+
+          <span class="label">Total Cost
+            <span class="currency">
+              <img src="/assets/Assets/White_Indian_Rupee_symbol.png" alt="">{{ trip.price }}
+            </span>
+          </span>
+
+          <span class="past">{{ trip.estimatedDistance }}kms</span>
+        </div>
+
+        <button class="button-flat button-flat-out" (click)="d('Cross click')">Make Payment</button>
+      </div>
+
+    </div>
+
+    <span class="direction">{{ trip.headerFrom }} to {{ trip.headerTo }}, {{ trip.city }}</span>
+
+    <div class="d-flex w-100 align-items-center justify-content-between">
+
+      <div class="driver-holder d-flex flex-column align-items-start justify-content-center">
+        <div class="driver-name-hor d-flex align-items-start justify-content-center">
+          <div class="driver-hor d-flex align-items-center justify-content-center">
+            <img src="/assets/Assets-Where-Section/Contact@2x.png" alt="">
+            <span class="label">Driver: </span>
+          </div>
+
+          <span class="name">{{ trip.drivenName }}</span>
+        </div>
+
+        <div class="driver-mobile-hor d-flex align-items-center justify-content-start">
+          <div class="driver-hor d-flex align-items-center justify-content-center">
+            <img src="/assets/Assets-Where-Section/MakeCall@2x.png" alt="">
+          </div>
+
+          <span class="mobile">{{ trip.driverMobile }}</span>
+        </div>
+      </div>
+
+      <div class="truck-type-hor d-flex align-items-center justify-content-center">
+        <div class="crop" style="background-color: rgb(216, 216, 216)">
+          <img src="" alt="">
+        </div>
+
+        <span>{{ trip.truckType }}</span>
+      </div>
+
+    </div>
+
+  </div>
+  <div class="modal-footer black">
+    <button type="button" class="button-flat button-blue" (click)="c('Close click')">Go back to home page</button>
+  </div>
+</ng-template>

@@ -9,6 +9,7 @@ import { TripModule } from '../trip/trip.module';
 import { FormsModule } from '@angular/forms';
 import { DetailResolver } from './resolvers/details.resolver';
 import { SidebarService } from './services/sidebar.service';
+import { PopupComponent } from './popup/popup.component';
 
 @NgModule({
   imports: [
@@ -18,7 +19,7 @@ import { SidebarService } from './services/sidebar.service';
     RouterModule,
     TripModule
   ],
-  declarations: [HeaderComponent, SidebarComponent],
+  declarations: [HeaderComponent, SidebarComponent, PopupComponent],
   exports: [HeaderComponent, SidebarComponent],
   providers: [TripsService, DetailResolver, SidebarService]
 })

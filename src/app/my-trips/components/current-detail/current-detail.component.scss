@@ -109,5 +109,181 @@
     margin-left: 350px;
     width: calc(100% - 350px);
     background-color: #00c3ff;
+    position: relative;
+
+    .cost {
+      position: absolute;
+      top: 10px;
+      left: 20px;
+      padding: 5px 14px;
+      background-color: black;
+      opacity: 0.7;
+
+      .estimate {
+        padding: 0 0 2px 20px;
+      }
+
+      .label {
+        color: bisque;
+        font-size: 13px;
+      }
+
+      .currency {
+        color: white;
+        font-size: 17px;
+        font-weight: 800;
+        line-height: 18px;
+        padding: 5px 0 10px 0;
+
+        img {
+          height: 16px;
+          padding-bottom: 3px;
+        }
+      }
+    }
+
+    .user {
+      position: absolute;
+      top: 10px;
+      right: 20px;
+      padding: 5px 14px;
+
+      .notifications {
+        margin-right: 10px;
+        height: 27px;
+      }
+
+      .user-profile {
+        bottom: 0;
+        left: 0;
+        padding: 8px 3px 8px 7px;
+        background-color: rgb(255, 255, 255);
+        cursor: pointer;
+
+        .crop {
+          position: relative;
+          width: 21px;
+          height: 21px;
+          overflow: hidden;
+          border-radius: 50%;
+          margin: 0 10px 0 0;
+
+          img {
+            width: 100%;
+            height: auto;
+          }
+        }
+
+        .user-text {
+          font-weight: 600;
+          font-size: 13px;
+        }
+
+        .dropdown {
+          height: 22px;
+        }
+      }
+    }
+
+    .buttons-holder {
+      position: absolute;
+      bottom: 20px;
+      right: 85px;
+      padding: 7px 12px 7px 3px;
+      background-color: #ffffff;
+      box-shadow: 0 0 5px 3px #cecece;
+
+      img {
+        height: 60px;
+      }
+      .text {
+        line-height: 1;
+        max-width: 100px;
+
+        span {
+          color: #646464;
+        }
+      }
+
+      .buttons button {
+        margin: 0 8px;
+
+        &.button-flat-out {
+          margin-right: 0;
+        }
+      }
+    }
+
+    .paid-money {
+      .currency {
+        padding-top: 7px;
+      }
+    }
+
+    .button-flat {
+      padding: 8px 8px;
+      border: 1px solid rgba(0, 0, 0, 0.39);
+      font-size: 13px;
+      background-color: white;
+      font-weight: 600;
+      color: #646464;
+      outline: none;
+      cursor: pointer;
+
+      &.button-blue {
+        border: 1px solid rgb(128, 230, 247);
+        background-color: rgb(247, 251, 252);
+        color: rgb(14, 134, 172);
+      }
+
+      &:hover {
+        background-color: rgb(135, 233, 255);
+        border: none;
+        padding: 9px 9px;
+        color: black;
+      }
+
+      &[disabled] {
+        padding: 6px 8px;
+        border:none;
+        background-color: white;
+        color: #adbcbd;
+        font-size: 17px;
+
+        &:hover {
+          border:none;
+          background-color: white;
+          color: #adbcbd;
+          cursor: inherit;
+          padding: 6px 8px;
+        }
+      }
+
+      &.empty {
+        padding: 3px 8px;
+        margin: 5px 0 7px 11px;
+        background: transparent;
+        color: white;
+        border-color: white;
+        font-size: 12px;
+        font-weight: 700;
+      }
+    }
+
+    .button-flat-out {
+      padding: 9px 26px;
+      background-color: rgb(135, 233, 255);
+      border: none;
+      color: black;
+      margin-left: 6px;
+      font-weight: 800;
+
+      &:hover {
+        padding: 8px 25px;
+        background-color: white;
+        color: #646464;
+        border: 1px solid rgba(0, 0, 0, 0.39);
+      }
+    }
   }
 }

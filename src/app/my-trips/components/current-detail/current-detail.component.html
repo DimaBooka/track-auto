@@ -56,5 +56,60 @@
 
   <div class="map">
     <app-map [trip]="trip"></app-map>
+
+    <div class="cost d-flex align-items-start justify-content-start">
+      <div class="price d-flex flex-column align-items-start justify-content-start" *ngIf="!isPast">
+        <span class="label">Price</span>
+        <span class="currency"><img class="rupee" src="/assets/Assets/White_Indian_Rupee_symbol.png" alt="">{{ trip.price }}</span>
+      </div>
+
+      <div class="estimate d-flex flex-column align-items-start justify-content-start" *ngIf="!isPast">
+        <span class="label">Total Estimate</span>
+        <span class="currency"><img class="rupee" src="/assets/Assets/White_Indian_Rupee_symbol.png" alt="">{{ trip.estimate }}</span>
+      </div>
+
+      <div class="paid-money d-flex flex-column align-items-start justify-content-start" *ngIf="isPast">
+
+        <span class="label">Total Cost</span>
+
+        <div class="d-flex align-items-center justify-content-start">
+          <span class="currency"><img class="rupee" src="/assets/Assets/White_Indian_Rupee_symbol.png" alt="">{{ trip.price }}</span>
+          <button class="button-flat empty button-blue" *ngIf="trip.price >= 900">Make Payment</button>
+          <button class="button-flat empty disabled" disabled *ngIf="trip.price < 900">Paid</button>
+        </div>
+
+      </div>
+
+    </div>
+
+    <div class="user d-flex align-items-center justify-content-center">
+      <img class="notifications" src="/assets/Assets-Common/Notifications.png">
+      <div class="user-profile d-flex align-items-center justify-content-start">
+
+        <div class="crop">
+          <img src="https://image.freepik.com/free-icon/business-person-silhouette-wearing-tie_318-49988.jpg" alt="">
+        </div>
+
+        <span class="user-text">Mithun Srivatsa</span>
+        <img class="dropdown" src="/assets/Assets/DropDown.png">
+      </div>
+
+    </div>
+
+    <div class="buttons-holder">
+      <div class="d-flex align-items-center justify-content-center" *ngIf="!isPast">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/6/65/QR_code_for_QRpedia.png" alt="">
+
+        <div class="text">
+          <span>Scan to track on phone</span>
+        </div>
+      </div>
+
+      <div class="buttons d-flex align-items-center justify-content-center" *ngIf="isPast">
+        <button class="button-flat">Print Invoice</button>
+        <button class="button-flat">Email Invoice</button>
+        <button class="button-flat button-flat-out">Rebook</button>
+      </div>
+    </div>
   </div>
 </div>

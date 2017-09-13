@@ -149,13 +149,15 @@
 
     <div class="paid-money d-flex flex-column align-items-start justify-content-start">
 
-      <div class="d-flex align-items-center justify-content-start">
+      <div class="border-holder d-flex w-100 align-items-center justify-content-between">
         <div class="d-flex flex-column align-items-start justify-content-start">
 
-          <span class="label">Total Cost
+          <span class="price d-flex align-items-end justify-content-end">
+            <span class="label">Total Cost</span>
             <span class="currency">
-              <img src="/assets/Assets/White_Indian_Rupee_symbol.png" alt="">{{ trip.price }}
+              <img src="/assets/Assets/White_Indian_Rupee_symbol.png" alt="">
             </span>
+            <span class="price-val">{{ trip.price }}</span>
           </span>
 
           <span class="past">{{ trip.estimatedDistance }}kms</span>
@@ -168,7 +170,7 @@
 
     <span class="direction">{{ trip.headerFrom }} to {{ trip.headerTo }}, {{ trip.city }}</span>
 
-    <div class="d-flex w-100 align-items-center justify-content-between">
+    <div class="driver-info d-flex align-items-center justify-content-between">
 
       <div class="driver-holder d-flex flex-column align-items-start justify-content-center">
         <div class="driver-name-hor d-flex align-items-start justify-content-center">

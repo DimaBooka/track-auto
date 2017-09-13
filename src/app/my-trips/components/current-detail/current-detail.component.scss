@@ -377,22 +377,52 @@
 
 .modal-body.black {
   background-color: rgba(45, 47, 48, 0.94);
+  border: none;
 
   .paid-money {
+    margin-bottom: 20px;
 
     .label {
       color: white;
       font-size: 17px;
       font-weight: 300;
+    }
 
-      .currency {
-        font-weight: 800;
+    .currency{
+      padding-bottom: 3px;
+      padding-left: 5px;
 
-        img {
-          height: 17px;
-        }
+      img {
+        height: 16px;
       }
     }
+
+    .border-holder {
+      padding: 30px 20px;
+      border-top: 1px solid #e4e4e4;
+      border-bottom: 1px solid #e4e4e4;
+    }
+
+    .price-val {
+      font-weight: 800;
+      color: white;
+      font-size: 19px;
+      padding-bottom: 3px;
+      line-height: 1;
+    }
+
+    .past {
+      color: white;
+      font-weight: 100;
+    }
+  }
+
+  .direction {
+    padding-left: 20px;
+  }
+
+  .driver-info {
+    margin: 10px 30px 20px 15px;
   }
 }
 

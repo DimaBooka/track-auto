@@ -53,7 +53,7 @@
         </div>
 
         <div class="second-group d-flex align-items-center justify-content-center">
-          <button class="button-flat">Print Invoice</button>
+          <button class="button-flat" (click)="moveToInvoice(trip.orderId)">Print Invoice</button>
           <button class="button-flat" (click)="open(shareContent, trip)">Email Invoice</button>
           <button class="button-flat button-flat-out">Rebook</button>
         </div>

@@ -1,8 +1,5 @@
 .stops {
   padding: 7px 6px;
-  overflow-y: scroll;
-  height: calc(100vh - 210px);
-
 
   &::-webkit-scrollbar-track
   {
@@ -19,5 +16,16 @@
   &::-webkit-scrollbar-thumb
   {
     background-color: #828282;
+  }
+}
+
+.overflowScroll {
+  overflow-y: scroll;
+  height: calc(100vh - 210px);
+}
+
+@media screen and (max-width: 767px) {
+  .overflowScroll {
+    height: calc(100vh - 360px);
   }
 }

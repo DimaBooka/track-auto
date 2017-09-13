@@ -9,6 +9,7 @@ import { Trip } from '../../../shared/models/trip.model';
 export class DetailStopsComponent implements OnInit {
 
   @Input() trip: Trip;
+  @Input() overflowScroll: boolean = true;
   constructor() { }
 
   ngOnInit() {

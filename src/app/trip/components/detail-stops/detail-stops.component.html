@@ -1,4 +1,4 @@
-<div class="stops">
+<div class="stops" [ngClass]="{overflowScroll: overflowScroll}">
 
   <div class="stop">
     <app-detail-stop [stop]="trip.pickUp" [pickup]="trip.pickUp.name" [index]="1"></app-detail-stop>

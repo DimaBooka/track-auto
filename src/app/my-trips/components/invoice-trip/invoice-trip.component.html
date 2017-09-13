@@ -1,0 +1,117 @@
+<div class="container">
+  <div class="row d-none d-sm-none d-md-flex d-lg-flex d-xl-flex">
+    <div class="col-md-1"></div>
+    <div class="col-md-10 offset-md-1">
+
+      <div class="head d-flex alight-items-center justify-content-between">
+        <h1>Invoice</h1>
+        <div class="holder-button">
+          <span class="order-id">Trip ID : {{ trip.orderId }}</span>
+          <button class="button-flat button-blue">Print</button>
+        </div>
+      </div>
+
+      <div class="trip-info d-flex align-items-start justify-content-between">
+
+        <div class="info-holder d-flex flex-column align-items-start justify-content-start">
+          <span class="direction">{{ trip.headerFrom }} to {{ trip.headerTo }}, {{ trip.city }}</span>
+
+          <span class="past">{{ trip.estimatedDistance }}kms</span>
+
+          <div class="driver-info d-flex align-items-center justify-content-between">
+
+            <div class="driver-holder d-flex flex-column align-items-start justify-content-center">
+              <div class="driver-name-hor d-flex align-items-start justify-content-center">
+                <div class="driver-hor d-flex align-items-center justify-content-center">
+                  <img src="/assets/Assets-Where-Section/Contact@2x.png" alt="">
+                  <span class="label">Driver: </span>
+                </div>
+
+                <span class="name">{{ trip.drivenName }}</span>
+              </div>
+
+              <div class="driver-mobile-hor d-flex align-items-center justify-content-start">
+                <div class="driver-hor d-flex align-items-center justify-content-center">
+                  <img src="/assets/Assets-Where-Section/MakeCall@2x.png" alt="">
+                </div>
+
+                <span class="mobile">{{ trip.driverMobile }}</span>
+              </div>
+            </div>
+
+            <div class="truck-type-hor d-flex align-items-center justify-content-center">
+              <div class="crop" style="background-color: rgb(216, 216, 216)">
+                <img src="" alt="">
+              </div>
+
+              <span>{{ trip.truckType }}</span>
+            </div>
+
+          </div>
+        </div>
+
+        <div class="paid-money d-flex flex-column align-items-stretch justify-content-start">
+
+          <span class="price head d-flex align-items-end justify-content-start">
+            <span class="label">Total Cost</span>
+            <span class="currency">
+              <img src="/assets/Assets/Black_Indian_Rupee_symbol.png" alt="">
+            </span>
+            <span class="price-val">{{ trip.price }}</span>
+          </span>
+
+          <span class="label solo">Fare breakup</span>
+
+          <span class="price price-dark line d-flex align-items-end justify-content-start">
+            <span class="label label-dark">Base fare : </span>
+            <span class="currency">
+              <img src="/assets/Assets/Black_Indian_Rupee_symbol.png" alt="">
+            </span>
+            <span class="price-val val-dark">{{ trip.fareBreakup.baseFare }}</span>
+          </span>
+
+          <span class="price price-dark line d-flex align-items-end justify-content-start">
+            <span class="label label-dark">Waiting charges : </span>
+            <span class="currency">
+              <img src="/assets/Assets/Black_Indian_Rupee_symbol.png" alt="">
+            </span>
+            <span class="price-val val-dark">{{ trip.fareBreakup.waitingCharges }}</span>
+          </span>
+
+          <span class="price price-dark d-flex align-items-end justify-content-start">
+            <span class="label label-dark">GST : </span>
+            <span class="currency">
+              <img src="/assets/Assets/Black_Indian_Rupee_symbol.png" alt="">
+            </span>
+            <span class="price-val val-dark">{{ trip.fareBreakup.gst }}</span>
+          </span>
+
+        </div>
+
+      </div>
+
+      <div class="map">
+        <app-map [trip]="trip"></app-map>
+      </div>
+
+      <div class="details d-flex align-items-center justify-content-between">
+        <span class="label">Trip Details</span>
+
+        <div class="params-holder d-flex align-items-center justify-content-center">
+
+          <div class="checkbox">
+            <input type="checkbox" value="None" id="checkbox" name="check" />
+            <label for="checkbox"></label>
+          </div>
+          <label for="checkbox">Include this in print</label>
+
+        </div>
+      </div>
+
+      <div class="stops-list">
+        <app-detail-stops [trip]="trip" [overflowScroll]="false"></app-detail-stops>
+      </div>
+
+    </div>
+  </div>
+</div>

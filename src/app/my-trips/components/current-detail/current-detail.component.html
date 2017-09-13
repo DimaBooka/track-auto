@@ -98,7 +98,7 @@
 
     <div class="buttons-holder">
       <div class="d-flex align-items-center justify-content-center" *ngIf="!isPast">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/6/65/QR_code_for_QRpedia.png" alt="">
+		<ngx-qrcode [qrc-value] = "trip.trackingUrl"> </ngx-qrcode>
 
         <div class="text">
           <span>Scan to track on phone</span>

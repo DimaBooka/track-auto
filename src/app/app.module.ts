@@ -9,6 +9,7 @@ import { SharedModule } from './shared/shared.module';
 import { MyTripsModule } from "./my-trips/my-trips.module";
 import { TripModule } from './trip/trip.module';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { NgxQRCodeModule } from 'ngx-qrcode2';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     NgbModule.forRoot(),
     MyTripsModule,
     TripModule,
-    SharedModule
+    SharedModule,
+    NgxQRCodeModule
   ],
   providers: [],
   bootstrap: [AppComponent]

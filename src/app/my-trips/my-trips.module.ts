@@ -7,12 +7,14 @@ import { MytripsMainComponent } from './components/mytrips-main/mytrips-main.com
 import { SharedModule } from "../shared/shared.module";
 import { TripModule } from '../trip/trip.module';
 import { CurrentDetailComponent } from './components/current-detail/current-detail.component';
+import { NgxQRCodeModule } from 'ngx-qrcode2';
 
 @NgModule({
   imports: [
     CommonModule,
     TripModule,
-    SharedModule
+	SharedModule,
+	NgxQRCodeModule
   ],
   declarations: [
     CurrentComponent,

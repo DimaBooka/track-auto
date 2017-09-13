@@ -15,6 +15,8 @@ import { ChartComponent } from './components/chart/chart.component';
 import { DetailStopsComponent } from './components/detail-stops/detail-stops.component';
 import { DetailStopComponent } from './components/detail-stop/detail-stop.component';
 import { UserListComponent } from './components/user-list/user-list.component';
+import { NgxQRCodeModule } from 'ngx-qrcode2';
+
 
 
 @NgModule({
@@ -23,6 +25,7 @@ import { UserListComponent } from './components/user-list/user-list.component';
     FormsModule,
     NgbModule,
     RouterModule,
+	NgxQRCodeModule
   ],
   declarations: [
     DistanceDoneComponent,

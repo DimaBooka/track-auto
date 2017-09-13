@@ -1,0 +1,85 @@
+{
+   "status":"done",
+   "city":"Bengaluru",
+   "estimated_distance":"13.5",
+   "total_duration":"",
+   "order_id":"67889020",
+   "estimate":"985",
+   "price":"975",
+   "fare_breakup":{
+      "waiting_charges":25,
+      "GST":50,
+      "base_fare":900
+   },
+   "dropoff":{
+      "status":"pending",
+      "distance":"10.0",
+      "name":"",
+      "address":"444, 1st main, 7th Cross, 2nd Stage, Indiranagar",
+      "wait_duration":"1 min",
+      "location":{
+         "lat":12.932700000000001,
+         "lng":77.644799000000006
+      },
+      "time":"02:45 PM"
+   },
+   "truck_type":"Tata Pickup",
+   "header_to":"Indiranagar",
+   "pickup":{
+      "status":"pending",
+      "distance":"12.2",
+      "name":"Warehouse-1",
+      "address":"327, 13th main, Jakkasandra, HSR Layout",
+      "wait_duration":"10 min",
+      "location":{
+         "lat":12.922700000000001,
+         "lng":77.634799000000001
+      },
+      "time":"12:35 PM"
+   },
+   "driver_name":"Rajkumar",
+   "header_from":"HSR Layout",
+   "total_distance":"14",
+   "stops":[
+      {
+         "status":"done",
+         "distance":"3.2",
+         "name":"",
+         "address":"100, Infinity Road, Bengaluru",
+         "wait_duration":"7 min",
+         "location":{
+            "lat":12.912699999999999,
+            "lng":77.624798999999996
+         },
+         "time":"01:00 PM"
+      },
+      {
+         "status":"done",
+         "distance":"2",
+         "name":"",
+         "address":"200, Zero Road, Bengaluru",
+         "wait_duration":"5 min",
+         "location":{
+            "lat":12.9427,
+            "lng":77.654798999999997
+         },
+         "time":"01:30 PM"
+      },
+      {
+         "status":"done",
+         "distance":"4",
+         "name":"",
+         "address":"300, Midway Road, Bengaluru",
+         "wait_duration":"8 min",
+         "location":{
+            "lat":12.9627,
+            "lng":77.674798999999993
+         },
+         "time":"02:00 PM"
+      }
+   ],
+   "date":"18-Aug-2017",
+   "driver_mobile":"9879435876",
+   "tracking_url":"btest-nikhil.appspot.com/track/67889020",
+   "finished_distance":"14"
+}

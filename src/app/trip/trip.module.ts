@@ -15,6 +15,8 @@ import { ChartComponent } from './components/chart/chart.component';
 import { DetailStopsComponent } from './components/detail-stops/detail-stops.component';
 import { DetailStopComponent } from './components/detail-stop/detail-stop.component';
 import { UserListComponent } from './components/user-list/user-list.component';
+import { AgmCoreModule } from '@agm/core';
+import {DirectionsMapDirective} from "./directives/map-directions.directive";
 
 
 @NgModule({
@@ -23,6 +25,7 @@ import { UserListComponent } from './components/user-list/user-list.component';
     FormsModule,
     NgbModule,
     RouterModule,
+    AgmCoreModule,
   ],
   declarations: [
     DistanceDoneComponent,
@@ -36,7 +39,8 @@ import { UserListComponent } from './components/user-list/user-list.component';
     ChartComponent,
     DetailStopsComponent,
     DetailStopComponent,
-    UserListComponent
+    UserListComponent,
+    DirectionsMapDirective
   ],
   exports: [
     DistanceDoneComponent,

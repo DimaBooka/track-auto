@@ -9,6 +9,7 @@ import { SharedModule } from './shared/shared.module';
 import { MyTripsModule } from "./my-trips/my-trips.module";
 import { TripModule } from './trip/trip.module';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { AgmCoreModule } from '@agm/core';
 
 @NgModule({
   declarations: [
@@ -18,6 +19,9 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     BrowserModule,
     RouterModule.forRoot(appRoutes),
     NgbModule.forRoot(),
+    AgmCoreModule.forRoot({
+      apiKey: 'AIzaSyDHnk-B5voE01PGVefEjnGvHohVA8QDY8M'
+    }),
     MyTripsModule,
     TripModule,
     SharedModule

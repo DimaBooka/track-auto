@@ -1,5 +1,46 @@
 <div class="map-pos d-flex align-items-center justify-content-center">
-  <p>
-    map works!
-  </p>
+  <div class="gmap-container">
+
+    <!-- AGM MAP - MAIN AGM DIRECTIVE FOR A MAP -->
+    <agm-map
+      [latitude]="lat"
+      [longitude]="lng"
+      [zoom]="zoom"
+      [styles]="styles" [scrollwheel]="scrollwheel">
+
+      <!-- LOOP THROUGH ALL MARKERS AND SOLVE STATUS ISSUES-->
+
+      <div class="markers" *ngFor="let m of markers; let i = index">
+        <div class="done-markers" *ngIf="m.status == 'done'">
+          <agm-marker
+            [latitude]="m.location.lat"
+            [longitude]="m.location.lng"
+            [iconUrl]="doneMarkerImg">
+          </agm-marker>
+        </div>
+        <div class="pending-markers" *ngIf="m.status == 'pending'">
+          <agm-marker
+            [latitude]="m.location.lat"
+            [longitude]="m.location.lng"
+            [iconUrl]="svgIconArray[i]">
+          </agm-marker>
+        </div>
+        <script>
+          console.log(i);
+        </script>
+      </div>
+
+      <!-- SHOW ROUTES -->
+
+      <div class="routes" *ngFor="let rst of routes; let i of index">
+        <agm-map-directions
+          [origin_lat]="rst[0]"
+          [origin_lng]="rst[1]"
+          [destination_lat]="rst[2]"
+          [destination_lng]="rst[3]"
+        ></agm-map-directions>
+      </div>
+    </agm-map>
+
+  </div>
 </div>

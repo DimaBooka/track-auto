@@ -9,6 +9,8 @@ import { TripModule } from '../trip/trip.module';
 import { FormsModule } from '@angular/forms';
 import { DetailResolver } from './resolvers/details.resolver';
 import { SidebarService } from './services/sidebar.service';
+import {DataService} from "./services/data.service";
+
 
 @NgModule({
   imports: [
@@ -20,6 +22,6 @@ import { SidebarService } from './services/sidebar.service';
   ],
   declarations: [HeaderComponent, SidebarComponent],
   exports: [HeaderComponent, SidebarComponent],
-  providers: [TripsService, DetailResolver, SidebarService]
+  providers: [TripsService, DetailResolver, SidebarService, DataService]
 })
 export class SharedModule { }

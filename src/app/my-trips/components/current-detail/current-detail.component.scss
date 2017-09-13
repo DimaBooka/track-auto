@@ -493,3 +493,28 @@
   };
 
 }
+
+@media screen and (max-width: 767px) {
+  .map {
+    display: none;
+  }
+
+  .sidebar {
+    width: 100% !important;
+  }
+
+  .mini-map {
+    height: 150px;
+    position: relative;
+  }
+
+  .modal-body {
+    padding: 0 10px 0 10px !important;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .mini-map {
+    display: none;
+  }
+}

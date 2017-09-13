@@ -98,3 +98,29 @@
     }
   }
 }
+
+@media screen and (max-width: 768px) {
+  .timing {
+    align-items: start !important;
+  }
+
+  .liner {
+    .icon {
+      img {
+        right: 5px !important;
+      }
+    }
+
+    .index {
+      right: 12px !important;
+    }
+
+    .line {
+      right: 15px !important;
+    }
+
+    .distance {
+      right: 0px !important;
+    }
+  }
+}

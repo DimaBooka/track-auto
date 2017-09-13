@@ -1,0 +1,255 @@
+.container {
+  min-height: 100%;
+  margin-top: 20px;
+}
+
+.row {
+  box-shadow: 1px 1px 3px 0 #cecece;
+  background-color: white;
+  padding-top: 50px;
+}
+
+.head {
+  margin-bottom: 18px;
+}
+
+.trip-info {
+  border-top: 1px solid #b6b6b6;
+  border-bottom: 1px solid #b6b6b6;
+  padding: 30px 30px 16px 0;
+
+  .direction {
+    font-size: 20px;
+    font-weight: 700;
+    color: #056db4;
+  }
+
+  .past {
+    color: #fc3a4b;
+    font-size: 18px;
+    font-weight: 700;
+    padding-top: 5px;
+  }
+
+  .driver-info {
+    .truck-type-hor span {
+      color: #3c3c3c;
+      font-size: 19px;
+      font-weight: 600;
+    }
+  }
+}
+
+.map {
+  height: 300px;
+  margin: 30px 0;
+  background-color: #747e7f;
+}
+
+.details {
+  margin-bottom: 30px;
+  box-shadow: 1px 1px 5px 0px #625f5f;
+  padding: 10px;
+}
+
+.driver-name-hor, .driver-mobile-hor {
+  margin: 5px 0;
+
+  .name, .mobile {
+    font-size: 16px;
+    font-weight: 700;
+    color: #3c3c3c;
+    padding: 0 16px 0 7px;
+  }
+
+  img {
+    height: 24px;
+  }
+
+  .label {
+    color: #3c3c3c;
+    font-size: 16px;
+    padding: 0 0 0 7px;
+  }
+}
+
+.crop {
+  position: relative;
+  width: 35px;
+  height: 35px;
+  overflow: hidden;
+  border-radius: 50%;
+  margin: 0 10px 0 0;
+
+  img {
+    width: 100%;
+    height: auto;
+  }
+}
+
+.paid-money {
+  margin-bottom: 20px;
+
+  .label {
+    color: #3c3c3c;
+    font-size: 17px;
+    font-weight: 300;
+  }
+
+  .solo {
+    padding: 0 0 10px 0;
+  }
+
+  .currency{
+    padding-bottom: 3px;
+    padding-left: 5px;
+    opacity: 0.75;
+
+    img {
+      height: 16px;
+    }
+  }
+
+  .price-val {
+    font-weight: 800;
+    color: #5e5e5e;
+    font-size: 19px;
+    padding-bottom: 3px;
+    line-height: 1;
+  }
+
+  .past {
+    color: #5e5e5e;
+    font-weight: 100;
+  }
+
+  .price {
+    .label-dark {
+      color: #3c3c3c;
+      font-size: 15px;
+      font-weight: 700;
+    }
+
+    .val-dark {
+      color: #3c3c3c;
+      font-size: 17px;
+    }
+
+    &.price-dark {
+
+      &.line {
+        padding-bottom: 3px;
+        border-bottom: 1px solid #707070;
+      }
+
+      .currency {
+        padding-bottom: 1px;
+
+        img {
+          height: 15px;
+        }
+      }
+    }
+
+    &.head {
+      .label {
+        color: #3c3c3c;
+        font-size: 27px;
+        font-weight: 600;
+      }
+
+      .currency {
+        padding-bottom: 10px;
+        img {
+          height: 22px;
+        }
+      }
+
+      .price-val {
+        font-size: 30px;
+        color: #3c3c3c;
+        padding-bottom: 7px;
+        line-height: 1;
+      }
+    }
+  }
+}
+
+.button-flat {
+  padding: 8px 30px;
+  border: 1px solid rgba(0, 0, 0, 0.39);
+  font-size: 14px;
+  background-color: white;
+  font-weight: 700;
+  color: #646464;
+  outline: none;
+  cursor: pointer;
+
+  &.button-blue {
+    border: 1px solid rgb(128, 230, 247);
+    background-color: rgb(247, 251, 252);
+    color: rgb(14, 134, 172);
+  }
+
+  &:hover {
+    background-color: rgb(135, 233, 255);
+    border: none;
+    padding: 9px 31px;
+    color: black;
+  }
+}
+
+.holder-button {
+  padding: 3px 0 14px 0;
+
+  .order-id {
+    font-size: 23px;
+    font-weight: 700;
+    color: #5e5e5e;
+  }
+}
+
+.checkbox {
+  width: 20px;
+  position: relative;
+  padding-right: 27px;
+
+  label {
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: #fcfff4;
+    border-radius: 4px;
+    box-shadow: inset 0px 1px 1px white, 0px 1px 3px rgba(0,0,0,0.5);
+
+    &:after {
+      content: '';
+      width: 13px;
+      height: 9px;
+      position: absolute;
+      top: 4px;
+      left: 4px;
+      border: 3px solid #333;
+      border-top: none;
+      border-right: none;
+      background: transparent;
+      opacity: 0;
+      transform: rotate(-45deg);
+    }
+
+    &:hover::after {
+      opacity: 0.5;
+    }
+  }
+
+  input[type=checkbox] {
+    visibility: hidden;
+
+    &:checked + label:after {
+      opacity: 1;
+    }
+  }
+}

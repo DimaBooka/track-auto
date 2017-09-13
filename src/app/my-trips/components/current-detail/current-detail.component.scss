@@ -383,7 +383,7 @@
     margin-bottom: 20px;
 
     .label {
-      color: white;
+      color: #b8c0c2;
       font-size: 17px;
       font-weight: 300;
     }
@@ -391,6 +391,7 @@
     .currency{
       padding-bottom: 3px;
       padding-left: 5px;
+      opacity: 0.65;
 
       img {
         height: 16px;
@@ -399,34 +400,96 @@
 
     .border-holder {
       padding: 30px 20px;
-      border-top: 1px solid #e4e4e4;
-      border-bottom: 1px solid #e4e4e4;
+      border-top: 1px solid #b6b6b6;
+      border-bottom: 1px solid #b6b6b6;
     }
 
     .price-val {
       font-weight: 800;
-      color: white;
+      color: #b8c0c2;
       font-size: 19px;
       padding-bottom: 3px;
       line-height: 1;
     }
 
     .past {
-      color: white;
+      color: #b8c0c2;
       font-weight: 100;
     }
   }
 
   .direction {
     padding-left: 20px;
+    font-size: 18px;
+    font-weight: 300;
+    color: #b8c0c2;
   }
 
   .driver-info {
-    margin: 10px 30px 20px 15px;
+    padding: 10px 30px 20px 15px;
+    border-bottom: 1px solid #b6b6b6;
+
+    .truck-type-hor {
+      color:#b8c0c2;
+    }
+
+    .driver-name-hor, .driver-mobile-hor {
+      margin: 5px 0;
+
+      .name, .mobile {
+        font-size: 14px;
+        font-weight: 700;
+        color: #b8c0c2;
+        padding: 0 16px 0 7px;
+      }
+
+      img {
+        height: 22px;
+      }
+
+      .name {
+        padding-top: 1px;
+      }
+
+      .label {
+        color: #b8c0c2;
+        font-size: 14px;
+        padding: 0 0 0 7px;
+      }
+    }
+
+    .crop {
+      position: relative;
+      width: 35px;
+      height: 35px;
+      overflow: hidden;
+      border-radius: 50%;
+      margin: 0 10px 0 0;
+
+      img {
+        width: 100%;
+        height: auto;
+      }
+    }
+
   }
 }
 
 .modal-footer.black {
   background-color: rgba(45, 47, 48, 0.94);
+
+  button {
+    margin: 0 auto;
+    border: none;
+    background: transparent;
+    font-size: 16px;
+    font-weight: 400;
+    color: #b8c0c2;
+    padding: 7px 21px;
+
+    &:hover {
+      padding: 7px 21px;
+    }
+  };
 
 }

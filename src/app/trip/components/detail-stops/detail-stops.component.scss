@@ -1,8 +1,5 @@
 .stops {
   padding: 7px 6px;
-  overflow-y: scroll;
-  height: calc(100vh - 210px);
-
 
   &::-webkit-scrollbar-track
   {
@@ -20,4 +17,9 @@
   {
     background-color: #828282;
   }
+}
+
+.overflowScroll {
+  overflow-y: scroll;
+  height: calc(100vh - 210px);
 }

@@ -24,6 +24,10 @@ export class ListTripsComponent implements OnInit {
     this.router.navigate(['my_trips', orderId]);
   }
 
+  moveToInvoice(orderId) {
+    this.router.navigate(['invoice', orderId]);
+  }
+
   open(content, trip: Trip) {
     this.shareTrip  = trip;
     this.usersShare = [];

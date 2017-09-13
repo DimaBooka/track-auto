@@ -13,6 +13,7 @@
   }
 
   .liner {
+    position: relative;
 
     .icon{
       img {
@@ -38,6 +39,7 @@
       position: absolute;
       z-index: 1;
       top: 24px;
+      right: 24px;
 
       .solid {
         border: 1px solid #535353;

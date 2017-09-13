@@ -59,10 +59,12 @@ export class CurrentDetailComponent implements OnInit, OnDestroy {
   }
 
   tripDoneOpen(content, trip: Trip) {
-    this.modalService.open(content).result.then((result) => {
-      console.log("Done");
-    }, (reason) => {
+    if (!this.isPast) {
+      this.modalService.open(content).result.then((result) => {
+        console.log("Done");
+      }, (reason) => {
 
-    });
+      });
+    }
   }
 }

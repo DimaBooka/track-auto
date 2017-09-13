@@ -42,10 +42,9 @@ export class FilterSearchBarComponent implements OnInit {
     }
   ];
 
-  constructor() { }
+  constructor() {}
 
-  ngOnInit() {
-  }
+  ngOnInit() {}
 
   selectSecondParam(option: any) {
     this.secondParamVal = option.value;
@@ -56,5 +55,4 @@ export class FilterSearchBarComponent implements OnInit {
     this.firstParamVal = option.value;
     this.firstParamLabel = option.label;
   }
-
 }

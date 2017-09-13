@@ -22,11 +22,8 @@ export class HeaderComponent implements OnInit {
       this.currentTab = tab;
       this._tripsService.currentTab = tab;
       this.tabChanged.emit(tab);
-      console.log('changed');
     }
   }
 
-  ngOnInit() {
-  }
-
+  ngOnInit() {}
 }

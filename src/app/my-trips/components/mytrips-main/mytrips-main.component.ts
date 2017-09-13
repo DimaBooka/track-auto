@@ -25,7 +25,6 @@ export class MytripsMainComponent implements OnInit {
     this.currentTab = tab;
   }
 
-  ngOnInit() {
-  }
+  ngOnInit() {}
 
 }

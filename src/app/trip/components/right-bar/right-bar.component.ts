@@ -20,5 +20,4 @@ export class RightBarComponent implements OnInit {
   moveToDetails() {
     this.router.navigate(['current', this.orderId]);
   }
-
 }

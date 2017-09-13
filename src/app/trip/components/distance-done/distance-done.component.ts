@@ -12,7 +12,7 @@ export class DistanceDoneComponent implements OnInit {
   @Input() small: boolean;
   private _width: number;
 
-  constructor() { }
+  constructor() {}
 
   ngOnInit() {
     this._width = (100 * this.finished) / this.estimation;

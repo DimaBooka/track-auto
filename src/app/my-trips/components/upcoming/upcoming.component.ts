@@ -9,9 +9,8 @@ import { Trip } from '../../../shared/models/trip.model';
 export class UpcomingComponent implements OnInit {
 
   @Input() trips: Trip[];
-  constructor() { }
+  constructor() {}
 
-  ngOnInit() {
-  }
+  ngOnInit() {}
 
 }

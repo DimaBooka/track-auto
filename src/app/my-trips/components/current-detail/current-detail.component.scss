@@ -105,10 +105,15 @@
 
   }
 
+  app-map {
+    height: 100%;
+    width: 100%;
+  }
+
   .map {
     margin-left: 350px;
     width: calc(100% - 350px);
-    background-color: #00c3ff;
+    height: 100%;
     position: relative;
 
     .cost {
@@ -505,7 +510,7 @@
 
   .mini-map {
     height: 150px;
-    position: relative;
+    width: 100%;
   }
 
   .modal-body {

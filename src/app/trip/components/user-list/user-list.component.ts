@@ -11,10 +11,9 @@ export class UserListComponent implements OnInit {
   private users: string[] = [];
   private user: string;
   private showAddForm: boolean = false;
-  constructor() { }
+  constructor() {}
 
-  ngOnInit() {
-  }
+  ngOnInit() {}
 
   removeUser(i) {
     this.users.splice(i, 1);

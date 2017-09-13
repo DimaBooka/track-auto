@@ -10,9 +10,7 @@ export class DetailStopsComponent implements OnInit {
 
   @Input() trip: Trip;
   @Input() overflowScroll: boolean = true;
-  constructor() { }
+  constructor() {}
 
-  ngOnInit() {
-  }
-
+  ngOnInit() {}
 }

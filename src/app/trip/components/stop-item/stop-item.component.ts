@@ -14,9 +14,7 @@ export class StopItemComponent implements OnInit {
   @Input() stop: Stop | Pickup | DropOff;
   @Input() stopsLeft: number;
   @Input() stopsDone: number;
-  constructor() { }
+  constructor() {}
 
-  ngOnInit() {
-  }
-
+  ngOnInit() {}
 }

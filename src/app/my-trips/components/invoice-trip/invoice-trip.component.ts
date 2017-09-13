@@ -23,8 +23,7 @@ export class InvoiceTripComponent implements OnInit, OnDestroy {
     });
   }
 
-  ngOnInit() {
-  }
+  ngOnInit() {}
 
   ngOnDestroy() {
     this.sidebarService.showSidebar = true;

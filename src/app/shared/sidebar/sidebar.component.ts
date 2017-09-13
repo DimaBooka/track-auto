@@ -12,7 +12,5 @@ export class SidebarComponent implements OnInit {
   private showMenu: boolean = true;
   constructor(private sidebarService: SidebarService) {}
 
-  ngOnInit() {
-  }
-
+  ngOnInit() {}
 }

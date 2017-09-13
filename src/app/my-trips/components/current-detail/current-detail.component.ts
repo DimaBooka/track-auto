@@ -31,9 +31,7 @@ export class CurrentDetailComponent implements OnInit, OnDestroy {
     });
   }
 
-  ngOnInit() {
-    console.log(this.trip);
-  }
+  ngOnInit() {}
 
   ngOnDestroy() {
     this.sidebarService.showSidebar = true;
@@ -46,25 +44,22 @@ export class CurrentDetailComponent implements OnInit, OnDestroy {
   open(content, trip: Trip) {
     this.shareTrip  = trip;
     this.usersShare = [];
-    this.modalService.open(content).result.then((result) => {
-      console.log(this.usersShare);
-    }, (reason) => {
-
-    });
+    this.modalService.open(content).result.then(
+      (result) => {},
+      (reason) => {}
+    );
   }
 
   setUsersList(users: string[]) {
     this.usersShare = users;
-    console.log(users);
   }
 
   tripDoneOpen(content, trip: Trip) {
     if (!this.isPast) {
-      this.modalService.open(content).result.then((result) => {
-        console.log("Done");
-      }, (reason) => {
-
-      });
+      this.modalService.open(content).result.then(
+        (result) => {},
+        (reason) => {}
+      );
     }
   }
 }

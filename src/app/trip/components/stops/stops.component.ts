@@ -13,7 +13,7 @@ export class StopsComponent implements OnInit {
   @Input() vertical: boolean = false;
   private stops: Stop[];
   private calcs: any;
-  constructor() { }
+  constructor() {}
 
   ngOnInit() {
     this.calcs = this.trip.getStopsCalculates();

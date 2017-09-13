@@ -36,8 +36,7 @@ export class SummaryComponent implements OnInit {
     });
   }
 
-  ngOnInit() {
-  }
+  ngOnInit() {}
 
   selectSecondParam(option: any) {
     this.secondParamVal = option.value;

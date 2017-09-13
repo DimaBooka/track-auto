@@ -40,8 +40,5 @@ export class ListTripsComponent implements OnInit {
 
   setUsersList(users: string[]) {
     this.usersShare = users;
-    console.log(users);
   }
-
-
 }

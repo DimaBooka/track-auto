@@ -10,10 +10,9 @@ export class ChartComponent implements OnInit {
 
   @Input() data: TripsSummary;
   @Input() by: string;
-  constructor() { }
+  constructor() {}
 
-  ngOnInit() {
-  }
+  ngOnInit() {}
 
   getHeight(num, max) {
     let height = (125 * num) / max;

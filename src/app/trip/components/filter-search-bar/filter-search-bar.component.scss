@@ -47,3 +47,19 @@
   padding: 0;
   margin: 0;
 }
+
+@media screen and (max-width: 767px){
+  .filter-holder {
+    flex-direction: column;
+    justify-content: space-between !important;
+    align-items: center !important;
+    margin: 10px 12px !important;
+  }
+
+  .params-holder {
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}

@@ -271,3 +271,87 @@
     }
   }
 }
+
+@media screen and (max-width: 767px){
+  .trips-holder {
+    .trip {
+      margin: 10px 12px;
+
+      .trip-details {
+        flex-direction: column-reverse;
+        align-items: center !important;
+
+        .direction {
+          width: calc(100% - 10%);
+        }
+      }
+    }
+
+    .trip-main-info {
+      flex-direction: column !important;
+      justify-content: center !important;
+      align-items: center !important;
+    }
+  }
+
+  .trip-nomap {
+    flex-direction: column !important;
+    margin: 10px 12px !important;
+
+    .trip-main-info-nomap {
+      flex-direction: column;
+
+      .date-direction {
+        flex-direction: column-reverse;
+
+        .date {
+          margin: 10px 0;
+        }
+      }
+    }
+
+    .hor-bar-book {
+      flex-direction: column;
+      width: 80% !important;
+      text-align: center;
+    }
+
+    .action-buttons-nomap {
+      flex-direction: column !important;
+
+      .second-group {
+        flex-direction: row;
+        padding: 10px 0;
+
+        button {
+          margin: 8px 8px !important;
+          width: 100%;
+        }
+      }
+    }
+
+    .booking-actions {
+      justify-content: center !important;
+      padding: 0 10px !important;
+
+      .booking {
+        flex-direction: column;
+
+        .button-flat {
+          margin: 7px 5px !important;
+          width: 100%;
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 575px){
+  .action-buttons-nomap {
+    flex-direction: column !important;
+
+    .second-group {
+      flex-direction: column !important;
+    }
+  }
+}

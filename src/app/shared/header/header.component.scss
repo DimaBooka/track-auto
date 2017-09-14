@@ -71,3 +71,26 @@
     }
   }
 }
+
+@media screen and (max-width: 767px) {
+
+
+  .trips-header {
+    padding: 10px 0 0 12px;
+
+    .trips-head {
+      align-items: center !important;
+      justify-content: center !important;
+      flex-direction: column !important;
+    }
+  }
+
+
+  ul.nav .nav-item {
+    margin: 8px 15px 0 0 !important;
+
+    .nav-link {
+      font-size: 12px !important;
+    }
+  }
+}

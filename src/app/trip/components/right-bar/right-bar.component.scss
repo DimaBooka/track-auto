@@ -156,3 +156,21 @@
     }
   }
 }
+
+@media screen and (max-width: 767px){
+  .right-bar-holder {
+    border: none;
+  }
+
+  .first-section {
+    height: auto !important;
+  }
+
+  .second-section {
+    display: none !important;
+  }
+
+  .right-bar-holder-hor .horizontal{
+    flex-direction: column;
+  }
+}

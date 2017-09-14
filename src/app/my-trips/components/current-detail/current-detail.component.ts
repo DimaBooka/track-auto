@@ -15,8 +15,9 @@ export class CurrentDetailComponent implements OnInit, OnDestroy {
 
   private trip: Trip;
   private isPast: boolean = false;
+  private isUpcoming: boolean = false;
   private usersShare: string[] = [];
-  private shareTrip: Trip;
+  private selectedTrip: Trip;
   constructor(private route: ActivatedRoute,
               private router: Router,
               private sidebarService: SidebarService,
@@ -25,8 +26,12 @@ export class CurrentDetailComponent implements OnInit, OnDestroy {
     this.route.data.subscribe(trip => {
       this.trip = <Trip>trip.details;
       this.isPast = trip.past;
+      this.isUpcoming = trip.upcoming;
       if (this.isPast)
         this.tripsService.currentTab = Tabs.PastTrips;
+      else if (this.isUpcoming)
+        this.tripsService.currentTab = Tabs.Upcoming;
+
       this.sidebarService.showSidebar = false;
     });
   }
@@ -41,8 +46,12 @@ export class CurrentDetailComponent implements OnInit, OnDestroy {
     this.router.navigate(["my_trips"]);
   }
 
+  moveToInvoice(orderId: number) {
+    this.router.navigate(['invoice', orderId]);
+  }
+
   open(content, trip: Trip) {
-    this.shareTrip  = trip;
+    this.selectedTrip  = trip;
     this.usersShare = [];
     this.modalService.open(content).result.then(
       (result) => {},
@@ -55,11 +64,21 @@ export class CurrentDetailComponent implements OnInit, OnDestroy {
   }
 
   tripDoneOpen(content, trip: Trip) {
-    if (!this.isPast) {
+    this.selectedTrip  = trip;
+    if (!this.isPast && !this.isUpcoming) {
       this.modalService.open(content).result.then(
         (result) => {},
         (reason) => {}
       );
     }
+  }
+
+  public cancelBooking(cancelBooking, trip: Trip) {
+    this.selectedTrip = trip;
+    this.modalService.open(cancelBooking).result.then((result) => {
+      console.log(trip.orderId);
+    }, (reason) => {
+
+    });
   }
 }

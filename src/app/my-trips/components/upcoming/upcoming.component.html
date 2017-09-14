@@ -1,1 +1,5 @@
-<app-list-trips [trips]="trips" [showMap]="false"></app-list-trips>
+<div class="upcoming-trips">
+  <span>{{ trips.length }} Upcoming Trips</span>
+</div>
+
+<app-list-trips [trips]="trips" [showMap]="false" [bookingMode]="true"></app-list-trips>

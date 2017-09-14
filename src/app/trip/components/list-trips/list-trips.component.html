@@ -40,12 +40,25 @@
         <app-stops [trip]="trip"></app-stops>
       </div>
 
-      <div class="hor-bar-nomap line-bottom-nomap w-100">
+      <div class="hor-bar-nomap line-bottom-nomap w-100" *ngIf="!bookingMode">
         <app-right-bar [horizontal]="true" [truckType]="trip.truckType"
                        [driverName]="trip.drivenName" [driverMobile]="trip.driverMobile"></app-right-bar>
       </div>
 
-      <div class="action-buttons-nomap line-bottom-nomap w-100 d-flex align-items-center justify-content-between">
+      <div class="hor-bar-book line-bottom-nomap w-100 d-flex align-items-center justify-content-start" *ngIf="bookingMode">
+        <div class="truck-type-hor d-flex align-items-center justify-content-center">
+          <div class="crop" style="background-color: rgb(216, 216, 216)">
+            <img src="" alt="">
+          </div>
+
+          <span>{{ trip.truckType }}</span>
+        </div>
+
+        <span class="allocation">Driver will be allocated 2 hours before trip</span>
+      </div>
+
+
+      <div class="action-buttons-nomap line-bottom-nomap w-100 d-flex align-items-center justify-content-between" *ngIf="!bookingMode">
         <div class="d-flex align-items-center justify-content-center">
           <span class="price" [ngClass]="{'paid': trip.price < 900}"><img class="rupee" [src]="trip.price < 900 ? '/assets/Assets/Black_Indian_Rupee_symbol.png' : '/assets/Assets/Indian_Rupee_symbol.png'" alt="">{{ trip.price }}</span>
           <button class="button-flat button-blue" *ngIf="trip.price >= 900">Make Payment</button>
@@ -59,6 +72,15 @@
         </div>
       </div>
 
+      <div class="action-buttons-nomap line-bottom-nomap w-100 d-flex align-items-center justify-content-end" *ngIf="bookingMode">
+
+        <div class="second-group d-flex align-items-center justify-content-center">
+          <button class="button-flat" (click)="cancelBooking(cancelBookingModal, trip)">Cancel Booking</button>
+          <button class="button-flat button-flat-out">Edit booking</button>
+        </div>
+
+      </div>
+
     </div>
   </ng-template>
 
@@ -69,11 +91,30 @@
     <h4 class="modal-title">Share invoice</h4>
   </div>
   <div class="modal-body">
-    <span class="order-id">Trip ID : {{ shareTrip.orderId }}</span>
+    <span class="order-id">Trip ID : {{ selectedTrip.orderId }}</span>
     <app-user-list (setUsersList)="setUsersList($event)"></app-user-list>
   </div>
   <div class="modal-footer">
     <button type="button" class="button-flat" (click)="d('Cross click')">Cancel</button>
     <button type="button" class="button-flat button-blue" (click)="c('Close click')">Share</button>
+  </div>
+</ng-template>
+
+<ng-template #cancelBookingModal let-c="close" let-d="dismiss">
+  <div class="modal-header">
+    <h4 class="modal-title question">Are you sure you want tot close this booking?</h4>
+  </div>
+  <div class="modal-body d-flex flex-column align-items-start justify-content-center">
+    <span class="order-id">Trip ID : {{ selectedTrip.orderId }}</span>
+    <span class="warning-alert w-100">
+      <span class="warning">
+        <img src="/assets/Assets-Common/RedError@2x.png" alt="">
+      </span>
+      <span class="message">Warning! This cannot be undone.</span>
+    </span>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="button-flat" (click)="d('Cross click')">No</button>
+    <button type="button" class="button-flat button-blue" (click)="c('Close click')">Yes</button>
   </div>
 </ng-template>

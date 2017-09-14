@@ -315,6 +315,10 @@
     font-size: 17px;
     font-weight: 800;
     color: rgb(12, 133, 171);
+
+    &.question {
+      color: black;
+    }
   }
 }
 
@@ -324,6 +328,20 @@
   .order-id {
     font-size: 14px;
     font-weight: 600;
+    padding: 5px 0;
+  }
+
+  .warning-alert {
+    padding: 6px 7px;
+    margin: 25px 0;
+    background-color: rgb(255, 230, 238);
+    color: rgb(216, 55, 69);;
+
+    .warning {
+      img {
+        height: 50px;
+      }
+    }
   }
 }
 

@@ -7,13 +7,23 @@ import { InvoiceTripComponent } from './my-trips/components/invoice-trip/invoice
 export const appRoutes: Routes = [
   { path: '', redirectTo: 'my_trips', pathMatch: 'full' },
   {
-    path: 'my_trips/:id',
+    path: 'past/:id',
     component: CurrentDetailComponent,
     resolve: {
       details: DetailResolver
     },
     data: {
       past: true
+    }
+  },
+  {
+    path: 'upcoming/:id',
+    component: CurrentDetailComponent,
+    resolve: {
+      details: DetailResolver
+    },
+    data: {
+      upcoming: true
     }
   },
   {

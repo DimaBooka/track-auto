@@ -14,22 +14,26 @@ export class ListTripsComponent implements OnInit {
   @Input() trips: Trip[] = [];
   @Input() showMap: boolean = false;
   @Input() done: boolean = false;
-  private shareTrip: Trip;
+  @Input() bookingMode: boolean = false;
+  private selectedTrip: Trip;
   private usersShare: string[];
   constructor(private router: Router, private modalService: NgbModal) {}
 
   ngOnInit() {}
 
-  moveToDetails(orderId) {
-    this.router.navigate(['my_trips', orderId]);
+  public moveToDetails(orderId) {
+    if (!this.bookingMode)
+      this.router.navigate(['past', orderId]);
+    else
+      this.router.navigate(['upcoming', orderId]);
   }
 
-  moveToInvoice(orderId) {
+  public moveToInvoice(orderId) {
     this.router.navigate(['invoice', orderId]);
   }
 
-  open(content, trip: Trip) {
-    this.shareTrip  = trip;
+  public open(content, trip: Trip) {
+    this.selectedTrip  = trip;
     this.usersShare = [];
     this.modalService.open(content).result.then((result) => {
       console.log(trip.orderId, this.usersShare);
@@ -38,7 +42,16 @@ export class ListTripsComponent implements OnInit {
     });
   }
 
-  setUsersList(users: string[]) {
+  public setUsersList(users: string[]) {
     this.usersShare = users;
+  }
+
+  public cancelBooking(cancelBooking, trip: Trip) {
+    this.selectedTrip = trip;
+    this.modalService.open(cancelBooking).result.then((result) => {
+      console.log(trip.orderId);
+    }, (reason) => {
+
+    });
   }
 }

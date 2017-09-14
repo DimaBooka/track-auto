@@ -14,8 +14,8 @@
     <div class="main-info d-flex flex-column align-items-start justify-content-start">
       <span class="direction">{{ trip.headerFrom }} to {{ trip.headerTo }}, {{ trip.city }}</span>
 
-      <app-distance-done *ngIf="!isPast" [small]="true" [estimation]="trip.estimatedDistance" [finished]="trip.finishedDistance"></app-distance-done>
-      <span class="past" *ngIf="isPast">{{ trip.estimatedDistance }}kms</span>
+      <app-distance-done *ngIf="!isPast && !isUpcoming" [small]="true" [estimation]="trip.estimatedDistance" [finished]="trip.finishedDistance"></app-distance-done>
+      <span class="past" *ngIf="isPast || isUpcoming">{{ trip.estimatedDistance }}kms</span>
 
       <div class="d-flex w-100 align-items-center justify-content-between">
 
@@ -61,7 +61,7 @@
   <div class="map">
     <app-map [trip]="trip"></app-map>
 
-    <div class="cost d-flex align-items-start justify-content-start">
+    <div class="cost d-flex align-items-start justify-content-start" *ngIf="!isUpcoming">
       <div class="price d-flex flex-column align-items-start justify-content-start" *ngIf="!isPast">
         <span class="label">Price</span>
         <span class="currency"><img class="rupee" src="/assets/Assets/White_Indian_Rupee_symbol.png" alt="">{{ trip.price }}</span>
@@ -86,7 +86,7 @@
 
     </div>
 
-    <div class="user d-flex align-items-center justify-content-center" (click)="tripDoneOpen(tripDone)">
+    <div class="user d-flex align-items-center justify-content-center" (click)="tripDoneOpen(tripDone, trip)">
       <img class="notifications" src="/assets/Assets-Common/Notifications.png">
       <div class="user-profile d-flex align-items-center justify-content-start">
 
@@ -101,7 +101,7 @@
     </div>
 
     <div class="buttons-holder">
-      <div class="d-flex align-items-center justify-content-center" *ngIf="!isPast">
+      <div class="d-flex align-items-center justify-content-center" *ngIf="!isPast && !isUpcoming">
         <img src="https://upload.wikimedia.org/wikipedia/commons/6/65/QR_code_for_QRpedia.png" alt="">
 
         <div class="text">
@@ -110,10 +110,16 @@
       </div>
 
       <div class="buttons d-flex align-items-center justify-content-center" *ngIf="isPast">
-        <button class="button-flat">Print Invoice</button>
+        <button class="button-flat" (click)="moveToInvoice(trip.orderId)">Print Invoice</button>
         <button class="button-flat" (click)="open(shareContent, trip)">Email Invoice</button>
         <button class="button-flat button-flat-out">Rebook</button>
       </div>
+
+      <div class="buttons d-flex align-items-center justify-content-center" *ngIf="isUpcoming">
+        <button class="button-flat" (click)="cancelBooking(cancelBookingModal, trip)">Cancel Booking</button>
+        <button class="button-flat button-flat-out">Edit booking</button>
+      </div>
+
     </div>
   </div>
 </div>
@@ -123,7 +129,7 @@
     <h4 class="modal-title">Share invoice</h4>
   </div>
   <div class="modal-body">
-    <span class="order-id">Trip ID : {{ shareTrip.orderId }}</span>
+    <span class="order-id">Trip ID : {{ selectedTrip.orderId }}</span>
     <app-user-list (setUsersList)="setUsersList($event)"></app-user-list>
   </div>
   <div class="modal-footer">
@@ -143,7 +149,7 @@
 
       <div class="head-modal d-flex flex-column align-items-center justify-content-center">
         <h4 class="modal-title">Your trip is complete</h4>
-        <span class="order-id">Booking ID : {{ trip.orderId }}</span>
+        <span class="order-id">Booking ID : {{ selectedTrip.orderId }}</span>
       </div>
 
     </div>
@@ -161,10 +167,10 @@
             <span class="currency">
               <img src="/assets/Assets/White_Indian_Rupee_symbol.png" alt="">
             </span>
-            <span class="price-val">{{ trip.price }}</span>
+            <span class="price-val">{{ selectedTrip.price }}</span>
           </span>
 
-          <span class="past">{{ trip.estimatedDistance }}kms</span>
+          <span class="past">{{ selectedTrip.estimatedDistance }}kms</span>
         </div>
 
         <button class="button-flat button-flat-out" (click)="d('Cross click')">Make Payment</button>
@@ -172,7 +178,7 @@
 
     </div>
 
-    <span class="direction">{{ trip.headerFrom }} to {{ trip.headerTo }}, {{ trip.city }}</span>
+    <span class="direction">{{ selectedTrip.headerFrom }} to {{ selectedTrip.headerTo }}, {{ selectedTrip.city }}</span>
 
     <div class="driver-info d-flex align-items-center justify-content-between">
 
@@ -183,7 +189,7 @@
             <span class="label">Driver: </span>
           </div>
 
-          <span class="name">{{ trip.drivenName }}</span>
+          <span class="name">{{ selectedTrip.drivenName }}</span>
         </div>
 
         <div class="driver-mobile-hor d-flex align-items-center justify-content-start">
@@ -191,7 +197,7 @@
             <img src="/assets/Assets-Where-Section/MakeCall@2x.png" alt="">
           </div>
 
-          <span class="mobile">{{ trip.driverMobile }}</span>
+          <span class="mobile">{{ selectedTrip.driverMobile }}</span>
         </div>
       </div>
 
@@ -200,7 +206,7 @@
           <img src="" alt="">
         </div>
 
-        <span>{{ trip.truckType }}</span>
+        <span>{{ selectedTrip.truckType }}</span>
       </div>
 
     </div>
@@ -208,5 +214,24 @@
   </div>
   <div class="modal-footer black">
     <button type="button" class="button-flat button-blue" (click)="c('Close click'); moveTostartPage()">Go back to home page</button>
+  </div>
+</ng-template>
+
+<ng-template #cancelBookingModal let-c="close" let-d="dismiss">
+  <div class="modal-header">
+    <h4 class="modal-title question">Are you sure you want tot close this booking?</h4>
+  </div>
+  <div class="modal-body d-flex flex-column align-items-start justify-content-center">
+    <span class="order-id">Trip ID : {{ selectedTrip.orderId }}</span>
+    <span class="warning-alert w-100">
+      <span class="warning">
+        <img src="/assets/Assets-Common/RedError@2x.png" alt="">
+      </span>
+      <span class="message">Warning! This cannot be undone.</span>
+    </span>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="button-flat" (click)="d('Cross click')">No</button>
+    <button type="button" class="button-flat button-blue" (click)="c('Close click')">Yes</button>
   </div>
 </ng-template>

@@ -10,6 +10,7 @@ import { MyTripsModule } from "./my-trips/my-trips.module";
 import { TripModule } from './trip/trip.module';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { AgmCoreModule } from '@agm/core';
+import { NgxQRCodeModule } from 'ngx-qrcode2';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { AgmCoreModule } from '@agm/core';
     }),
     MyTripsModule,
     TripModule,
-    SharedModule
+    SharedModule,
+    NgxQRCodeModule
   ],
   providers: [],
   bootstrap: [AppComponent]

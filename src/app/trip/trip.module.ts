@@ -17,6 +17,8 @@ import { DetailStopComponent } from './components/detail-stop/detail-stop.compon
 import { UserListComponent } from './components/user-list/user-list.component';
 import { AgmCoreModule } from '@agm/core';
 import {DirectionsMapDirective} from "./directives/map-directions.directive";
+import { NgxQRCodeModule } from 'ngx-qrcode2';
+
 
 
 @NgModule({
@@ -26,6 +28,7 @@ import {DirectionsMapDirective} from "./directives/map-directions.directive";
     NgbModule,
     RouterModule,
     AgmCoreModule,
+	NgxQRCodeModule
   ],
   declarations: [
     DistanceDoneComponent,

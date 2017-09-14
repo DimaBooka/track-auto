@@ -5,6 +5,7 @@ export class Pickup extends BaseClass{
 
   constructor(
     status: string = "done",
+    icon: string = "",
     distance: number = 0,
     name: string = "",
     address: string = "",
@@ -12,6 +13,6 @@ export class Pickup extends BaseClass{
     location: LocationStop = new LocationStop(),
     time: string = ""
   ) {
-    super(status, distance, name, address, waitingDuration, location, time)
+    super(status, icon, distance, name, address, waitingDuration, location, time)
   }
 }

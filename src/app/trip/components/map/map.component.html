@@ -3,10 +3,11 @@
 
     <!-- AGM MAP - MAIN AGM DIRECTIVE FOR A MAP -->
     <agm-map
+	(mapReady)="onMapReady($event)"
       [latitude]="lat"
       [longitude]="lng"
       [zoom]="zoom"
-      [styles]="styles" [scrollwheel]="scrollwheel">
+      [scrollwheel]="scrollwheel">
 
       <!-- LOOP THROUGH ALL MARKERS AND SOLVE STATUS ISSUES-->
 
@@ -22,7 +23,7 @@
           <agm-marker
             [latitude]="m.location.lat"
             [longitude]="m.location.lng"
-            [iconUrl]="svgIconArray[i]">
+            [iconUrl]="m.icon">
           </agm-marker>
         </div>
         <script>
@@ -32,6 +33,7 @@
 
       <!-- SHOW ROUTES -->
 
+	  <!--
       <div class="routes" *ngFor="let rst of routes; let i of index">
         <agm-map-directions
           [origin_lat]="rst[0]"
@@ -40,6 +42,7 @@
           [destination_lng]="rst[3]"
         ></agm-map-directions>
       </div>
+	  -->
     </agm-map>
 
   </div>

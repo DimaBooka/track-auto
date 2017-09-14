@@ -11,6 +11,10 @@ import { TripModule } from './trip/trip.module';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { AgmCoreModule } from '@agm/core';
 import { NgxQRCodeModule } from 'ngx-qrcode2';
+import { AngularFireModule } from 'angularfire2';
+import { AngularFireDatabaseModule } from 'angularfire2/database';
+import { environment } from '../environments/environment';
+
 
 @NgModule({
   declarations: [
@@ -26,7 +30,9 @@ import { NgxQRCodeModule } from 'ngx-qrcode2';
     MyTripsModule,
     TripModule,
     SharedModule,
-    NgxQRCodeModule
+	NgxQRCodeModule,
+	AngularFireModule.initializeApp(environment.firebase),
+	AngularFireDatabaseModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

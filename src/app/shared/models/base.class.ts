@@ -19,6 +19,7 @@ export class BaseClass {
 
   constructor(
     private _status: string = "",
+    private _icon: string = "",
     private _distance: number = 0,
     private _name: string = "",
     private _address: string = "",
@@ -33,6 +34,14 @@ export class BaseClass {
 
   public set status(status: string) {
     this._status = status;
+  }
+
+  public get icon(){
+    return this._icon;
+  }
+
+  public set icon(icon: string) {
+    this._icon = icon;
   }
 
   public get distance(){

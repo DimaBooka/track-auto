@@ -43,7 +43,7 @@ export class CurrentDetailComponent implements OnInit, OnDestroy {
   }
 
   moveTostartPage() {
-    this.router.navigate(["my_trips"]);
+    this.router.navigate(["mytrips"]);
   }
 
   moveToInvoice(orderId: number) {

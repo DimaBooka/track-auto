@@ -5,7 +5,7 @@ import { DetailResolver } from './shared/resolvers/details.resolver';
 import { InvoiceTripComponent } from './my-trips/components/invoice-trip/invoice-trip.component';
 
 export const appRoutes: Routes = [
-  { path: '', redirectTo: 'my_trips', pathMatch: 'full' },
+  { path: '', redirectTo: 'mytrips', pathMatch: 'full' },
   {
     path: 'past/:id',
     component: CurrentDetailComponent,
@@ -40,6 +40,6 @@ export const appRoutes: Routes = [
       details: DetailResolver
     }
   },
-  { path: 'my_trips', component: MytripsMainComponent },
+  { path: 'mytrips', component: MytripsMainComponent },
   // { path: '**', component: NoContentComponent },
 ];

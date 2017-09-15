@@ -68,8 +68,8 @@
       <div class="action-buttons-nomap line-bottom-nomap w-100 d-flex align-items-center justify-content-between" *ngIf="!bookingMode">
         <div class="d-flex align-items-center justify-content-center">
           <span class="price" [ngClass]="{'paid': trip.price < 900}"><img class="rupee" [src]="trip.price < 900 ? '/assets/Assets/Black_Indian_Rupee_symbol.png' : '/assets/Assets/Indian_Rupee_symbol.png'" alt="">{{ trip.price }}</span>
-          <button class="button-flat button-blue" *ngIf="trip.status != 'paid'">Make Payment</button>
-          <button class="button-flat disabled" disabled *ngIf="trip.status == 'paid' ">Paid</button>
+			  <button class="button-flat button-blue" *ngIf="trip.paymentStatus != 'paid'" (click)="initiatePayment(trip)">Make Payment</button>
+          <button class="button-flat disabled" disabled *ngIf="trip.paymentStatus == 'paid' ">Paid</button>
         </div>
 
         <div class="second-group d-flex align-items-center justify-content-center">

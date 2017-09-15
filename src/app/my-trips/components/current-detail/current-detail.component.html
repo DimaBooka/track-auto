@@ -78,7 +78,7 @@
 
         <div class="d-flex align-items-center justify-content-start">
           <span class="currency"><img class="rupee" src="/assets/Assets/White_Indian_Rupee_symbol.png" alt="">{{ trip.price }}</span>
-			  <button class="button-flat empty button-blue" *ngIf="trip.paymentStatus != 'paid'" (click)="initiatePayment()">Make Payment</button>
+			  <button class="button-flat empty button-blue" *ngIf="trip.paymentStatus != 'paid'" (click)="initiatePayment(trip)">Make Payment</button>
           <button class="button-flat empty disabled" disabled *ngIf="trip.paymentStatus == 'paid'">Paid</button>
         </div>
 

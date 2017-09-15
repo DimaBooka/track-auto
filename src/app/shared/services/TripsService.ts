@@ -53,7 +53,7 @@ export class TripsService {
   }
 
   public getSummaryTrips() {
-    return this._http.get(API_SUMMARY_TRIPS, this._options).map((resp: any) => {
+    return this._http.get(API_SUMMARY_TRIPS).map((resp: any) => {
       let response = resp._body;
       let summary = new TripsSummary();
       summary.createByJson(JSON.parse(response));

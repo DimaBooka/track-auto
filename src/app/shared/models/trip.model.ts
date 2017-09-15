@@ -10,7 +10,7 @@ export class Trip {
     this._city = json["city"] || "";
     this._estimatedDistance = json["estimated_distance"] ? +json["estimated_distance"] : 0;
     this._totalDuration = json["total_duration"] ? +json["total_duration"] : 0;
-    this._orderId = json["order_id"] ? +json["order_id"] : 0;
+    this._orderId = json["order_id"] || "";
     this._orderKey = json["order_key"] || "";
     this._estimate = json["estimate"] ? +json["estimate"] : 0;
     this._price = json["price"] ? +json["price"] : 0;
@@ -76,7 +76,7 @@ export class Trip {
     private _city: string = "",
     private _estimatedDistance: number = 0,
     private _totalDuration: number = 0,
-    private _orderId: number = 0,
+    private _orderId: string = '',
     private _orderKey: string = "",
     private _estimate: number = 0,
     private _price: number = 0,
@@ -131,7 +131,7 @@ export class Trip {
     return this._orderId;
   }
 
-  public set orderId(orderId: number) {
+  public set orderId(orderId: string) {
     this._orderId = orderId;
   }
 

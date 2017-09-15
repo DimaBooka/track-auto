@@ -56,7 +56,7 @@ export class CurrentDetailComponent implements OnInit, OnDestroy {
     this.router.navigate(["mytrips"]);
   }
 
-  moveToInvoice(orderId: number) {
+  moveToInvoice(orderId: string) {
     this.router.navigate(['invoice', orderId]);
   }
 

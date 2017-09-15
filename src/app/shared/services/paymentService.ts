@@ -63,13 +63,5 @@ export class PaymentService {
 
         let razorpay = new Razorpay(options);
         razorpay.open();
-
-        /*
-        constructor(private _tripsService: TripsService) {
-    this.currentTab = this._tripsService.currentTab;
-    this._tripsService.getAllTrip().subscribe((res: AllTrips) => {
-      this.allTrips = res;
-    });
-         */
     }
 }

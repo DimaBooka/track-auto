@@ -12,7 +12,7 @@ export class RightBarComponent implements OnInit {
   @Input() driverName: string;
   @Input() driverMobile: string;
   @Input() horizontal: boolean = false;
-  @Input() orderId: number;
+  @Input() orderId: string;
   @Input() trackingUrl: string;
   constructor(private router: Router) {}
 

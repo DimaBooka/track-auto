@@ -34,6 +34,13 @@ export const appRoutes: Routes = [
     }
   },
   {
+    path: 'track/:id',
+    component: CurrentDetailComponent,
+    resolve: {
+      details: DetailResolver
+    }
+  },
+  {
     path: 'invoice/:id',
     component: InvoiceTripComponent,
     resolve: {

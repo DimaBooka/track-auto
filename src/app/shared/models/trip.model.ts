@@ -11,6 +11,7 @@ export class Trip {
     this._estimatedDistance = json["estimated_distance"] ? +json["estimated_distance"] : 0;
     this._totalDuration = json["total_duration"] ? +json["total_duration"] : 0;
     this._orderId = json["order_id"] ? +json["order_id"] : 0;
+    this._orderKey = json["order_key"] || "";
     this._estimate = json["estimate"] ? +json["estimate"] : 0;
     this._price = json["price"] ? +json["price"] : 0;
     this._truckType = json["truck_type"] || "";
@@ -20,6 +21,7 @@ export class Trip {
     this._driverMobile = json["driver_mobile"] || "";
     this._trackingUrl = json["tracking_url"] || "";
     this._finishedDistance = json["finished_distance"] ? +json["finished_distance"] : 0;
+    this._paymentStatus = json["payment_status"] || "";
 
     if (json["fare_breakup"]) {
       let fareBreakup = new FareBreakup();
@@ -75,6 +77,7 @@ export class Trip {
     private _estimatedDistance: number = 0,
     private _totalDuration: number = 0,
     private _orderId: number = 0,
+    private _orderKey: string = "",
     private _estimate: number = 0,
     private _price: number = 0,
     private _fareBreakup: FareBreakup = new FareBreakup(),
@@ -88,7 +91,8 @@ export class Trip {
     private _date: any = "",
     private _driverMobile: string = "",
     private _trackingUrl: string = "",
-    private _finishedDistance: number = 0
+    private _finishedDistance: number = 0,
+    private _paymentStatus: string = 'unpaid'
   ) {}
 
   public get status() {
@@ -129,6 +133,14 @@ export class Trip {
 
   public set orderId(orderId: number) {
     this._orderId = orderId;
+  }
+
+  public get orderKey() {
+    return this._orderKey;
+  }
+
+  public set orderKey(orderKey: string) {
+    this._orderKey = orderKey;
   }
 
   public get estimate() {
@@ -242,5 +254,14 @@ export class Trip {
   public set finishedDistance(finishedDistance: number) {
     this._finishedDistance = finishedDistance;
   }
+
+  public get paymentStatus() {
+    return this._paymentStatus;
+  }
+
+  public set paymentStatus(paymentStatus: string) {
+    this._paymentStatus = paymentStatus;
+  }
+
 
 }

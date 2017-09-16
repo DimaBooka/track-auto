@@ -61,27 +61,27 @@
   <div class="map">
     <app-map [trip]="trip"></app-map>
 
-    <div class="cost d-flex align-items-start justify-content-start" *ngIf="!isUpcoming">
-      <div class="price d-flex flex-column align-items-start justify-content-start" *ngIf="!isPast">
+	<!-- TODO <div class="cost d-flex align-items-start justify-content-start" *ngIf="!isUpcoming">-->
+    <div class="cost d-flex align-items-start justify-content-start" *ngIf="trip.status == 'done'">
+		<!--<div class="price d-flex flex-column align-items-start justify-content-start" *ngIf="!isPast">-->
+      <div class="price d-flex flex-column align-items-start justify-content-start" *ngIf="false">
         <span class="label">Price</span>
         <span class="currency"><img class="rupee" src="/assets/Assets/White_Indian_Rupee_symbol.png" alt="">{{ trip.price }}</span>
       </div>
 
-      <div class="estimate d-flex flex-column align-items-start justify-content-start" *ngIf="!isPast">
+	  <!--<div class="estimate d-flex flex-column align-items-start justify-content-start" *ngIf="!isPast">-->
+      <div class="estimate d-flex flex-column align-items-start justify-content-start" *ngIf="false">
         <span class="label">Total Estimate</span>
         <span class="currency"><img class="rupee" src="/assets/Assets/White_Indian_Rupee_symbol.png" alt="">{{ trip.estimate }}</span>
       </div>
 
-      <div class="paid-money d-flex flex-column align-items-start justify-content-start" *ngIf="isPast">
-
+      <div class="paid-money d-flex flex-column align-items-start justify-content-start" *ngIf="trip.status == 'done'">
         <span class="label">Total Cost</span>
-
         <div class="d-flex align-items-center justify-content-start">
           <span class="currency"><img class="rupee" src="/assets/Assets/White_Indian_Rupee_symbol.png" alt="">{{ trip.price }}</span>
 			  <button class="button-flat empty button-blue" *ngIf="trip.paymentStatus != 'paid'" (click)="initiatePayment(trip)">Make Payment</button>
           <button class="button-flat empty disabled" disabled *ngIf="trip.paymentStatus == 'paid'">Paid</button>
         </div>
-
       </div>
 
     </div>
@@ -94,7 +94,7 @@
           <img src="https://image.freepik.com/free-icon/business-person-silhouette-wearing-tie_318-49988.jpg" alt="">
         </div>
 
-        <span class="user-text">Mithun Srivatsa</span>
+        <span class="user-text">Name</span>
         <img class="dropdown" src="/assets/Assets/DropDown.png">
       </div>
 

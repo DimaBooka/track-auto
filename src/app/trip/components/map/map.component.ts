@@ -112,7 +112,7 @@ export class MapComponent implements OnInit {
 		  this.firebaseObject.subscribe(snapshot => {
 			  this.data_bundle = JSON.parse(snapshot.val());
 			  console.log(this.data_bundle);
-			  if (this.data_bundle != null) {
+			  if (this.data_bundle != null && this.truck_marker != null) {
 				  this.truck_marker.setPosition({
 					  lat : parseFloat(this.data_bundle.location.lat),
 					  lng : parseFloat(this.data_bundle.location.lon),

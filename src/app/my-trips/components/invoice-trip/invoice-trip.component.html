@@ -62,7 +62,7 @@
 
           <span class="label solo">Fare breakup</span>
 
-          <span class="price price-dark line d-flex align-items-end justify-content-start">
+		  <span class="price price-dark line d-flex align-items-end justify-content-start" *ngIf="trip.fareBreakup.baseFare > 0">
             <span class="label label-dark">Base fare : </span>
             <span class="currency">
               <img src="/assets/Assets/Black_Indian_Rupee_symbol.png" alt="">
@@ -70,15 +70,31 @@
             <span class="price-val val-dark">{{ trip.fareBreakup.baseFare }}</span>
           </span>
 
-          <span class="price price-dark line d-flex align-items-end justify-content-start">
-            <span class="label label-dark">Waiting charges : </span>
+		  <span class="price price-dark line d-flex align-items-end justify-content-start" *ngIf="trip.fareBreakup.timeCharges > 0">
+            <span class="label label-dark">Time charges : </span>
             <span class="currency">
               <img src="/assets/Assets/Black_Indian_Rupee_symbol.png" alt="">
             </span>
-            <span class="price-val val-dark">{{ trip.fareBreakup.waitingCharges }}</span>
+            <span class="price-val val-dark">{{ trip.fareBreakup.timeCharges }}</span>
           </span>
 
-          <span class="price price-dark d-flex align-items-end justify-content-start">
+		  <span class="price price-dark line d-flex align-items-end justify-content-start" *ngIf="trip.fareBreakup.distanceCharges > 0">
+            <span class="label label-dark">Distance charges : </span>
+            <span class="currency">
+              <img src="/assets/Assets/Black_Indian_Rupee_symbol.png" alt="">
+            </span>
+            <span class="price-val val-dark">{{ trip.fareBreakup.distanceCharges }}</span>
+          </span>
+
+		  <span class="price price-dark line d-flex align-items-end justify-content-start" *ngIf="trip.fareBreakup.adjustment > 0">
+            <span class="label label-dark">Adjustment : </span>
+            <span class="currency">
+              <img src="/assets/Assets/Black_Indian_Rupee_symbol.png" alt="">
+            </span>
+            <span class="price-val val-dark">{{ trip.fareBreakup.adjustment }}</span>
+          </span>
+
+		  <span class="price price-dark d-flex align-items-end justify-content-start" *ngIf="trip.fareBreakup.gst > 0">
             <span class="label label-dark">GST : </span>
             <span class="currency">
               <img src="/assets/Assets/Black_Indian_Rupee_symbol.png" alt="">

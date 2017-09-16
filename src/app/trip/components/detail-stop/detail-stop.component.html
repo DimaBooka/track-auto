@@ -4,7 +4,7 @@
     <span class="icon"><img src="{{ stop.status === 'done' ? '/assets/Assets-Common/Done-Marker.png' : '/assets/Assets-Common/Stop.png' }}" alt=""></span>
     <span class="index" *ngIf="stop.status !== 'done'">{{ index }}</span>
     <div class="line" *ngIf="!lastStop" [ngClass]="{'solid': stop.status === 'done' }" [ngStyle]="{height: (height ? height : 100) + 'px'}"></div>
-    <div class="distance" *ngIf="stop.status === 'done' && !lastStop">{{ stop.distance }}km</div>
+	<!--TODO <div class="distance" *ngIf="stop.status === 'done' && !lastStop">{{ stop.distance }}km</div>-->
   </div>
 
   <div class="info d-flex flex-column align-items-start justify-content-start col-xs-7 col-sm-7 col-md-7 col-lg-7 col-xl-7">

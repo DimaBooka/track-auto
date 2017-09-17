@@ -16,8 +16,11 @@ export class MytripsMainComponent implements OnInit {
 
   constructor(private _tripsService: TripsService) {
     this.currentTab = this._tripsService.currentTab;
-    this._tripsService.getAllTrip().subscribe((res: AllTrips) => {
-      this.allTrips = res;
+
+    this.updateTrips();
+
+    this._tripsService.getTripTriggers().subscribe(() => {
+      this.updateTrips();
     });
   }
 
@@ -27,4 +30,9 @@ export class MytripsMainComponent implements OnInit {
 
   ngOnInit() {}
 
+  private updateTrips() {
+    this._tripsService.getAllTrip().subscribe((res: AllTrips) => {
+      this.allTrips = res;
+    });
+  }
 }

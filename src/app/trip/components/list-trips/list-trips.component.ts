@@ -3,6 +3,7 @@ import { Trip } from '../../../shared/models/trip.model';
 import { Router } from '@angular/router';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { PaymentService } from '../../../shared/services/paymentService';
+import { TripsService } from '../../../shared/services/TripsService';
 
 
 @Component({
@@ -22,7 +23,8 @@ export class ListTripsComponent implements OnInit {
   constructor(
       private router: Router,
       private modalService: NgbModal,
-      public paymentService: PaymentService
+      public paymentService: PaymentService,
+      public tripService: TripsService
   ) {}
 
   ngOnInit() {}
@@ -56,6 +58,9 @@ export class ListTripsComponent implements OnInit {
     this.selectedTrip = trip;
     this.modalService.open(cancelBooking).result.then((result) => {
       console.log(trip.orderRealId);
+      this.tripService.removeTrip(trip.orderRealId).subscribe((resp: any) => {
+        this.tripService.refreshTrips();
+      });
     }, (reason) => {
 
     });

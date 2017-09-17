@@ -8,7 +8,8 @@ import 'rxjs/add/operator/catch'
 import { AllTrips } from '../models/all-trips.model';
 import { TripsSummary } from '../models/trips-summary.model';
 import { Trip } from '../models/trip.model';
-
+import { Observable } from 'rxjs';
+import { Subject } from 'rxjs/Subject';
 
 @Injectable()
 export class TripsService {
@@ -16,6 +17,7 @@ export class TripsService {
   private _currentTab: Tabs = 0;
   private _headers: Headers = new Headers();
   private _options: any;
+  private tripsSubject = new Subject<any>();
 
   constructor(private _http: Http) {
     this._headers.append("Content-Type", "text/html");
@@ -30,6 +32,14 @@ export class TripsService {
 
   public set currentTab(tab: Tabs) {
     this._currentTab = tab;
+  }
+
+  refreshTrips() {
+    this.tripsSubject.next();
+  }
+
+  getTripTriggers(): Observable<any> {
+    return this.tripsSubject.asObservable();
   }
 
   public getTripDetails(id: number) {
@@ -58,6 +68,13 @@ export class TripsService {
       let summary = new TripsSummary();
       summary.createByJson(JSON.parse(response));
       return summary;
+    })
+      .catch(HandleError);
+  }
+
+  public removeTrip(id: string | number) {
+    return this._http.delete(`${API_DETAIL_TRIP}/${id}`).map((resp: any) => {
+      return resp;
     })
       .catch(HandleError);
   }

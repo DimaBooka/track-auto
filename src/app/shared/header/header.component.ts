@@ -30,8 +30,8 @@ export class HeaderComponent implements OnInit {
   ];
   private truckTypeParamVal: string = this.truckTypeOptions[0].value;
   private truckTypeParamLabel: string = this.truckTypeOptions[0].label;
-  public bookingId: string = "51198498494";
-  public trackingURL: string = "//blowhorntest.appspot.com/track/QMEQH";
+  public bookingId: string = "";
+  public trackingURL: string = "";
   @Output() tabChanged: EventEmitter<Tabs> = new EventEmitter<Tabs>();
 
   constructor(private _tripsService: TripsService,

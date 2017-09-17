@@ -7,7 +7,7 @@ export class BaseClass {
     this._distance = json["distance"] ? +json["distance"] : 0;
     this._name = json["name"] || "";
     this._address = json["address"] || "";
-    this._waitingDuration = json["waiting_duration"] || "";
+    this._waitingDuration = json["wait_duration"] || "";
     this._time = json["time"] || "";
 
     if(json["location"]) {

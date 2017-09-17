@@ -42,7 +42,7 @@ export class ListTripsComponent implements OnInit {
     this.selectedTrip  = trip;
     this.usersShare = [];
     this.modalService.open(content).result.then((result) => {
-      console.log(trip.orderId, this.usersShare);
+      console.log(trip.orderRealId, this.usersShare);
     }, (reason) => {
 
     });
@@ -55,7 +55,7 @@ export class ListTripsComponent implements OnInit {
   public cancelBooking(cancelBooking, trip: Trip) {
     this.selectedTrip = trip;
     this.modalService.open(cancelBooking).result.then((result) => {
-      console.log(trip.orderId);
+      console.log(trip.orderRealId);
     }, (reason) => {
 
     });

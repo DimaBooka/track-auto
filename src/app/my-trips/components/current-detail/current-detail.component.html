@@ -7,7 +7,7 @@
         <img src="/assets/Assets-Common/Logo.png" alt="">
       </div>
       <span>
-        Tracking trip: <span>{{ trip.orderId }}</span>
+        Tracking trip: <span>{{ trip.orderRealId }}</span>
       </span>
     </div>
 
@@ -110,7 +110,7 @@
       </div>
 
       <div class="buttons d-flex align-items-center justify-content-center" *ngIf="isPast">
-        <button class="button-flat" (click)="moveToInvoice(trip.orderId)">Print Invoice</button>
+        <button class="button-flat" (click)="moveToInvoice(trip.orderRealId)">Print Invoice</button>
         <button class="button-flat" (click)="open(shareContent, trip)">Email Invoice</button>
         <button class="button-flat button-flat-out">Rebook</button>
       </div>
@@ -129,7 +129,7 @@
     <h4 class="modal-title">Share invoice</h4>
   </div>
   <div class="modal-body">
-    <span class="order-id">Trip ID : {{ selectedTrip.orderId }}</span>
+    <span class="order-id">Trip ID : {{ selectedTrip.orderRealId }}</span>
     <app-user-list (setUsersList)="setUsersList($event)"></app-user-list>
   </div>
   <div class="modal-footer">
@@ -149,7 +149,7 @@
 
       <div class="head-modal d-flex flex-column align-items-center justify-content-center">
         <h4 class="modal-title">Your trip is complete</h4>
-        <span class="order-id">Booking ID : {{ selectedTrip.orderId }}</span>
+        <span class="order-id">Booking ID : {{ selectedTrip.orderRealId  }}</span>
       </div>
 
     </div>
@@ -222,7 +222,7 @@
     <h4 class="modal-title question">Are you sure you want tot close this booking?</h4>
   </div>
   <div class="modal-body d-flex flex-column align-items-start justify-content-center">
-    <span class="order-id">Trip ID : {{ selectedTrip.orderId }}</span>
+    <span class="order-id">Trip ID : {{ selectedTrip.orderRealId }}</span>
     <span class="warning-alert w-100">
       <span class="warning">
         <img src="/assets/Assets-Common/RedError@2x.png" alt="">

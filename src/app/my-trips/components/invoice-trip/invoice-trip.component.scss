@@ -1,22 +1,41 @@
-.container {
-  min-height: 100%;
-  margin-top: 20px;
-}
+.container-holder {
+  background-color: rgb(187, 194, 196);
 
-.row {
-  box-shadow: 1px 1px 3px 0 #cecece;
-  background-color: white;
-  padding-top: 50px;
+  .container {
+    min-height: 100%;
+    margin-top: -20px;
+    max-width: 867px;
+
+    .invoice-holder {
+      box-shadow: 1px 1px 3px 0 #cecece;
+      background-color: white;
+      margin-top: 20px;
+
+      .head-map {
+        padding: 45px 40px 20px 40px;
+        background-color: white;
+      }
+
+      .details-stops {
+        padding: 10px 40px 15px 40px;
+        background-color: rgb(247, 251, 252);
+      }
+    }
+  }
 }
 
 .head {
   margin-bottom: 18px;
+
+  h1 {
+    font-weight: 300;
+  }
 }
 
 .trip-info {
-  border-top: 1px solid #b6b6b6;
-  border-bottom: 1px solid #b6b6b6;
-  padding: 30px 30px 16px 0;
+  border-top: 1px solid rgb(225, 231, 233);
+  border-bottom: 1px solid rgb(225, 231, 233);
+  padding: 30px 0 16px 0;
 
   .direction {
     font-size: 20px;
@@ -32,24 +51,39 @@
   }
 
   .driver-info {
-    .truck-type-hor span {
-      color: #3c3c3c;
-      font-size: 19px;
-      font-weight: 600;
+    flex-direction: row-reverse;
+    justify-content: start !important;
+    align-items: start !important;
+    padding: 10px 0;
+
+    .truck-type-hor {
+      margin-right: 20px;
+
+      span {
+        color: rgb(106, 111, 111);
+        font-size: 19px;
+        font-weight: 600;
+      }
     }
   }
 }
 
 .map {
-  height: 300px;
-  margin: 30px 0;
+  height: 375px;
+  margin: 30px 0 5px 0;
   background-color: #747e7f;
 }
 
 .details {
-  margin-bottom: 30px;
-  box-shadow: 1px 1px 5px 0px #625f5f;
+  border: 1px solid #e5ecee;
+  background-color: white;
   padding: 10px;
+
+  .label {
+    color: #3c3c3c;
+    font-size: 22px;
+    font-weight: 300;
+  }
 }
 
 .driver-name-hor, .driver-mobile-hor {
@@ -89,15 +123,16 @@
 
 .paid-money {
   margin-bottom: 20px;
+  min-width: 200px;
 
   .label {
     color: #3c3c3c;
-    font-size: 17px;
+    font-size: 14px;
     font-weight: 300;
   }
 
   .solo {
-    padding: 0 0 10px 0;
+    padding: 0 0 5px 0;
   }
 
   .currency{
@@ -126,7 +161,7 @@
   .price {
     .label-dark {
       color: #3c3c3c;
-      font-size: 15px;
+      font-size: 12px;
       font-weight: 700;
     }
 
@@ -139,7 +174,7 @@
 
       &.line {
         padding-bottom: 3px;
-        border-bottom: 1px solid #707070;
+        border-bottom: 1px solid rgb(225, 231, 233);
       }
 
       .currency {
@@ -153,22 +188,23 @@
 
     &.head {
       .label {
-        color: #3c3c3c;
-        font-size: 27px;
+        color: rgb(121, 130, 131);
+        font-size: 25px;
         font-weight: 600;
       }
 
       .currency {
-        padding-bottom: 10px;
+        padding-bottom: 8px;
+
         img {
-          height: 22px;
+          height: 20px;
         }
       }
 
       .price-val {
-        font-size: 30px;
+        font-size: 27px;
         color: #3c3c3c;
-        padding-bottom: 7px;
+        padding-bottom: 5px;
         line-height: 1;
       }
     }
@@ -203,9 +239,10 @@
   padding: 3px 0 14px 0;
 
   .order-id {
-    font-size: 23px;
+    font-size: 20px;
     font-weight: 700;
     color: #5e5e5e;
+    padding-right: 20px;
   }
 }
 

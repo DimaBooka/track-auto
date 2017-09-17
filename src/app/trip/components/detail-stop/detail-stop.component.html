@@ -1,5 +1,13 @@
 <div class="stop d-flex align-items-start justify-content-between" #stopElem>
 
+<<<<<<< HEAD
+  <div class="liner col-xs-1 col-sm-1 col-md-1 col-lg-1 col-xl-1">
+    <span class="icon"><img src="{{ stop.status === 'done' ? '/assets/Assets-Common/Done-Marker.png' : '/assets/Assets-Common/Stop.png' }}" alt=""></span>
+    <span class="index" *ngIf="stop.status !== 'done'">{{ index }}</span>
+    <div class="line" *ngIf="!lastStop" [ngClass]="{'solid': stop.status === 'done' }" [ngStyle]="{height: (height ? height : 100) + 'px'}"></div>
+	<!--TODO <div class="distance" *ngIf="stop.status === 'done' && !lastStop">{{ stop.distance }}km</div>-->
+  </div>
+=======
   <div class="liner-info d-flex align-items-start justify-content-start">
     <div class="liner">
       <span class="icon"><img src="{{ stop.status === 'done' ? '/assets/Assets-Common/Done-Marker.png' : '/assets/Assets-Common/Stop.png' }}" alt=""></span>
@@ -7,6 +15,7 @@
       <div class="line" *ngIf="!lastStop" [ngClass]="{'solid': stop.status === 'done' }" [ngStyle]="{height: (height ? height : 100) + 'px'}"></div>
       <div class="distance" *ngIf="stop.status === 'done' && !lastStop" [ngStyle]="{right: stop.distance.toString().length *2 + 'px'}">{{ stop.distance }}km</div>
     </div>
+>>>>>>> 0e8ff65c4753fbf2372b1c112ac85e436b863911
 
     <div class="info d-flex flex-column align-items-start justify-content-start">
       <span class="pickup" *ngIf="pickup">{{ pickup }}</span>

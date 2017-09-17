@@ -33,7 +33,7 @@
 
       <div class="trip-main-info-nomap line-bottom-nomap w-100 d-flex align-items-center justify-content-between">
         <div class="date-direction d-flex align-items-center justify-content-center">
-          <span class="date" *ngIf="trip.date">{{ trip.date.split("-").splice(0, 2).reverse().join(" ") }}</span>
+          <span class="date" *ngIf="trip.date">{{ trip.date }}</span>
           <span class="direction">{{ trip.headerFrom }} to {{ trip.headerTo }}, {{ trip.city }}</span>
         </div>
         <button class="button-flat" (click)="moveToDetails(trip.orderRealId)">More details <img class="more-arrow" src="/assets/Assets-Common/DropDown@2x.png" alt=""></button>
@@ -109,7 +109,7 @@
 
 <ng-template #cancelBookingModal let-c="close" let-d="dismiss">
   <div class="modal-header">
-    <h4 class="modal-title question">Are you sure you want tot close this booking?</h4>
+    <h4 class="modal-title question">Are you sure you want to cancel this booking?</h4>
   </div>
   <div class="modal-body d-flex flex-column align-items-start justify-content-center">
     <span class="order-id">Trip ID : {{ selectedTrip.orderRealId }}</span>

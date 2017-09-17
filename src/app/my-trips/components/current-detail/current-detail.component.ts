@@ -86,7 +86,7 @@ export class CurrentDetailComponent implements OnInit, OnDestroy {
   public cancelBooking(cancelBooking, trip: Trip) {
     this.selectedTrip = trip;
     this.modalService.open(cancelBooking).result.then((result) => {
-      console.log(trip.orderId);
+      console.log(trip.orderRealId);
     }, (reason) => {
 
     });

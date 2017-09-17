@@ -1,18 +1,29 @@
-<div class="stop d-flex align-items-start justify-content-end row" #stopElem>
+<div class="stop d-flex align-items-start justify-content-between" #stopElem>
 
+<<<<<<< HEAD
   <div class="liner col-xs-1 col-sm-1 col-md-1 col-lg-1 col-xl-1">
     <span class="icon"><img src="{{ stop.status === 'done' ? '/assets/Assets-Common/Done-Marker.png' : '/assets/Assets-Common/Stop.png' }}" alt=""></span>
     <span class="index" *ngIf="stop.status !== 'done'">{{ index }}</span>
     <div class="line" *ngIf="!lastStop" [ngClass]="{'solid': stop.status === 'done' }" [ngStyle]="{height: (height ? height : 100) + 'px'}"></div>
 	<!--TODO <div class="distance" *ngIf="stop.status === 'done' && !lastStop">{{ stop.distance }}km</div>-->
   </div>
+=======
+  <div class="liner-info d-flex align-items-start justify-content-start">
+    <div class="liner">
+      <span class="icon"><img src="{{ stop.status === 'done' ? '/assets/Assets-Common/Done-Marker.png' : '/assets/Assets-Common/Stop.png' }}" alt=""></span>
+      <span class="index" *ngIf="stop.status !== 'done'">{{ index }}</span>
+      <div class="line" *ngIf="!lastStop" [ngClass]="{'solid': stop.status === 'done' }" [ngStyle]="{height: (height ? height : 100) + 'px'}"></div>
+      <div class="distance" *ngIf="stop.status === 'done' && !lastStop" [ngStyle]="{right: stop.distance.toString().length *2 + 'px'}">{{ stop.distance }}km</div>
+    </div>
+>>>>>>> 0e8ff65c4753fbf2372b1c112ac85e436b863911
 
-  <div class="info d-flex flex-column align-items-start justify-content-start col-xs-7 col-sm-7 col-md-7 col-lg-7 col-xl-7">
-    <span class="pickup" *ngIf="pickup">{{ pickup }}</span>
-    <span class="address" [ngClass]="{small: pickup}" *ngIf="stop.address">{{ stop.address }}</span>
+    <div class="info d-flex flex-column align-items-start justify-content-start">
+      <span class="pickup" *ngIf="pickup">{{ pickup }}</span>
+      <span class="address" [ngClass]="{small: pickup}" *ngIf="stop.address">{{ stop.address }}</span>
+    </div>
   </div>
 
-  <div class="timing d-flex flex-column align-items-end justify-content-start col-xs-3 col-sm-3 col-md-3 col-lg-3 col-xl-3">
+  <div class="timing d-flex flex-column align-items-end justify-content-start">
     <span class="time" *ngIf="stop.time">{{ stop.time }}</span>
     <span class="waiting" *ngIf="stop.waitingDuration">{{ stop.waitingDuration }}</span>
   </div>

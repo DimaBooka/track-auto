@@ -10,9 +10,10 @@ export class Trip {
     this._city = json["city"] || "";
     this._estimatedDistance = json["estimated_distance"] ? +json["estimated_distance"] : 0;
     this._totalDuration = json["total_duration"] ? +json["total_duration"] : 0;
+    this._totalDistance = json["total_distance"] ? +json["total_distance"] : 0;
     this._orderId = json["order_id"] || "";
     this._orderKey = json["order_key"] || "";
-    this._estimate = json["estimate"] ? +json["estimate"] : 0;
+    this._estimate = json["estimate"] || "";
     this._price = json["price"] ? +json["price"] : 0;
     this._truckType = json["truck_type"] || "";
     this._headerTo = json["header_to"] || "";
@@ -22,6 +23,8 @@ export class Trip {
     this._trackingUrl = json["tracking_url"] || "";
     this._finishedDistance = json["finished_distance"] ? +json["finished_distance"] : 0;
     this._paymentStatus = json["payment_status"] || "";
+    this._dateSortable = json["date_sortable"] || "";
+    this._orderRealId = json["order_real_id"] || "";
 
     if (json["fare_breakup"]) {
       let fareBreakup = new FareBreakup();
@@ -76,8 +79,10 @@ export class Trip {
     private _city: string = "",
     private _estimatedDistance: number = 0,
     private _totalDuration: number = 0,
-    private _orderId: string = '',
+    private _totalDistance: number = 0,
+    private _orderId: string = "",
     private _orderKey: string = "",
+    private _orderRealId: string = "",
     private _estimate: number = 0,
     private _price: number = 0,
     private _fareBreakup: FareBreakup = new FareBreakup(),
@@ -89,6 +94,7 @@ export class Trip {
     private _headerFrom: string = "",
     private _stops: Stop[] = [],
     private _date: any = "",
+    private _dateSortable: string = "",
     private _driverMobile: string = "",
     private _trackingUrl: string = "",
     private _finishedDistance: number = 0,
@@ -127,12 +133,29 @@ export class Trip {
     this._totalDuration = totalDuration;
   }
 
+
+  public get totalDistance() {
+    return this._totalDistance;
+  }
+
+  public set totalDistance(totalDistance: number) {
+    this._totalDistance = totalDistance;
+  }
+
   public get orderId() {
     return this._orderId;
   }
 
   public set orderId(orderId: string) {
     this._orderId = orderId;
+  }
+
+  public get orderRealId() {
+    return this._orderRealId;
+  }
+
+  public set orderRealId(orderRealId: string) {
+    this._orderRealId = orderRealId;
   }
 
   public get orderKey() {
@@ -229,6 +252,14 @@ export class Trip {
 
   public set date(date: any) {
     this._date = date;
+  }
+
+  public get dateSortable() {
+    return this._dateSortable;
+  }
+
+  public set dateSortable(dateSortable: string) {
+    this._dateSortable = dateSortable;
   }
 
   public get driverMobile() {

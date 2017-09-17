@@ -94,7 +94,7 @@ export class TripsService {
       "to": toLoc,
       "truck_type": truckType
     };
-    return this._http.post(API_ALL_TRIPS, creationData).map((resp: any) => {
+    return this._http.post(API_DETAIL_TRIP, creationData).map((resp: any) => {
       return resp;
     });
   }

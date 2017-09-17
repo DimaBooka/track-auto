@@ -4,9 +4,46 @@
 
     <h1>My Trips</h1>
 
-    <div class="button-holder">
-      <button class="button-flat">Quick Book</button>
-      <button class="button-flat button-flat-out">Book a new trip</button>
+    <div class="button-holder d-flex ">
+      <div class="quick-book-holder">
+
+        <button class="button-flat button-with-width" (click)="toggleQuckBook()">Quick Book</button>
+
+        <div class="quick-book" *ngIf="quickBook">
+
+          <form (submit)="createQuickBook()" class="d-flex flex-column align-items-start justify-content-center">
+
+            <div class="input-autocomplete">
+              <input auto-complete type="text" [(ngModel)]="fromLocation" name="fromLocation" placeholder="Type From saved Locaton"
+                     [source]="locations" [value-formatter]="valueFormatter" [list-formatter]="listFormatter">
+            </div>
+
+            <div class="input-autocomplete">
+              <input auto-complete type="text" [(ngModel)]="toLocation" name="toLocation" placeholder="Type To saved Locaton"
+                     [source]="locations" [value-formatter]="valueFormatter" [list-formatter]="listFormatter">
+            </div>
+
+            <div ngbDropdown placement="bottom-left" class="d-inline-block">
+              <button type="button" class="button-flat" id="dropdownFirst" ngbDropdownToggle>{{ truckTypeParamLabel }}</button>
+              <div ngbDropdownMenu aria-labelledby="dropdownFirst">
+                <button type="button" class="dropdown-item" [ngClass]="{'active': opt.value === truckTypeParamVal}" (click)="selectSecondParam(opt)"
+                        *ngFor="let opt of truckTypeOptions">{{ opt.label}}</button>
+              </div>
+            </div>
+
+            <div class="buttons-holder d-flex align-items-center justify-content-end">
+              <button type="button" class="button-flat button-with-width" (click)="toggleQuckBook()">Cancel</button>
+              <input class="button-flat button-blue button-with-width button-blue" type="submit" value="Book">
+            </div>
+
+          </form>
+
+        </div>
+      </div>
+
+      <div class="new-trip-holder">
+        <button class="button-flat button-flat-out">Book a new trip</button>
+      </div>
     </div>
 
   </div>

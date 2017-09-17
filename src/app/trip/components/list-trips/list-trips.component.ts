@@ -30,10 +30,7 @@ export class ListTripsComponent implements OnInit {
   ngOnInit() {}
 
   public moveToDetails(orderId) {
-    if (!this.bookingMode)
-      this.router.navigate(['past', orderId]);
-    else
-      this.router.navigate(['upcoming', orderId]);
+    this.router.navigate(['track', orderId]);
   }
 
   public moveToInvoice(orderId) {

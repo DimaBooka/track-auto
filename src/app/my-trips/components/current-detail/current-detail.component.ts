@@ -37,10 +37,11 @@ export class CurrentDetailComponent implements OnInit, OnDestroy {
       this.trip = <Trip>trip.details;
       this.isPast = trip.past;
       this.isUpcoming = trip.upcoming;
-      if (this.isPast)
-        this.tripsService.currentTab = Tabs.PastTrips;
-      else if (this.isUpcoming)
-        this.tripsService.currentTab = Tabs.Upcoming;
+
+      if (this.tripsService.currentTab === Tabs.PastTrips)
+        this.isPast = true;
+      else if (this.tripsService.currentTab === Tabs.Upcoming)
+        this.isUpcoming = true;
 
       this.sidebarService.showSidebar = false;
     });
@@ -87,6 +88,9 @@ export class CurrentDetailComponent implements OnInit, OnDestroy {
     this.selectedTrip = trip;
     this.modalService.open(cancelBooking).result.then((result) => {
       console.log(trip.orderRealId);
+      this.tripsService.removeTrip(trip.orderRealId).subscribe((resp: any) => {
+        this.tripsService.refreshTrips();
+      });
     }, (reason) => {
 
     });

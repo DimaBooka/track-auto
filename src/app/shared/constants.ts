@@ -6,4 +6,5 @@ export const API_ALL_TRIPS = `${API_URL}/orders`;
 export const API_SUMMARY_TRIPS = `${API_URL}/summary`;
 export const API_DETAIL_TRIP = `${API_URL}/order`;
 export const API_RAZORPAY = `${API_URL}/razorpay`;
+export const API_LOCATIONS = `${API_URL}/userlocation`;
 

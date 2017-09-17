@@ -28,6 +28,18 @@
           padding: 9px 9px;
           color: black;
         }
+
+        &.button-blue {
+          border: 1px solid rgb(128, 230, 247);
+          background-color: rgb(247, 251, 252);
+          color: rgb(14, 134, 172);
+
+          &:hover {
+            background-color: rgb(135, 233, 255) !important;
+            border: none;
+            color: black !important;
+          }
+        }
       }
 
       .button-flat-out {
@@ -43,6 +55,16 @@
           background-color: white;
           color: #646464;
           border: 1px solid rgba(0, 0, 0, 0.39);
+        }
+      }
+
+      .button-with-width {
+        padding: 8px 25px;
+        margin-left: 6px;
+        font-weight: 800;
+
+        &:hover {
+          padding: 9px 26px;
         }
       }
     }
@@ -72,8 +94,85 @@
   }
 }
 
-@media screen and (max-width: 767px) {
+.quick-book-holder {
+  position: relative;
 
+  .quick-book {
+    position: absolute;
+    top: 38px;
+    right: 0;
+    width: 250px;
+    background-color: white;
+    box-shadow: 0 0 10px 0;
+    z-index: 100;
+
+    .input-autocomplete {
+      margin: 16px 10px 3px 10px;
+      width: 92%;
+
+      input {
+        background-color: rgb(240, 245, 247);
+        border: none;
+        outline: none;
+        font-size: 14px;
+        font-weight: 700;
+        padding: 12px 15px 10px 15px;
+        width: 100%;
+
+        &:focus {
+          background-color: rgb(197, 244, 255);
+        }
+      }
+    }
+
+    .buttons-holder {
+      width: 90%;
+      margin: 10px 15px 15px 10px;
+    }
+  }
+}
+
+
+#dropdownFirst {
+  margin: 30px 10px 30px 10px;
+  min-width: 125px;
+  padding: 8px 12px 8px 12px;
+  border: none;
+  outline: none;
+  font-size: 14px;
+  font-weight: 700;
+  color: black;
+  background-color: rgb(240, 245, 247) !important;
+  cursor: pointer;
+
+  &:hover {
+    color: black;
+    background-color: rgb(197, 244, 255) !important;
+  }
+}
+
+.dropdown-item {
+  font-weight: 700 !important;
+  background-color: rgb(240, 245, 247) !important;
+  padding: 12px 15px 10px 15px;
+  outline: none;
+
+  &:hover, &.active {
+    background-color: rgb(197, 244, 255) !important;
+    color: black;
+    cursor: pointer;
+  }
+}
+
+.dropdown-menu {
+  border-radius: 0;
+  box-shadow: 1px 1px 3px 0 #cecece;
+  padding: 0;
+  margin: 0;
+}
+
+
+@media screen and (max-width: 767px) {
 
   .trips-header {
     padding: 10px 0 0 12px;
@@ -84,7 +183,6 @@
       flex-direction: column !important;
     }
   }
-
 
   ul.nav .nav-item {
     margin: 8px 15px 0 0 !important;

@@ -14,7 +14,7 @@ import { NgxQRCodeModule } from 'ngx-qrcode2';
 import { AngularFireModule } from 'angularfire2';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { environment } from '../environments/environment';
-
+import { Ng2AutoCompleteModule } from 'ng2-auto-complete';
 
 @NgModule({
   declarations: [
@@ -25,12 +25,13 @@ import { environment } from '../environments/environment';
     RouterModule.forRoot(appRoutes),
     NgbModule.forRoot(),
     AgmCoreModule.forRoot(environment.google_maps),
+    Ng2AutoCompleteModule,
+    NgxQRCodeModule,
+    AngularFireModule.initializeApp(environment.firebase),
+    AngularFireDatabaseModule,
     MyTripsModule,
     TripModule,
     SharedModule,
-	NgxQRCodeModule,
-	AngularFireModule.initializeApp(environment.firebase),
-	AngularFireDatabaseModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

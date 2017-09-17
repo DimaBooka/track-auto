@@ -10,7 +10,8 @@ import { FormsModule } from '@angular/forms';
 import { DetailResolver } from './resolvers/details.resolver';
 import { SidebarService } from './services/sidebar.service';
 import {DataService} from "./services/data.service";
-
+import { Ng2AutoCompleteModule } from 'ng2-auto-complete';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   imports: [
@@ -18,7 +19,9 @@ import {DataService} from "./services/data.service";
     HttpModule,
     FormsModule,
     RouterModule,
-    TripModule
+    TripModule,
+    NgbModule,
+    Ng2AutoCompleteModule
   ],
   declarations: [HeaderComponent, SidebarComponent],
   exports: [HeaderComponent, SidebarComponent],

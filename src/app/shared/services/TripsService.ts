@@ -1,20 +1,21 @@
-import { Injectable } from '@angular/core';
-import { Tabs } from '../models/tabs.enum';
-import { Http, Response, Headers, RequestOptions } from '@angular/http';
-import { API_ALL_TRIPS, API_DETAIL_TRIP, API_SUMMARY_TRIPS } from '../constants';
+import { Injectable } from "@angular/core";
+import { Tabs } from "../models/tabs.enum";
+import { Http, Response, Headers, RequestOptions } from "@angular/http";
+import { API_ALL_TRIPS, API_DETAIL_TRIP, API_LOCATIONS, API_SUMMARY_TRIPS } from "../constants";
 import { HandleError } from "../handlers/error.handler";
-import 'rxjs/add/operator/map'
-import 'rxjs/add/operator/catch'
-import { AllTrips } from '../models/all-trips.model';
-import { TripsSummary } from '../models/trips-summary.model';
-import { Trip } from '../models/trip.model';
-import { Observable } from 'rxjs';
-import { Subject } from 'rxjs/Subject';
+import "rxjs/add/operator/map"
+import "rxjs/add/operator/catch"
+import { AllTrips } from "../models/all-trips.model";
+import { TripsSummary } from "../models/trips-summary.model";
+import { Trip } from "../models/trip.model";
+import { Observable } from "rxjs";
+import { Subject } from "rxjs/Subject";
+import { UserLocation } from "../models/user-location.model";
 
 @Injectable()
 export class TripsService {
 
-  private _currentTab: Tabs = 0;
+  private _currentTab: Tabs = Tabs.Current;
   private _headers: Headers = new Headers();
   private _options: any;
   private tripsSubject = new Subject<any>();
@@ -70,6 +71,32 @@ export class TripsService {
       return summary;
     })
       .catch(HandleError);
+  }
+
+  public getUserLocation() {
+    return this._http.get(API_LOCATIONS).map((resp: any) => {
+      let response = JSON.parse(resp._body);
+      let locations: UserLocation[] = [];
+
+      response.map((item: JSON) => {
+        let userLocation = new UserLocation();
+        userLocation.createByJson(item);
+        locations.push(userLocation);
+      });
+
+      return locations;
+    });
+  }
+
+  public createTrip(fromLoc, toLoc, truckType) {
+    let creationData = {
+      "from": fromLoc,
+      "to": toLoc,
+      "truck_type": truckType
+    };
+    return this._http.post(API_ALL_TRIPS, creationData).map((resp: any) => {
+      return resp;
+    });
   }
 
   public removeTrip(id: string | number) {

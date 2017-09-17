@@ -6,3 +6,22 @@
   border-radius: 0;
   border: none;
 }
+
+.ng2-auto-complete-wrapper li {
+  background-color: rgb(247, 251, 252) !important;
+  border: 1px solid rgb(231, 233, 234);
+  font-size: 14px !important;
+  font-weight: 700 !important;
+  padding: 12px 15px 10px 15px !important;
+  width: 100% !important;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.ng2-auto-complete-wrapper li:hover,
+.ng2-auto-complete-wrapper li.active,
+.ng2-auto-complete-wrapper li.selected {
+  cursor: pointer;
+  background-color: #c5f4ff !important;
+}

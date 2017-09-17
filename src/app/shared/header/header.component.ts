@@ -2,6 +2,8 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Tabs } from '../models/tabs.enum';
 import { TripsService } from '../services/TripsService';
 import { UserLocation } from '../models/user-location.model';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-header',
@@ -28,9 +30,13 @@ export class HeaderComponent implements OnInit {
   ];
   private truckTypeParamVal: string = this.truckTypeOptions[0].value;
   private truckTypeParamLabel: string = this.truckTypeOptions[0].label;
+  public bookingId: string = "51198498494";
+  public trackingURL: string = "//blowhorntest.appspot.com/track/QMEQH";
   @Output() tabChanged: EventEmitter<Tabs> = new EventEmitter<Tabs>();
 
-  constructor(private _tripsService: TripsService) {
+  constructor(private _tripsService: TripsService,
+              private router: Router,
+              private modalService: NgbModal) {
     this.currentTab = this._tripsService.currentTab;
     this._tripsService.getUserLocation().subscribe((res: UserLocation[]) => {
       this.locations = res;
@@ -43,6 +49,10 @@ export class HeaderComponent implements OnInit {
       this._tripsService.currentTab = tab;
       this.tabChanged.emit(tab);
     }
+  }
+
+  moveTostartPage() {
+    this.router.navigate(["mytrips"]);
   }
 
   private resetForm() {
@@ -68,18 +78,27 @@ export class HeaderComponent implements OnInit {
     return `${data.address.line}`;
   }
 
-  private createQuickBook() {
+  private createQuickBook(tripCreated: any) {
 
     // For makes creation works need remove next line and uncomment code below
     this.resetForm();
-
+    this.tripCreatedOpen(tripCreated);
     // this._tripsService.createTrip(
     //   this.fromLocation,
     //   this.toLocation,
     //   this.truckTypeParamVal
     // ).subscribe((res: any) => {
+    //   this.bookingId = res.bookingId;
+    //   this.trackingURL = res.trackingURL;
     //   this.resetForm();
     // });
+  }
+
+  public tripCreatedOpen(content: any) {
+    this.modalService.open(content).result.then(
+      (result) => {},
+      (reason) => {}
+    );
   }
 
   private selectSecondParam(option: any) {

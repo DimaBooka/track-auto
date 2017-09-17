@@ -11,7 +11,7 @@
 
         <div class="quick-book" *ngIf="quickBook">
 
-          <form (submit)="createQuickBook()" class="d-flex flex-column align-items-start justify-content-center">
+          <form (submit)="createQuickBook(tripCreated)" class="d-flex flex-column align-items-start justify-content-center">
 
             <div class="input-autocomplete">
               <input auto-complete type="text" [(ngModel)]="fromLocation" name="fromLocation" placeholder="Type From saved Locaton"
@@ -61,3 +61,38 @@
   </ul>
 
 </div>
+
+<ng-template #tripCreated let-c="close" let-d="dismiss">
+
+  <div class="modal-header black">
+    <div class="header-holder w-100 d-flex flex-column align-items-center justify-content-center">
+
+      <div class="checker w-100 d-flex justify-content-center">
+        <img src="/assets/Assets-Common/ConfirmDone@2x.png" alt="">
+      </div>
+
+      <div class="head-modal d-flex flex-column align-items-center justify-content-center">
+        <h4 class="modal-title">Your trip is complete</h4>
+        <span class="order-id">Booking ID : {{ bookingId }}</span>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="modal-body black">
+
+    <div class="qr-section">
+      <div class="d-flex flex-column align-items-center justify-content-center">
+        <ngx-qrcode [qrc-value]="trackingURL"> </ngx-qrcode>
+
+        <div class="text">
+          <span>Scan to track on phone</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+  <div class="modal-footer black">
+    <button type="button" class="button-flat button-blue" (click)="c('Close click'); moveTostartPage()">Go back to home page</button>
+  </div>
+</ng-template>

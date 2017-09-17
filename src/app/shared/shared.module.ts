@@ -12,6 +12,7 @@ import { SidebarService } from './services/sidebar.service';
 import {DataService} from "./services/data.service";
 import { Ng2AutoCompleteModule } from 'ng2-auto-complete';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { NgxQRCodeModule } from 'ngx-qrcode2';
 
 @NgModule({
   imports: [
@@ -20,6 +21,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     FormsModule,
     RouterModule,
     TripModule,
+    NgxQRCodeModule,
     NgbModule,
     Ng2AutoCompleteModule
   ],

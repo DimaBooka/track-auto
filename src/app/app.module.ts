@@ -24,9 +24,7 @@ import { environment } from '../environments/environment';
     BrowserModule,
     RouterModule.forRoot(appRoutes),
     NgbModule.forRoot(),
-    AgmCoreModule.forRoot({
-      apiKey: 'AIzaSyDHnk-B5voE01PGVefEjnGvHohVA8QDY8M'
-    }),
+    AgmCoreModule.forRoot(environment.google_maps),
     MyTripsModule,
     TripModule,
     SharedModule,

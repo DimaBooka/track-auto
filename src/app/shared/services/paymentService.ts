@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { Http, Response, Headers, RequestOptions } from '@angular/http';
 import { API_RAZORPAY } from '../constants';
 import { Trip } from '../models/trip.model';
+import { environment } from '../../../environments/environment';
 
 declare var Razorpay: any;
 
@@ -17,7 +18,7 @@ export class PaymentService {
         let this_trip: any = trip;
         let this_http: any = this._http;
         var options = {
-            "key": 'rzp_test_fTKyjp0r9a2HEx', //'RAZORPAY_KEY_ID',
+            "key": environment.razorpay_api_key,
             "amount": amount,
             "name": "blowhorn",
             "description": "Logistic Services",

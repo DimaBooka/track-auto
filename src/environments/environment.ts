@@ -5,6 +5,10 @@
 
 export const environment = {
   production: false,
+  razorpay_api_key : 'rzp_test_fTKyjp0r9a2HEx',
+  google_maps : {
+      apiKey: 'AIzaSyDHnk-B5voE01PGVefEjnGvHohVA8QDY8M'
+  },
   firebase: {
     apiKey: 'AIzaSyDjWLvY90sbbZOOd8DQ36WZ89tnVfWIGu0',
     authDomain: 'blowhorntest.firebaseapp.com',

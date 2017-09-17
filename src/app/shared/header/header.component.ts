@@ -83,15 +83,15 @@ export class HeaderComponent implements OnInit {
     // For makes creation works need remove next line and uncomment code below
     this.resetForm();
     this.tripCreatedOpen(tripCreated);
-    // this._tripsService.createTrip(
-    //   this.fromLocation,
-    //   this.toLocation,
-    //   this.truckTypeParamVal
-    // ).subscribe((res: any) => {
-    //   this.bookingId = res.bookingId;
-    //   this.trackingURL = res.trackingURL;
-    //   this.resetForm();
-    // });
+     this._tripsService.createTrip(
+       this.fromLocation,
+       this.toLocation,
+       this.truckTypeParamVal
+     ).subscribe((res: any) => {
+       this.bookingId = res.bookingId;
+       this.trackingURL = res.trackingURL;
+       this.resetForm();
+     });
   }
 
   public tripCreatedOpen(content: any) {

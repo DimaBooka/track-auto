@@ -1,7 +1,7 @@
 import { Injectable } from "@angular/core";
 import { Tabs } from "../models/tabs.enum";
 import { Http, Response, Headers, RequestOptions } from "@angular/http";
-import { API_ALL_TRIPS, API_DETAIL_TRIP, API_LOCATIONS, API_SUMMARY_TRIPS } from "../constants";
+import { API_ALL_TRIPS, API_DETAIL_TRIP, API_QUICKBOOK, API_REBOOK, API_LOCATIONS, API_SUMMARY_TRIPS } from "../constants";
 import { HandleError } from "../handlers/error.handler";
 import "rxjs/add/operator/map"
 import "rxjs/add/operator/catch"
@@ -94,13 +94,13 @@ export class TripsService {
       "to": toLoc,
       "truck_type": truckType
     };
-    return this._http.post(API_DETAIL_TRIP, creationData).map((resp: any) => {
+    return this._http.post(API_QUICKBOOK, JSON.stringify(creationData)).map((resp: any) => {
       return resp;
     });
   }
 
   public rebookTrip(datetime: any, id: string) {
-    return this._http.post(`${API_DETAIL_TRIP}/${id}`, JSON.stringify({datetime})).map((resp: any) => {
+    return this._http.post(`${API_REBOOK}/${id}`, JSON.stringify({datetime})).map((resp: any) => {
       return resp;
     });
   }

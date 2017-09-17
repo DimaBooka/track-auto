@@ -6,13 +6,15 @@ import { RouterModule } from '@angular/router';
 import { TripsService } from './services/TripsService';
 import { HttpModule } from '@angular/http';
 import { TripModule } from '../trip/trip.module';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { DetailResolver } from './resolvers/details.resolver';
 import { SidebarService } from './services/sidebar.service';
-import {DataService} from "./services/data.service";
+import { DataService } from "./services/data.service";
 import { Ng2AutoCompleteModule } from 'ng2-auto-complete';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { NgxQRCodeModule } from 'ngx-qrcode2';
+import { DatePickerModule } from 'angular-io-datepicker';
+import { OverlayModule } from "angular-io-overlay/src/overlay";
 
 @NgModule({
   imports: [
@@ -22,6 +24,9 @@ import { NgxQRCodeModule } from 'ngx-qrcode2';
     RouterModule,
     TripModule,
     NgxQRCodeModule,
+    ReactiveFormsModule,
+    OverlayModule,
+    DatePickerModule,
     NgbModule,
     Ng2AutoCompleteModule
   ],

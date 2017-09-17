@@ -99,6 +99,12 @@ export class TripsService {
     });
   }
 
+  public rebookTrip(datetime: any, id: string) {
+    return this._http.post(`${API_DETAIL_TRIP}/${id}`, JSON.stringify({datetime})).map((resp: any) => {
+      return resp;
+    });
+  }
+
   public removeTrip(id: string | number) {
     return this._http.delete(`${API_DETAIL_TRIP}/${id}`).map((resp: any) => {
       return resp;

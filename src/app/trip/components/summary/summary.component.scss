@@ -79,7 +79,9 @@
   }
 
   .chart {
-    width: 100%;
+    overflow-x: scroll;
+    width: 270px;
+    margin: 10px;
   }
 }
 

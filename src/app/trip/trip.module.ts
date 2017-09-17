@@ -9,7 +9,7 @@ import { ListTripsComponent } from './components/list-trips/list-trips.component
 import { RouterModule } from '@angular/router';
 import { SummaryComponent } from './components/summary/summary.component';
 import { FilterSearchBarComponent } from './components/filter-search-bar/filter-search-bar.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { ChartComponent } from './components/chart/chart.component';
 import { DetailStopsComponent } from './components/detail-stops/detail-stops.component';
@@ -18,7 +18,8 @@ import { UserListComponent } from './components/user-list/user-list.component';
 import { AgmCoreModule } from '@agm/core';
 import { DirectionsMapDirective } from "./directives/map-directions.directive";
 import { NgxQRCodeModule } from 'ngx-qrcode2';
-
+import { DatePickerModule } from 'angular-io-datepicker';
+import { OverlayModule } from "angular-io-overlay/src/overlay";
 
 
 @NgModule({
@@ -28,7 +29,10 @@ import { NgxQRCodeModule } from 'ngx-qrcode2';
     NgbModule,
     RouterModule,
     AgmCoreModule,
-	  NgxQRCodeModule
+	  NgxQRCodeModule,
+    ReactiveFormsModule,
+    OverlayModule,
+    DatePickerModule
   ],
   declarations: [
     DistanceDoneComponent,

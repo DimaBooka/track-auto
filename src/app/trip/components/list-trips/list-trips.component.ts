@@ -20,6 +20,7 @@ export class ListTripsComponent implements OnInit {
   @Input() bookingMode: boolean = false;
   private selectedTrip: Trip;
   private usersShare: string[];
+  private datetime: any;
   constructor(
       private router: Router,
       private modalService: NgbModal,
@@ -56,6 +57,18 @@ export class ListTripsComponent implements OnInit {
     this.modalService.open(cancelBooking).result.then((result) => {
       console.log(trip.orderRealId);
       this.tripService.removeTrip(trip.orderRealId).subscribe((resp: any) => {
+        this.tripService.refreshTrips();
+      });
+    }, (reason) => {
+
+    });
+  }
+
+  public openRebooking(cancelBooking, trip: Trip) {
+    this.selectedTrip = trip;
+    this.modalService.open(cancelBooking).result.then((result) => {
+      console.log(this.datetime);
+      this.tripService.rebookTrip(this.datetime, this.selectedTrip.orderRealId).subscribe((resp: any) => {
         this.tripService.refreshTrips();
       });
     }, (reason) => {

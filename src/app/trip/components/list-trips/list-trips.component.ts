@@ -21,6 +21,8 @@ export class ListTripsComponent implements OnInit {
   private selectedTrip: Trip;
   private usersShare: string[];
   private datetime: any;
+  private trackingURL: string = "";
+  private bookingId: string = "";
   constructor(
       private router: Router,
       private modalService: NgbModal,
@@ -29,6 +31,10 @@ export class ListTripsComponent implements OnInit {
   ) {}
 
   ngOnInit() {}
+
+  public moveTostartPage() {
+    this.router.navigate(['mytrips']);
+  }
 
   public moveToDetails(orderId) {
     this.router.navigate(['track', orderId]);
@@ -64,16 +70,26 @@ export class ListTripsComponent implements OnInit {
     });
   }
 
-  public openRebooking(cancelBooking, trip: Trip) {
+  public openRebooking(cancelBooking, rebookPopup, trip: Trip) {
     this.selectedTrip = trip;
     this.modalService.open(cancelBooking).result.then((result) => {
       console.log(this.datetime);
       this.tripService.rebookTrip(this.datetime, this.selectedTrip.orderRealId).subscribe((resp: any) => {
+        this.bookingId = resp.bookingId;
+        this.trackingURL = resp.trackingURL;
+        this.tripRebookCreatedOpen(rebookPopup);
         this.tripService.refreshTrips();
       });
     }, (reason) => {
 
     });
+  }
+
+  public tripRebookCreatedOpen(content: any) {
+    this.modalService.open(content).result.then(
+      (result) => {},
+      (reason) => {}
+    );
   }
 
   public initiatePayment(trip: Trip) {

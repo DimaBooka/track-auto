@@ -19,6 +19,6 @@ export class RightBarComponent implements OnInit {
   ngOnInit() {}
 
   moveToDetails() {
-    this.router.navigate(['current', this.orderId]);
+    this.router.navigate(['track', this.orderId]);
   }
 }

@@ -103,7 +103,8 @@ export class TripsService {
 
   public rebookTrip(datetime: any, id: string) {
     return this._http.post(`${API_REBOOK}/${id}`, JSON.stringify({datetime})).map((resp: any) => {
-      return resp;
+      let response = JSON.parse(resp._body);
+      return response;
     });
   }
 

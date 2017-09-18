@@ -8,7 +8,7 @@
         <div class="head d-flex alight-items-center justify-content-between">
           <h1>Invoice</h1>
           <div class="holder-button">
-            <span class="order-id">Trip ID : {{ trip.orderRealId }}</span>
+            <span class="order-id">Trip ID : {{ trip.orderId }}</span>
             <button class="button-flat button-blue">Print</button>
           </div>
         </div>
@@ -18,7 +18,7 @@
           <div class="info-holder d-flex flex-column align-items-start justify-content-start">
             <span class="direction">{{ trip.headerFrom }} to {{ trip.headerTo }}, {{ trip.city }}</span>
 
-            <span class="past">{{ trip.estimatedDistance }}kms</span>
+            <span class="past">{{ trip.totalDistance | number : '1.1' }} kms</span>
 
             <div class="driver-info d-flex align-items-center justify-content-between">
 

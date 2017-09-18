@@ -47,3 +47,8 @@ date-picker .datepicker-actions button:focus{
 date-picker .datepicker-panel {
   border-radius: 0 !important;
 }
+
+.second-section ngx-qrcode .qrcode img,
+.buttons-holder ngx-qrcode .qrcode img{
+  height: 100px;
+}

@@ -22,6 +22,8 @@ export class UserLocation {
       geopoint.createByJson(json["geopoint"]);
       this._geopoint = geopoint;
     }
+
+	this._name = json["name"];
   }
 
   constructor(

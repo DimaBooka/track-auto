@@ -71,27 +71,29 @@ export class HeaderComponent implements OnInit {
   }
 
   private valueFormatter(data: UserLocation): string {
-    return `${data.address.line}`;
+    return `${data.name}`;
   }
 
   private listFormatter(data: UserLocation): string {
-    return `${data.address.line}`;
+	  console.log(data);
+    return `${data.name}`;
   }
 
   private createQuickBook(tripCreated: any) {
 
     // For makes creation works need remove next line and uncomment code below
-    this.resetForm();
-    this.tripCreatedOpen(tripCreated);
-     this._tripsService.createTrip(
+	// this.resetForm();
+    this._tripsService.createTrip(
        this.fromLocation,
        this.toLocation,
        this.truckTypeParamVal
-     ).subscribe((res: any) => {
+    ).subscribe((res: any) => {
+	   console.log(res);
+	   this.tripCreatedOpen(tripCreated);
        this.bookingId = res.bookingId;
        this.trackingURL = res.trackingURL;
        this.resetForm();
-     });
+    });
   }
 
   public tripCreatedOpen(content: any) {

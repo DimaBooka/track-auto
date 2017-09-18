@@ -94,8 +94,10 @@ export class TripsService {
       "to": toLoc,
       "truck_type": truckType
     };
+    console.log(creationData);
     return this._http.post(API_QUICKBOOK, JSON.stringify(creationData)).map((resp: any) => {
-      return resp;
+      let response = JSON.parse(resp._body);
+      return response;
     });
   }
 

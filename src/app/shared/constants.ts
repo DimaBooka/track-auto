@@ -1,6 +1,6 @@
-export const API_URL = "https://blowhorntest.appspot.com";
+//export const API_URL = "https://blowhorntest.appspot.com";
 //export const API_URL = "http://localhost:8080";
-//export const API_URL = "/user/v7";
+export const API_URL = "/user/v7";
 export const API_URL_LOC = "/assets";
 export const API_ALL_TRIPS = `${API_URL}/orders`;
 export const API_SUMMARY_TRIPS = `${API_URL}/summary`;

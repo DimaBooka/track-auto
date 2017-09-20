@@ -68,14 +68,15 @@
       <div class="action-buttons-nomap line-bottom-nomap w-100 d-flex align-items-center justify-content-between" *ngIf="!bookingMode">
         <div class="d-flex align-items-center justify-content-center">
           <span class="price" [ngClass]="{'paid': trip.paymentStatus === 'paid'}"><img class="rupee" [src]="trip.paymentStatus === 'paid' ? '/assets/Assets/Black_Indian_Rupee_symbol.png' : '/assets/Assets/Indian_Rupee_symbol.png'" alt="">{{ trip.price }}</span>
-			    <button class="button-flat button-blue" *ngIf="trip.paymentStatus != 'paid'" (click)="initiatePayment(trip)">Make Payment</button>
+            <button class="button-flat button-blue" *ngIf="trip.paymentStatus != 'paid'" (click)="initiatePayment(trip)">Make Payment</button>
           <button class="button-flat disabled" disabled *ngIf="trip.paymentStatus == 'paid' ">Paid</button>
         </div>
 
         <div class="second-group d-flex align-items-center justify-content-center">
           <button class="button-flat d-none d-sm-none d-md-flex d-lg-flex d-xl-flex" (click)="moveToInvoice(trip.orderRealId)">Print Invoice</button>
           <button class="button-flat" (click)="open(shareContent, trip)">Email Invoice</button>
-          <button class="button-flat button-flat-out" (click)="openRebooking(rebook, tripRebookCreated, trip)">Rebook</button>
+          <!-- <button class="button-flat button-flat-out" (click)="openRebooking(rebook, tripRebookCreated, trip)">Rebook</button>-->
+          <a href="/?rebook={{trip.orderId}}" target="_blank" class="button-flat button-flat-out" >Rebook</a>
         </div>
       </div>
 

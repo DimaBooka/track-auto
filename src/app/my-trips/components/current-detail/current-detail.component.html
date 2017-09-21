@@ -7,7 +7,7 @@
         <img src="/assets/Assets-Common/Logo.png" alt="">
       </div>
       <span>
-        Tracking trip: <span>{{ trip.orderRealId }}</span>
+        Tracking trip: <span>{{ trip.orderId }}</span>
       </span>
     </div>
 
@@ -15,7 +15,7 @@
       <span class="direction">{{ trip.headerFrom }} to {{ trip.headerTo }}, {{ trip.city }}</span>
 
       <app-distance-done *ngIf="!isPast && !isUpcoming" [small]="true" [estimation]="trip.estimatedDistance" [finished]="trip.finishedDistance"></app-distance-done>
-      <span class="past" *ngIf="isPast || isUpcoming">{{ trip.estimatedDistance }}kms</span>
+      <span class="past" *ngIf="isPast || isUpcoming">{{ trip.estimatedDistance | number : '1.1-1' }}kms</span>
 
       <div class="d-flex w-100 align-items-center justify-content-between">
 
@@ -86,7 +86,8 @@
 
     </div>
 
-    <div class="user d-flex align-items-center justify-content-center" (click)="tripDoneOpen(tripDone, trip)">
+	<!-- TODO <div class="user d-flex align-items-center justify-content-center" (click)="tripDoneOpen(tripDone, trip)">-->
+    <div class="user d-flex align-items-center justify-content-center">
       <img class="notifications" src="/assets/Assets-Common/Notifications.png">
       <div class="user-profile d-flex align-items-center justify-content-start" [hidden]="true" *ngIf="false">
 
@@ -110,7 +111,7 @@
       </div>
 
       <div class="buttons d-flex align-items-center justify-content-center" *ngIf="isPast">
-        <button class="button-flat" (click)="moveToInvoice(trip.orderRealId)">Print Invoice</button>
+        <button class="button-flat" (click)="moveToInvoice(trip.orderId)">Print Invoice</button>
         <button class="button-flat" (click)="open(shareContent, trip)">Email Invoice</button>
         <button class="button-flat button-flat-out">Rebook</button>
       </div>
@@ -131,7 +132,7 @@
     <h4 class="modal-title">Share invoice</h4>
   </div>
   <div class="modal-body">
-    <span class="order-id">Trip ID : {{ selectedTrip.orderRealId }}</span>
+    <span class="order-id">Trip ID : {{ selectedTrip.orderId }}</span>
     <app-user-list (setUsersList)="setUsersList($event)"></app-user-list>
   </div>
   <div class="modal-footer">
@@ -151,7 +152,7 @@
 
       <div class="head-modal d-flex flex-column align-items-center justify-content-center">
         <h4 class="modal-title">Your trip is complete</h4>
-        <span class="order-id">Booking ID : {{ selectedTrip.orderRealId  }}</span>
+        <span class="order-id">Booking ID : {{ selectedTrip.orderId  }}</span>
       </div>
 
     </div>
@@ -172,7 +173,7 @@
             <span class="price-val">{{ selectedTrip.price }}</span>
           </span>
 
-          <span class="past">{{ selectedTrip.estimatedDistance }}kms</span>
+          <span class="past">{{ selectedTrip.estimatedDistance | number : '1.1-1' }}kms</span>
         </div>
 
         <button class="button-flat button-flat-out" (click)="d('Cross click')">Make Payment</button>
@@ -224,7 +225,7 @@
     <h4 class="modal-title question">Are you sure you want to cancel this booking?</h4>
   </div>
   <div class="modal-body d-flex flex-column align-items-start justify-content-center">
-    <span class="order-id">Trip ID : {{ selectedTrip.orderRealId }}</span>
+    <span class="order-id">Trip ID : {{ selectedTrip.orderId }}</span>
     <span class="warning-alert w-100">
       <span class="warning">
         <img src="/assets/Assets-Common/RedError@2x.png" alt="">

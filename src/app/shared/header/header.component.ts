@@ -41,6 +41,10 @@ export class HeaderComponent implements OnInit {
     this._tripsService.getUserLocation().subscribe((res: UserLocation[]) => {
       this.locations = res;
     });
+    this._tripsService.getParams().subscribe((res: any) => {
+		//console.log(res);
+      this.truckTypeOptions = res.vehicle_classes;
+    });
   }
 
   changeTab(tab: Tabs) {
@@ -75,7 +79,6 @@ export class HeaderComponent implements OnInit {
   }
 
   private listFormatter(data: UserLocation): string {
-	  console.log(data);
     return `${data.name}`;
   }
 
@@ -88,7 +91,7 @@ export class HeaderComponent implements OnInit {
       this.toLocation,
       this.truckTypeParamVal
     ).subscribe((res: any) => {
-	    console.log(res);
+		//console.log(res);
       this.bookingId = res.bookingId;
       this.trackingURL = res.trackingURL;
       this.tripCreatedOpen(tripCreated);

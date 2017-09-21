@@ -1,7 +1,7 @@
 import { Injectable } from "@angular/core";
 import { Tabs } from "../models/tabs.enum";
 import { Http, Response, Headers, RequestOptions } from "@angular/http";
-import { API_ALL_TRIPS, API_DETAIL_TRIP, API_QUICKBOOK, API_REBOOK, API_LOCATIONS, API_SUMMARY_TRIPS } from "../constants";
+import { API_ALL_TRIPS, API_DETAIL_TRIP, API_QUICKBOOK, API_REBOOK, API_LOCATIONS, API_SUMMARY_TRIPS, API_PARAMS, API_SHARE_INVOICE } from "../constants";
 import { HandleError } from "../handlers/error.handler";
 import "rxjs/add/operator/map"
 import "rxjs/add/operator/catch"
@@ -88,6 +88,13 @@ export class TripsService {
     });
   }
 
+  public getParams() {
+    return this._http.get(API_PARAMS).map((resp: any) => {
+      let response = JSON.parse(resp._body);
+      return response;
+    });
+  }
+
   public createTrip(fromLoc, toLoc, truckType) {
     let creationData = {
       "from": fromLoc,
@@ -106,6 +113,14 @@ export class TripsService {
       let response = JSON.parse(resp._body);
       return response;
     });
+  }
+
+  public shareInvoice(id: string | number, emails : string[]) {
+	  console.log(id, emails);
+    return this._http.post(`${API_SHARE_INVOICE}/${id}`, emails).map((resp: any) => {
+      return resp;
+    })
+      .catch(HandleError);
   }
 
   public removeTrip(id: string | number) {

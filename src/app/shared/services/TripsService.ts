@@ -1,7 +1,7 @@
 import { Injectable } from "@angular/core";
 import { Tabs } from "../models/tabs.enum";
 import { Http, Response, Headers, RequestOptions } from "@angular/http";
-import { API_ALL_TRIPS, API_DETAIL_TRIP, API_QUICKBOOK, API_REBOOK, API_LOCATIONS, API_SUMMARY_TRIPS, API_PARAMS, API_SHARE_INVOICE } from "../constants";
+import { API_ALL_TRIPS, API_DETAIL_TRIP, API_QUICKBOOK, API_REBOOK, API_LOCATIONS, API_SUMMARY_TRIPS, API_PARAMS, API_SHARE_INVOICE, API_FIREBASE_TOKEN } from "../constants";
 import { HandleError } from "../handlers/error.handler";
 import "rxjs/add/operator/map"
 import "rxjs/add/operator/catch"
@@ -116,7 +116,7 @@ export class TripsService {
   }
 
   public shareInvoice(id: string | number, emails : string[]) {
-	  console.log(id, emails);
+    console.log(id, emails);
     return this._http.post(`${API_SHARE_INVOICE}/${id}`, emails).map((resp: any) => {
       return resp;
     })
@@ -129,5 +129,14 @@ export class TripsService {
     })
       .catch(HandleError);
   }
+
+  public getFirebaseToken() {
+    return this._http.get(`${API_FIREBASE_TOKEN}?token_id=tracking`).map((resp: any) => {
+      console.log(resp._body);
+      let response = JSON.parse(resp._body);
+      return response.firebase_auth_token;
+    });
+  }
+
 
 }

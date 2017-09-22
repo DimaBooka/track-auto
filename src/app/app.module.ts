@@ -13,6 +13,7 @@ import { AgmCoreModule } from '@agm/core';
 import { NgxQRCodeModule } from 'ngx-qrcode2';
 import { AngularFireModule } from 'angularfire2';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
+import { AngularFireAuthModule } from 'angularfire2/auth';
 import { environment } from '../environments/environment';
 import { Ng2AutoCompleteModule } from 'ng2-auto-complete';
 
@@ -29,6 +30,7 @@ import { Ng2AutoCompleteModule } from 'ng2-auto-complete';
     NgxQRCodeModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireDatabaseModule,
+    AngularFireAuthModule,
     MyTripsModule,
     TripModule,
     SharedModule,

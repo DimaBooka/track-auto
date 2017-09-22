@@ -36,7 +36,9 @@
           <span class="date" *ngIf="trip.date">{{ trip.date }}</span>
           <span class="direction">{{ trip.headerFrom }} to {{ trip.headerTo }}, {{ trip.city }}</span>
         </div>
-        <button class="button-flat" (click)="moveToDetails(trip.orderId)">More details <img class="more-arrow" src="/assets/Assets-Common/DropDown@2x.png" alt=""></button>
+        <!--TODO changed click handler to hyperlink to open in new tab
+        <button class="button-flat" (click)="moveToDetails(trip.orderId)">More details <img class="more-arrow" src="/assets/Assets-Common/DropDown@2x.png" alt=""></button>-->
+        <a routerLink="/track/{{trip.orderId}}" target="_blank" class="button-flat" >More details <img class="more-arrow" src="/assets/Assets-Common/DropDown@2x.png" alt=""></a>
       </div>
 
       <div class="direction-nomap line-bottom-nomap w-100">
@@ -73,7 +75,8 @@
         </div>
 
         <div class="second-group d-flex align-items-center justify-content-center">
-          <button class="button-flat d-none d-sm-none d-md-flex d-lg-flex d-xl-flex" (click)="moveToInvoice(trip.orderId)">Print Invoice</button>
+			<!--<button class="button-flat d-none d-sm-none d-md-flex d-lg-flex d-xl-flex" (click)="moveToInvoice(trip.orderId)">Print Invoice</button>-->
+			<a routerLink="/invoice/{{trip.orderId}}" target="_blank" class="button-flat d-none d-sm-none d-md-flex d-lg-flex d-xl-flex">Print Invoice</a>
           <button class="button-flat" (click)="shareInvoice(shareContent, trip)">Email Invoice</button>
           <!-- <button class="button-flat button-flat-out" (click)="openRebooking(rebook, tripRebookCreated, trip)">Rebook</button>-->
           <a href="/?rebook={{trip.orderId}}" target="_blank" class="button-flat button-flat-out" >Rebook</a>

@@ -10,7 +10,7 @@ export class DetailStopComponent implements OnInit {
 
   @Input() stop: Stop;
   @Input() lastStop: boolean = false;
-  @Input() pickup: string;
+  @Input() name: string;
   @Input() index: number;
   constructor() {}
 

@@ -1,4 +1,5 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Title } from '@angular/platform-browser';
 import { Trip } from '../../../shared/models/trip.model';
 import { SidebarService } from '../../../shared/services/sidebar.service';
 import { ActivatedRoute, Router } from "@angular/router";
@@ -15,11 +16,13 @@ export class InvoiceTripComponent implements OnInit, OnDestroy {
 
   constructor(private route: ActivatedRoute,
               private router: Router,
+              private titleService: Title,
               private sidebarService: SidebarService,
               private tripsService: TripsService) {
     this.route.data.subscribe(trip => {
       this.trip = <Trip>trip.details;
       this.sidebarService.showSidebar = false;
+      this.titleService.setTitle('Invoice - ' + this.trip.orderId);
     });
   }
 

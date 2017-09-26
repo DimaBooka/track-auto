@@ -30,7 +30,7 @@ export class MapComponent implements OnInit {
 
   map: any;
   zoom: number = 12;
-  scrollwheel: boolean = false;
+  scrollwheel: boolean = true;
 
   // MARKER ICON CONFIGURATION
 

@@ -1,4 +1,4 @@
-<div class="container-holder">
+<div class="container-holder" [ngClass]="{'print-section': printClicked}">
 
   <div class="container">
     <div class="d-none invoice-holder flex-column d-sm-none d-md-flex d-lg-flex d-xl-flex">
@@ -9,7 +9,7 @@
           <h1>Invoice</h1>
           <div class="holder-button">
             <span class="order-id">Trip ID : {{ trip.orderId }}</span>
-            <button class="button-flat button-blue">Print</button>
+            <button class="button-flat button-blue" (click)="print()">Print</button>
           </div>
         </div>
 

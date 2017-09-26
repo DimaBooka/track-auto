@@ -13,6 +13,7 @@ import { TripsService } from '../../../shared/services/TripsService';
 export class InvoiceTripComponent implements OnInit, OnDestroy {
 
   private trip: Trip;
+  private printClicked: boolean = false;
 
   constructor(private route: ActivatedRoute,
               private router: Router,
@@ -32,5 +33,9 @@ export class InvoiceTripComponent implements OnInit, OnDestroy {
     this.sidebarService.showSidebar = true;
   }
 
-
+  print() {
+    this.printClicked = true;
+    window.print();
+    this.printClicked = false;
+  }
 }

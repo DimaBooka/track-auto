@@ -52,7 +52,3 @@ date-picker .datepicker-panel {
 .buttons-holder ngx-qrcode .qrcode img{
   height: 100px;
 }
-
-#print-section {
-  max-width: 1100px;
-}

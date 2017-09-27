@@ -29,7 +29,7 @@
       <span class="label">Total cost <img src="/assets/Assets/Black_Indian_Rupee_symbol.png" alt=""><span class="cost">{{ summary.totalCost | number }}</span></span>
     </div>
 
-    <div class="chart d-flex align-items-start justify-content-center">
+    <div class="chart d-flex align-items-start justify-content-start">
       <app-chart [data]="summary" [by]="firstParamVal"></app-chart>
     </div>
   </div>

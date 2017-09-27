@@ -6,7 +6,7 @@
       <span class="label">{{ d.date.substring(0, d.date.indexOf("-")) }}</span>
       <div class="tooltip-info flex-column align-items-center justify-content-center">
         <span>{{ getDate(d.date) }}</span>
-        <span>{{ d.trips }} {{ (d.trips > 1 ? 'trips' : 'trip' ) }} | {{ d.distance }} kms</span>
+        <span>{{ d.trips }} {{ (d.trips > 1 ? 'trips' : 'trip' ) }} | {{ d.distance | number : '1.1-1' }} kms</span>
         <span><img src="/assets/Assets/Black_Indian_Rupee_symbol.png" alt="">{{ d.costs }}</span>
       </div>
     </div>

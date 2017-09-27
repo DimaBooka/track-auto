@@ -26,7 +26,7 @@
     <div class="statistic-holder d-flex flex-column align-items-start justify-content-center">
       <span class="trips">{{ summary.numTrips }} {{(summary.numTrips > 1 ? 'Trips' : 'Trip' ) }}</span>
       <span class="label">Total distance <span class="distance">{{ roundNumber(summary.totralDistance)}} kms</span></span>
-      <span class="label">Total cost <img src="/assets/Assets/Black_Indian_Rupee_symbol.png" alt=""><span class="cost">{{ summary.totalCost }}</span></span>
+      <span class="label">Total cost <img src="/assets/Assets/Black_Indian_Rupee_symbol.png" alt=""><span class="cost">{{ summary.totalCost | number }}</span></span>
     </div>
 
     <div class="chart d-flex align-items-start justify-content-center">

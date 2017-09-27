@@ -30,7 +30,6 @@ export class MapComponent implements OnInit {
 
   map: any;
   zoom: number = 12;
-  scrollwheel: boolean = true;
 
   // MARKER ICON CONFIGURATION
 
@@ -53,6 +52,7 @@ export class MapComponent implements OnInit {
   routes: any = [];
 
   @Input() trip: Trip;
+  @Input() scrollwheel: boolean = true;
 
   firebaseObject: FirebaseObjectObservable<any>;
   firebaseDb: AngularFireDatabase;

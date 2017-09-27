@@ -109,7 +109,7 @@
         </div>
 
         <div class="map">
-          <app-map [trip]="trip"></app-map>
+          <app-map [trip]="trip" [scrollwheel]="false"></app-map>
         </div>
 
       </div>
@@ -121,11 +121,13 @@
 
           <div class="params-holder d-flex align-items-center justify-content-center">
 
+            <!-- TODO
             <div class="checkbox">
               <input type="checkbox" value="None" id="checkbox" name="check" />
               <label for="checkbox"></label>
             </div>
             <label for="checkbox">Include this in print</label>
+            -->
 
           </div>
         </div>

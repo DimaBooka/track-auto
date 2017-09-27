@@ -8,7 +8,7 @@
       <div class="tooltip-info flex-column align-items-center justify-content-center" [ngStyle]="{'margin-left': i < 3 ? getMargin(i) + 'px': '-' + getMargin(i) + 'px' }">
         <span>{{ getDate(d.date) }}</span>
         <span>{{ d.trips }} {{ (d.trips > 1 ? 'trips' : 'trip' ) }} | {{ d.distance | number : '1.1-1' }} kms</span>
-        <span><img src="/assets/Assets/Black_Indian_Rupee_symbol.png" alt="">{{ d.cost }}</span>
+        <span><img src="/assets/Assets/Black_Indian_Rupee_symbol.png" alt="">{{ d.cost | number }}</span>
       </div>
     </div>
   </div>

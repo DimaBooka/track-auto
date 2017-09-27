@@ -1,13 +1,13 @@
-<div class="stop d-flex align-items-start justify-content-between" #stopElem>
+<div class="stop d-flex align-items-start justify-content-start" #stopElem>
 
   <div class="liner-info d-flex align-items-start justify-content-start">
-    <div class="liner">
+    <div class="liner" [ngClass]="{changeWidth: !stop.time }">
       <span class="icon">
-		<img *ngIf="stop.status=='done'" src="/assets/Assets-Common/Done-Marker@2x.png" alt="/assets/Assets-Common/Stop@2x.png">
-		<img *ngIf="stop.status!='done' && name=='pickup'" src="/assets/Assets-Common/Blue-Marker@2x.png" alt="/assets/Assets-Common/Stop@2x.png">
-		<img *ngIf="stop.status!='done' && name=='stop'" src="/assets/Assets-Common/Stop@2x.png" alt="/assets/Assets-Common/Stop@2x.png">
-		<img *ngIf="stop.status!='done' && name=='dropoff'" src="/assets/Assets-Common/Purple-Marker@2x.png" alt="/assets/Assets-Common/Stop@2x.png">
-	  </span>
+        <img *ngIf="stop.status=='done'" src="/assets/Assets-Common/Done-Marker@2x.png" alt="/assets/Assets-Common/Stop@2x.png">
+        <img *ngIf="stop.status!='done' && name=='pickup'" src="/assets/Assets-Common/Blue-Marker@2x.png" alt="/assets/Assets-Common/Stop@2x.png">
+        <img *ngIf="stop.status!='done' && name=='stop'" src="/assets/Assets-Common/Stop@2x.png" alt="/assets/Assets-Common/Stop@2x.png">
+        <img *ngIf="stop.status!='done' && name=='dropoff'" src="/assets/Assets-Common/Purple-Marker@2x.png" alt="/assets/Assets-Common/Stop@2x.png">
+      </span>
       <span class="index" *ngIf="stop.status !== 'done'">{{ index }}</span>
       <div class="line" *ngIf="!lastStop" [ngClass]="{'solid': stop.status === 'done' }" [ngStyle]="{height: (height ? height : 100) + 'px'}"></div>
       <!--TODO <div class="distance" *ngIf="stop.status === 'done' && !lastStop" [ngStyle]="{right: stop.distance.toString().length *2 + 'px'}">{{ stop.distance }}km</div>-->

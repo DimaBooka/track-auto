@@ -17,6 +17,10 @@
     width: 60px;
     margin-right: 30px;
 
+    &.changeWidth {
+      width: 55px;
+    }
+
     .icon{
       img {
         position: absolute;
@@ -103,12 +107,17 @@
   }
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 767px) {
   .timing {
     align-items: start !important;
   }
 
   .liner {
+
+    &.changeWidth {
+      width: 60px !important;
+    }
+
     .icon {
       img {
         right: 5px !important;
@@ -126,5 +135,11 @@
     .distance {
       right: 0px !important;
     }
+  }
+}
+
+@media screen and (max-width: 374px){
+  .liner.changeWidth {
+    width: 48px !important;
   }
 }

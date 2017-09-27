@@ -64,6 +64,10 @@ export class HeaderComponent implements OnInit {
     this.router.navigate(["mytrips"]);
   }
 
+  private checkValid() {
+    return this.locations.indexOf(this.fromLocation) > -1 && this.locations.indexOf(this.toLocation) > -1;
+  }
+
   private resetForm() {
     this.quickBook = false;
     this.fromLocation = null;

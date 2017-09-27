@@ -34,7 +34,7 @@
             <div class="buttons-holder d-flex align-items-center justify-content-end">
               <button type="button" class="button-flat button-with-width" (click)="toggleQuckBook()">Cancel</button>
               <input class="button-flat button-blue button-with-width button-blue" type="submit" value="Book"
-                     [disabled]="!toLocation || !fromLocation" [ngClass]="{disabled: !toLocation || !fromLocation}">
+                     [disabled]="!toLocation || !fromLocation || !checkValid()" [ngClass]="{disabled: !toLocation || !fromLocation}">
             </div>
 
           </form>

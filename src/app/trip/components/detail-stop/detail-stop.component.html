@@ -1,7 +1,7 @@
-<div class="stop d-flex align-items-start justify-content-start" #stopElem>
+<div class="stop d-flex align-items-start justify-content-between" #stopElem>
 
   <div class="liner-info d-flex align-items-start justify-content-start">
-    <div class="liner" [ngClass]="{changeWidth: !stop.time }">
+    <div class="liner" [ngClass]="{changeWidth: !stop.time || stop.address.length < 30 }">
       <span class="icon">
         <img *ngIf="stop.status=='done'" src="/assets/Assets-Common/Done-Marker@2x.png" alt="/assets/Assets-Common/Stop@2x.png">
         <img *ngIf="stop.status!='done' && name=='pickup'" src="/assets/Assets-Common/Blue-Marker@2x.png" alt="/assets/Assets-Common/Stop@2x.png">

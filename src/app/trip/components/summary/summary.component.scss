@@ -80,7 +80,7 @@
 
   .chart {
     overflow-x: scroll;
-    width: 100%;
+    width: 500px;
     margin: 10px;
   }
 }
@@ -113,10 +113,18 @@
         font-size: 18px;
       }
     }
+
+    .chart {
+      width: 100%;
+    }
   }
 }
 
 @media screen and (max-width: 575px){
+  .chart {
+    width: 100%;
+  }
+
   .params-holder {
     justify-content: center;
     align-items: center;

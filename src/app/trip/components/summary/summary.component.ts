@@ -47,4 +47,8 @@ export class SummaryComponent implements OnInit {
     this.firstParamVal = option.value;
     this.firstParamLabel = option.label;
   }
+
+  roundNumber(num) {
+    return Math.round(100 * num) / 100
+  }
 }

@@ -16,6 +16,7 @@ export class Trip {
     this._estimate = json["estimate"] || "";
     this._price = json["price"] ? +json["price"] : 0;
     this._truckType = json["truck_type"] || "";
+    this._truckURL = json["truck_url"] || "";
     this._headerTo = json["header_to"] || "";
     this._drivenName = json["driver_name"] || "";
     this._headerFrom = json["header_from"] || "";
@@ -88,6 +89,7 @@ export class Trip {
     private _fareBreakup: FareBreakup = new FareBreakup(),
     private _dropoff: DropOff = new DropOff(),
     private _truckType: string = "",
+    private _truckURL: string = "",
     private _headerTo: string = "",
     private _pickUp: Pickup = new Pickup(),
     private _drivenName: string = "",
@@ -204,6 +206,14 @@ export class Trip {
 
   public set truckType(truckType: string) {
     this._truckType = truckType;
+  }
+
+  public get truckURL() {
+    return this._truckURL;
+  }
+
+  public set truckURL(truckURL: string) {
+    this._truckURL = truckURL;
   }
 
   public get headerTo() {

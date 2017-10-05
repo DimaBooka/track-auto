@@ -9,6 +9,7 @@ import { Router } from '@angular/router';
 export class RightBarComponent implements OnInit {
 
   @Input() truckType: string;
+  @Input() truckURL: string;
   @Input() driverName: string;
   @Input() driverMobile: string;
   @Input() horizontal: boolean = false;

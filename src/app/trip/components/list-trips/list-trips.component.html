@@ -20,7 +20,7 @@
           <app-right-bar
             [truckType]="trip.truckType" [driverName]="trip.drivenName"
             [orderId]="trip.orderId" [driverMobile]="trip.driverMobile"
-            [trackingUrl]="trip.trackingUrl"
+            [trackingUrl]="trip.trackingUrl" [truckURL]="trip.truckURL"
           ></app-right-bar>
         </div>
       </div>
@@ -48,6 +48,7 @@
       <div class="hor-bar-nomap line-bottom-nomap w-100" *ngIf="!bookingMode">
         <app-right-bar
             [horizontal]="true" [truckType]="trip.truckType"
+			[truckURL]="trip.truckURL"
             [driverName]="trip.drivenName"
             [driverMobile]="trip.driverMobile"
             [trackingUrl]="trip.trackingUrl"
@@ -57,7 +58,7 @@
       <div class="hor-bar-book line-bottom-nomap w-100 d-flex align-items-center justify-content-start" *ngIf="bookingMode">
         <div class="truck-type-hor d-flex align-items-center justify-content-center">
           <div class="crop" style="background-color: rgb(216, 216, 216)">
-            <img src="" alt="">
+			  <img src="{{ trip.truckURL }}" alt="">
           </div>
 
           <span>{{ trip.truckType }}</span>

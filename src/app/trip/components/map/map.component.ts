@@ -1,9 +1,11 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Trip } from '../../../shared/models/trip.model';
 import {DataService} from "../../../shared/services/data.service";
+import { TripsService } from '../../../shared/services/TripsService';
 import {DirectionsMapDirective} from "../../directives/map-directions.directive";
 import { MapsAPILoader } from '@agm/core';
 import { AngularFireDatabase, FirebaseObjectObservable } from 'angularfire2/database';
+import { AngularFireAuth } from 'angularfire2/auth';
 
 declare var google: any;
 var bounds: any;
@@ -28,7 +30,6 @@ export class MapComponent implements OnInit {
 
   map: any;
   zoom: number = 12;
-  scrollwheel: boolean = false;
 
   // MARKER ICON CONFIGURATION
 
@@ -51,17 +52,21 @@ export class MapComponent implements OnInit {
   routes: any = [];
 
   @Input() trip: Trip;
+  @Input() scrollwheel: boolean = true;
 
   firebaseObject: FirebaseObjectObservable<any>;
   firebaseDb: AngularFireDatabase;
   data_bundle : any;
 
   constructor(
-	private _dataService: DataService,
-	  firebaseDb: AngularFireDatabase,
-	  private mapsAPILoader: MapsAPILoader
+    private _dataService: DataService,
+    firebaseDb: AngularFireDatabase,
+    public afAuth: AngularFireAuth,
+    private mapsAPILoader: MapsAPILoader,
+    private tripsService: TripsService,
   ) {
-	  this.firebaseDb = firebaseDb;
+      console.log(afAuth);
+      this.firebaseDb = firebaseDb;
   }
 
   ngOnInit() {
@@ -70,8 +75,8 @@ export class MapComponent implements OnInit {
     // Setting up map center location (pickup position)
     this.lat = this.trip.pickUp.location.lat;
     this.lng = this.trip.pickUp.location.lng;
-	this.trip.pickUp.icon = this.pickupMarkerImg;
-	this.trip.dropoff.icon = this.dropoffMarkerImg;
+    this.trip.pickUp.icon = this.pickupMarkerImg;
+    this.trip.dropoff.icon = this.dropoffMarkerImg;
 
     // Pushing to array with all truck positions (pickup, dropoff, stops)
     this.markers.push(this.trip.pickUp, this.trip.dropoff);
@@ -99,47 +104,52 @@ export class MapComponent implements OnInit {
           [this.markers[i + 1].location.lat], [this.markers[i + 1].location.lng]]
       );
     }
-	console.log(this);
+    console.log(this);
 
-	this.mapsAPILoader.load().then(() => {
-	});
+    this.mapsAPILoader.load().then(() => {
+    });
 
-	  console.log(this);
-	  if (this.trip.status == 'ongoing') {
-		  var firebase_path = '/active_drivers/' + this.trip.driverMobile;
-		  console.log(firebase_path);
-		  this.firebaseObject = this.firebaseDb.object('/active_drivers/' + this.trip.driverMobile, { preserveSnapshot: true });
-		  this.firebaseObject.subscribe(snapshot => {
-			  this.data_bundle = JSON.parse(snapshot.val());
-			  console.log(this.data_bundle);
-			  if (this.data_bundle != null && this.truck_marker != null) {
-				  this.truck_marker.setPosition({
-					  lat : parseFloat(this.data_bundle.location.lat),
-					  lng : parseFloat(this.data_bundle.location.lon),
-				  });
-			  }
-		  });
-	  }
+      console.log(this);
+      if (this.trip.status == 'ongoing') {
+          this.tripsService.getFirebaseToken().subscribe((resp: string) => {
+              console.log('got token');
+              console.log(this.afAuth.auth.signInWithCustomToken(resp));
+          });
+          console.log('subscribing');
+          var firebase_path = '/active_drivers/' + this.trip.driverMobile;
+          //console.log(firebase_path);
+          this.firebaseObject = this.firebaseDb.object('/active_drivers/' + this.trip.driverMobile, { preserveSnapshot: true });
+          this.firebaseObject.subscribe(snapshot => {
+              this.data_bundle = JSON.parse(snapshot.val());
+              //console.log(this.data_bundle);
+              if (this.data_bundle != null && this.truck_marker != null) {
+                  this.truck_marker.setPosition({
+                      lat : parseFloat(this.data_bundle.location.lat),
+                      lng : parseFloat(this.data_bundle.location.lon),
+                  });
+              }
+          });
+      }
   };
 
-	onMapReady (map) {
-		console.log('onmapready');
-		this.map = map;
-		console.log(map);
-		if (this.trip.status == 'ongoing') {
-			this.truck_marker = new google.maps.Marker({
-				position: {lat: this.truck_lat, lng: this.truck_lng},
-				map: this.map,
-				icon: this.truckIcon,
-			});
-		}
-		bounds = new google.maps.LatLngBounds();
-		bounds.extend(this.trip.pickUp.location);
-		bounds.extend(this.trip.dropoff.location);
-		this.trip.stops.forEach((obj, index) => {
-			bounds.extend(obj.location);
-		});
-		this.map.fitBounds(bounds);
-	}
+    onMapReady (map) {
+        console.log('onmapready');
+        this.map = map;
+        console.log(map);
+        if (this.trip.status == 'ongoing') {
+            this.truck_marker = new google.maps.Marker({
+                position: {lat: this.truck_lat, lng: this.truck_lng},
+                map: this.map,
+                icon: this.truckIcon,
+            });
+        }
+        bounds = new google.maps.LatLngBounds();
+        bounds.extend(this.trip.pickUp.location);
+        bounds.extend(this.trip.dropoff.location);
+        this.trip.stops.forEach((obj, index) => {
+            bounds.extend(obj.location);
+        });
+        this.map.fitBounds(bounds);
+    }
 
 }

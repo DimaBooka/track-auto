@@ -14,6 +14,9 @@ export class TripsSummary {
           this._maxTrips = +item.trips;
         if (+item.distance > this._maxDistance)
           this._maxDistance = +item.distance;
+        if (+item.cost > this._maxCost) {
+          this._maxCost = +item.cost;
+        }
       });
     }
   }
@@ -22,6 +25,7 @@ export class TripsSummary {
     private _numX: number = 0,
     private _maxTrips: number = 0,
     private _maxDistance: number = 0,
+    private _maxCost: number = 0,
     private _totralDistance: number = 0,
     private _totralCost: number = 0,
     private _numTrips: number = 0,
@@ -38,6 +42,10 @@ export class TripsSummary {
 
   public get maxDistance() {
     return this._maxDistance;
+  }
+
+  public get maxCost() {
+    return this._maxCost;
   }
 
   public get totralDistance() {

@@ -10,9 +10,12 @@ export class ChartComponent implements OnInit {
 
   @Input() data: TripsSummary;
   @Input() by: string;
+  private dataLength: number;
   constructor() {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.dataLength = this.data.dataToChart.length
+  }
 
   getHeight(num, max) {
     let height = (125 * num) / max;
@@ -21,5 +24,14 @@ export class ChartComponent implements OnInit {
 
   getDate(date) {
     return date.replace(/-/g, " ");
+  }
+
+  getMargin(i: number) {
+    if (i < 3)
+      return (3 - i) * 20;
+    if (i > (this.dataLength - 4)) {
+      return (-this.dataLength + i + 4) * 20;
+    }
+    return 0
   }
 }

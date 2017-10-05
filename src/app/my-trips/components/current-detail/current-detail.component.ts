@@ -1,4 +1,5 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Title } from '@angular/platform-browser';
 import { Trip } from '../../../shared/models/trip.model';
 import { ActivatedRoute, Router } from '@angular/router';
 import { SidebarService } from '../../../shared/services/sidebar.service';
@@ -27,6 +28,7 @@ export class CurrentDetailComponent implements OnInit, OnDestroy {
 
   constructor(private route: ActivatedRoute,
               private router: Router,
+              private titleService: Title,
               private sidebarService: SidebarService,
               private tripsService: TripsService,
               private modalService: NgbModal,
@@ -44,6 +46,7 @@ export class CurrentDetailComponent implements OnInit, OnDestroy {
         this.isUpcoming = true;
 
       this.sidebarService.showSidebar = false;
+      this.titleService.setTitle('Track - ' + this.trip.orderId);
     });
   }
 

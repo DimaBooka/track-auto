@@ -58,6 +58,19 @@ export class ListTripsComponent implements OnInit {
     this.usersShare = users;
   }
 
+  public shareInvoice(shareInvoice, trip: Trip) {
+    this.selectedTrip = trip;
+	  console.log(trip);
+    this.modalService.open(shareInvoice).result.then((result) => {
+      console.log(trip.orderRealId);
+      this.tripService.shareInvoice(trip.orderRealId, this.usersShare).subscribe((resp: any) => {
+		  //this.tripService.refreshTrips();
+      });
+    }, (reason) => {
+
+    });
+  }
+
   public cancelBooking(cancelBooking, trip: Trip) {
     this.selectedTrip = trip;
     this.modalService.open(cancelBooking).result.then((result) => {

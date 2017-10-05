@@ -1,6 +1,6 @@
 <div class="progress-holder d-flex align-items-center justify-content-center">
 
-  <span class="info" [ngClass]="{'small-txt': small}"> {{ finished }}/{{ estimation }} kms done</span>
+  <span class="info" [ngClass]="{'small-txt': small}"> {{ finished | number : '1.1-1'}}/{{ estimation | number : '1.1-1'}} kms done</span>
 
   <div class="progress-distance">
     <span class="done" [ngStyle]="{'width': width + '%'}"></span>

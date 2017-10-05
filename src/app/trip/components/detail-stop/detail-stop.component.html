@@ -1,17 +1,21 @@
 <div class="stop d-flex align-items-start justify-content-between" #stopElem>
 
-
   <div class="liner-info d-flex align-items-start justify-content-start">
-    <div class="liner">
-      <span class="icon"><img src="{{ stop.status === 'done' ? '/assets/Assets-Common/Done-Marker.png' : '/assets/Assets-Common/Stop.png' }}" alt=""></span>
+    <div class="liner" [ngClass]="{changeWidth: !stop.time || stop.address.length < 30 }">
+      <span class="icon">
+        <img *ngIf="stop.status=='done'" src="/assets/Assets-Common/Done-Marker@2x.png" alt="/assets/Assets-Common/Stop@2x.png">
+        <img *ngIf="stop.status!='done' && name=='pickup'" src="/assets/Assets-Common/Blue-Marker@2x.png" alt="/assets/Assets-Common/Stop@2x.png">
+        <img *ngIf="stop.status!='done' && name=='stop'" src="/assets/Assets-Common/Stop@2x.png" alt="/assets/Assets-Common/Stop@2x.png">
+        <img *ngIf="stop.status!='done' && name=='dropoff'" src="/assets/Assets-Common/Purple-Marker@2x.png" alt="/assets/Assets-Common/Stop@2x.png">
+      </span>
       <span class="index" *ngIf="stop.status !== 'done'">{{ index }}</span>
       <div class="line" *ngIf="!lastStop" [ngClass]="{'solid': stop.status === 'done' }" [ngStyle]="{height: (height ? height : 100) + 'px'}"></div>
       <!--TODO <div class="distance" *ngIf="stop.status === 'done' && !lastStop" [ngStyle]="{right: stop.distance.toString().length *2 + 'px'}">{{ stop.distance }}km</div>-->
     </div>
 
     <div class="info d-flex flex-column align-items-start justify-content-start">
-      <span class="pickup" *ngIf="pickup">{{ pickup }}</span>
-      <span class="address" [ngClass]="{small: pickup}" *ngIf="stop.address">{{ stop.address }}</span>
+      <span class="pickup" *ngIf="stop.name">{{ stop.name }}</span>
+      <span class="address" [ngClass]="{small: stop.name}" *ngIf="stop.address">{{ stop.address }}</span>
     </div>
   </div>
 

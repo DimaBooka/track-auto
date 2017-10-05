@@ -22,14 +22,14 @@
     </div>
   </div>
 
-  <div class="statistic-holder-out d-flex align-items-start justify-content-center">
+  <div class="statistic-holder-out d-flex align-items-start justify-content-between">
     <div class="statistic-holder d-flex flex-column align-items-start justify-content-center">
       <span class="trips">{{ summary.numTrips }} {{(summary.numTrips > 1 ? 'Trips' : 'Trip' ) }}</span>
-      <span class="label">Total distance <span class="distance">{{ summary.totralDistance }} kms</span></span>
-      <span class="label">Total cost <img src="/assets/Assets/Black_Indian_Rupee_symbol.png" alt=""><span class="cost">{{ summary.totalCost }}</span></span>
+      <span class="label">Total distance <span class="distance">{{ roundNumber(summary.totralDistance)}} kms</span></span>
+      <span class="label">Total cost <img src="/assets/Assets/Black_Indian_Rupee_symbol.png" alt=""><span class="cost">{{ summary.totalCost | number }}</span></span>
     </div>
 
-    <div class="chart d-flex align-items-start justify-content-center">
+    <div class="chart d-flex align-items-start justify-content-start">
       <app-chart [data]="summary" [by]="firstParamVal"></app-chart>
     </div>
   </div>

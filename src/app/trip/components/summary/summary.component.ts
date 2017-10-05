@@ -21,13 +21,14 @@ export class SummaryComponent implements OnInit {
 
   private firstOptions: any[] = [
     { value: "trips", label: "No. of trips"},
-    { value: "distance", label: "Distance travelled"}
+    { value: "distance", label: "Distance travelled"},
+    { value: "cost", label: "Cost"},
   ];
   private secondOptions: any[] = [
     { value: "today", label: "Today"},
     { value: "week", label: "This week"},
     { value: "month", label: "This month"},
-    { value: "year", label: "This year"}
+    { value: "year", label: "This year"},
   ];
 
   constructor(private _tripsService: TripsService) {
@@ -46,5 +47,9 @@ export class SummaryComponent implements OnInit {
   selectFirstParam(option: any) {
     this.firstParamVal = option.value;
     this.firstParamLabel = option.label;
+  }
+
+  roundNumber(num) {
+    return Math.round(100 * num) / 100
   }
 }

@@ -18,7 +18,9 @@ export class HeaderComponent implements OnInit {
   private locations: UserLocation[];
   private fromLocation: UserLocation;
   private toLocation: UserLocation;
-  private truckTypeOptions: any[] = [
+  private truckTypeOptions: any[];
+  /*
+  = [
     {
       value: "ace",
       label: "Tata Ace"
@@ -28,8 +30,9 @@ export class HeaderComponent implements OnInit {
       label: "Tata Pickup"
     }
   ];
-  private truckTypeParamVal: string = this.truckTypeOptions[0].value;
-  private truckTypeParamLabel: string = this.truckTypeOptions[0].label;
+   */
+  private truckTypeParamVal: string;// = this.truckTypeOptions[0].value;
+  private truckTypeParamLabel: string;// = this.truckTypeOptions[0].label;
   public bookingId: string = "";
   public trackingURL: string = "";
   @Output() tabChanged: EventEmitter<Tabs> = new EventEmitter<Tabs>();
@@ -40,6 +43,12 @@ export class HeaderComponent implements OnInit {
     this.currentTab = this._tripsService.currentTab;
     this._tripsService.getUserLocation().subscribe((res: UserLocation[]) => {
       this.locations = res;
+    });
+    this._tripsService.getParams().subscribe((res: any) => {
+    console.log(res);
+      this.truckTypeOptions = res.vehicle_classes;
+      this.truckTypeParamVal = this.truckTypeOptions[0].value;
+      this.truckTypeParamLabel = this.truckTypeOptions[0].label;
     });
   }
 
@@ -53,6 +62,10 @@ export class HeaderComponent implements OnInit {
 
   moveTostartPage() {
     this.router.navigate(["mytrips"]);
+  }
+
+  private checkValid() {
+    return this.locations.indexOf(this.fromLocation) > -1 && this.locations.indexOf(this.toLocation) > -1;
   }
 
   private resetForm() {
@@ -75,20 +88,19 @@ export class HeaderComponent implements OnInit {
   }
 
   private listFormatter(data: UserLocation): string {
-	  console.log(data);
     return `${data.name}`;
   }
 
   private createQuickBook(tripCreated: any) {
 
     // For makes creation works need remove next line and uncomment code below
-	// this.resetForm();
+  // this.resetForm();
     this._tripsService.createTrip(
       this.fromLocation,
       this.toLocation,
       this.truckTypeParamVal
     ).subscribe((res: any) => {
-	    console.log(res);
+    //console.log(res);
       this.bookingId = res.bookingId;
       this.trackingURL = res.trackingURL;
       this.tripCreatedOpen(tripCreated);

@@ -80,7 +80,7 @@
 
   .chart {
     overflow-x: scroll;
-    width: 270px;
+    width: calc(100vw - 670px);
     margin: 10px;
   }
 }
@@ -113,10 +113,18 @@
         font-size: 18px;
       }
     }
+
+    .chart {
+      width: 90%;
+    }
   }
 }
 
 @media screen and (max-width: 575px){
+  .chart {
+    width: 90%;
+  }
+
   .params-holder {
     justify-content: center;
     align-items: center;
@@ -126,5 +134,11 @@
       margin: 10px 0 !important;
       display: flex !important;
     }
+  }
+}
+
+@media screen and (min-width: 767px) and (max-width: 991px) {
+  .chart {
+    width: calc(100vw - 400px) !important;
   }
 }

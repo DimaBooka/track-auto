@@ -28,10 +28,17 @@
       </div>
     </div>
 
+      <div class="driver-mobile d-flex align-items-center justify-content-start">
+        <div class="driver d-flex align-items-center justify-content-center">
+            Trip ID : {{orderId}}
+        </div>
+
+    </div>
+
     <div class="first-section-1">
       <div class="button-holder d-flex align-items-center justify-content-center">
-		<!--<button class="button-flat" (click)="moveToDetails()">Track Live</button>-->
-		<a routerLink="/track/{{orderId}}" target="_blank" class="button-flat text-center">Track Live</a>
+        <!--<button class="button-flat" (click)="moveToDetails()">Track Live</button>-->
+        <a routerLink="/track/{{orderId}}" target="_blank" class="button-flat text-center">Track Live</a>
       </div>
     </div>
 
@@ -39,7 +46,7 @@
 
   <div class="second-section d-flex align-items-start justify-content-center">
     <div class="d-flex align-items-center justify-content-center">
-	  <ngx-qrcode [qrc-value] = "trackingUrl"> </ngx-qrcode>
+      <ngx-qrcode [qrc-value] = "trackingUrl"> </ngx-qrcode>
 
       <div class="text">
         <span>Scan to track on phone</span>

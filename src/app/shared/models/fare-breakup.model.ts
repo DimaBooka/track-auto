@@ -5,12 +5,14 @@ export class FareBreakup {
     this._timeCharges = json["time"] ? +json["time"] : 0;
     this._distanceCharges = json["distance"] ? +json["distance"] : 0;
     this._adjustment = json["adjustment"] ? +json["adjustment"] : 0;
+    this._labourCharges = json["labour"] ? +json["labour"] : 0;
     this._gst = json["GST"] ? +json["GST"] : 0;
   }
 
   constructor(
     private _timeCharges: number = 0,
     private _distanceCharges: number = 0,
+    private _labourCharges: number = 0,
     private _gst: number = 0,
     private _baseFare: number = 0,
     private _adjustment: number = 0
@@ -54,5 +56,13 @@ export class FareBreakup {
 
   public set adjustment(adjustment: number) {
     this._adjustment = adjustment;
+  }
+
+  public get labourCharges() {
+    return this._labourCharges;
+  }
+
+  public set labourCharges(labourCharges: number) {
+    this._labourCharges = labourCharges;
   }
 }

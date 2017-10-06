@@ -1,5 +1,11 @@
 <div class="trips-holder">
 
+	<div class="d-flex align-items-center justify-content-center" *ngIf="trips.length == 0">
+		<img class="empty-truck" src="/assets/EmptyTruck.png"/>
+		<br>
+		<span>No Trips</span>
+	</div>
+
   <div *ngIf="showMap; else noMap;">
     <div class="trip d-flex flex-column align-items-center justify-content-center" *ngFor="let trip of trips">
 

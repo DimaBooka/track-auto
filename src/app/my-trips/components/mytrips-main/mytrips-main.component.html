@@ -3,9 +3,15 @@
 <div class="container">
 
   <div *ngIf="!!allTrips">
+    <!--
     <app-current [trips]="allTrips.current" *ngIf="allTrips.current && currentTab === tabs.Current"></app-current>
     <app-past [trips]="allTrips.past" *ngIf="allTrips.past && currentTab === tabs.PastTrips"></app-past>
     <app-upcoming [trips]="allTrips.upcoming" *ngIf="allTrips.upcoming &&currentTab === tabs.Upcoming"></app-upcoming>
+    -->
+
+    <app-current [trips]="allTrips.current" [hidden]="!(allTrips.current && currentTab === tabs.Current)"></app-current>
+    <app-past [trips]="allTrips.past" [hidden]="!(allTrips.past && currentTab === tabs.PastTrips)"></app-past>
+    <app-upcoming [trips]="allTrips.upcoming" [hidden]="!(allTrips.upcoming &&currentTab === tabs.Upcoming)"></app-upcoming>
   </div>
 
 </div>

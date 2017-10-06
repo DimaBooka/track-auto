@@ -14,13 +14,13 @@
           <form (submit)="createQuickBook(tripCreated)" class="d-flex flex-column align-items-start justify-content-center">
 
             <div class="input-autocomplete">
-              <input auto-complete type="text" [(ngModel)]="fromLocation" name="fromLocation" placeholder="Type From saved Locaton"
+              <input auto-complete type="text" [(ngModel)]="fromLocation" (ngModelChange)="onFromLocationChange($event)" name="fromLocation" placeholder="Type From saved Locaton"
                      [source]="locations" [value-formatter]="valueFormatter" [list-formatter]="listFormatter">
             </div>
 
             <div class="input-autocomplete">
               <input auto-complete type="text" [(ngModel)]="toLocation" name="toLocation" placeholder="Type To saved Locaton"
-                     [source]="locations" [value-formatter]="valueFormatter" [list-formatter]="listFormatter">
+                     [source]="filtered_locations" [value-formatter]="valueFormatter" [list-formatter]="listFormatter">
             </div>
 
             <div ngbDropdown placement="bottom-left" class="d-inline-block">

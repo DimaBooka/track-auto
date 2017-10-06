@@ -3,7 +3,7 @@
 
     <!-- AGM MAP - MAIN AGM DIRECTIVE FOR A MAP -->
     <agm-map
-	(mapReady)="onMapReady($event)"
+      (mapReady)="onMapReady($event)"
       [latitude]="lat"
       [longitude]="lng"
       [zoom]="zoom"
@@ -43,6 +43,12 @@
         ></agm-map-directions>
       </div>
 	  -->
+      <agm-polyline>
+        <div *ngFor="let p of trace" >
+          <agm-polyline-point [latitude]="p.lat" [longitude]="p.lng">
+          </agm-polyline-point>
+        </div>
+      </agm-polyline>
     </agm-map>
 
   </div>

@@ -23,6 +23,7 @@ export class Trip {
     this._driverMobile = json["driver_mobile"] || "";
     this._trackingUrl = json["tracking_url"] || "";
     this._finishedDistance = json["finished_distance"] ? +json["finished_distance"] : 0;
+    this._route = json["route_info"] || [];
     this._paymentStatus = json["payment_status"] || "";
     this._dateSortable = json["date_sortable"] || "";
     this._orderRealId = json["order_real_id"] || "";
@@ -100,6 +101,7 @@ export class Trip {
     private _driverMobile: string = "",
     private _trackingUrl: string = "",
     private _finishedDistance: number = 0,
+    private _route: any[] = [],
     private _paymentStatus: string = 'unpaid'
   ) {}
 
@@ -286,6 +288,14 @@ export class Trip {
 
   public set trackingUrl(trackingUrl: string) {
     this._trackingUrl = trackingUrl;
+  }
+
+  public get route() {
+    return this._route;
+  }
+
+  public set route(route: any[]) {
+    this._route = route;
   }
 
   public get finishedDistance() {

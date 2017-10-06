@@ -1,8 +1,8 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Trip } from '../../../shared/models/trip.model';
-import {DataService} from "../../../shared/services/data.service";
+import { DataService } from "../../../shared/services/data.service";
 import { TripsService } from '../../../shared/services/TripsService';
-import {DirectionsMapDirective} from "../../directives/map-directions.directive";
+import { DirectionsMapDirective } from "../../directives/map-directions.directive";
 import { MapsAPILoader } from '@agm/core';
 import { AngularFireDatabase, FirebaseObjectObservable } from 'angularfire2/database';
 import { AngularFireAuth } from 'angularfire2/auth';
@@ -49,6 +49,7 @@ export class MapComponent implements OnInit {
   getMapData: any;
   distanceData: any;
   markers: any = [];
+  trace: any = [];
   routes: any = [];
 
   @Input() trip: Trip;
@@ -77,6 +78,8 @@ export class MapComponent implements OnInit {
     this.lng = this.trip.pickUp.location.lng;
     this.trip.pickUp.icon = this.pickupMarkerImg;
     this.trip.dropoff.icon = this.dropoffMarkerImg;
+    this.trace = this.trip.route;
+    console.log(this.trace);
 
     // Pushing to array with all truck positions (pickup, dropoff, stops)
     this.markers.push(this.trip.pickUp, this.trip.dropoff);

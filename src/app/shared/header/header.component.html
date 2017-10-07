@@ -72,18 +72,25 @@
     <div class="header-holder w-100 d-flex flex-column align-items-center justify-content-center">
 
       <div class="checker w-100 d-flex justify-content-center">
-        <img src="/assets/Assets-Common/ConfirmDone@2x.png" alt="">
+        <img *ngIf="_status == 'pass'" src="/assets/Assets-Common/ConfirmDone@2x.png" alt="">
+        <img *ngIf="_status != 'pass'" src="/assets/Assets-Common/RedError@2x.png" alt="">
       </div>
 
-      <div class="head-modal d-flex flex-column align-items-center justify-content-center">
+      <div *ngIf="_status == 'pass'" class="head-modal d-flex flex-column align-items-center justify-content-center">
         <h4 class="modal-title">Your booking is successful</h4>
         <span class="order-id">Booking ID : {{ bookingId }}</span>
       </div>
 
+      <div *ngIf="_status != 'pass'" class="head-modal d-flex flex-column align-items-center justify-content-center">
+        <h4 class="modal-title">Oops!</h4>
+		<span class="order-id">{{ _message }}</span>
+      </div>
+
+
     </div>
   </div>
 
-  <div class="modal-body black">
+  <div *ngIf="_status == 'pass'" class="modal-body black">
 
     <div class="qr-section">
       <div class="d-flex flex-column align-items-center justify-content-center">

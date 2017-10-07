@@ -37,6 +37,8 @@ export class HeaderComponent implements OnInit {
    */
   private truckTypeParamVal: string;// = this.truckTypeOptions[0].value;
   private truckTypeParamLabel: string;// = this.truckTypeOptions[0].label;
+  public _status: string = "";
+  public _message: string = "";
   public bookingId: string = "";
   public trackingURL: string = "";
   private coverage : any;
@@ -109,6 +111,8 @@ export class HeaderComponent implements OnInit {
       this.truckTypeParamVal
     ).subscribe((res: any) => {
     //console.log(res);
+      this._status = res.status;
+      this._message = res.message;
       this.bookingId = res.bookingId;
       this.trackingURL = res.trackingURL;
       this.tripCreatedOpen(tripCreated);

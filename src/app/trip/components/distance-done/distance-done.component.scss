@@ -13,7 +13,7 @@
 
   .progress-distance {
     position: relative;
-    width: 190px;
+    width: calc(100% - 126px);
     height: 8px;
     overflow: hidden;
     background-color: #747e7f;
@@ -26,8 +26,8 @@
   }
 }
 
-@media screen and (max-width: 767px) {
-  .progress-holder {
-    flex-direction: column !important;
-  }
-}
+//@media screen and (max-width: 340px) {
+//  .progress-distance {
+//    width: 140px !important;
+//  }
+//}

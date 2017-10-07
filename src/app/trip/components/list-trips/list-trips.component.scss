@@ -164,6 +164,14 @@
   }
 }
 
+.no-trips {
+  height: calc(100vh - 161px);
+
+  span {
+    font-size: 24px;
+    color: gray;
+  }
+}
 
 .modal-content {
   border-radius: 0;
@@ -370,6 +378,10 @@
 }
 
 @media screen and (max-width: 767px){
+  .button-flat-out {
+    margin-left: 0px;
+  }
+
   .trips-holder {
     .trip {
       margin: 10px 12px;

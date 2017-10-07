@@ -25,6 +25,8 @@ export class CurrentDetailComponent implements OnInit, OnDestroy {
   private isUpcoming: boolean = false;
   private usersShare: string[] = [];
   private selectedTrip: Trip;
+  private showMap: boolean = null;
+  private nextStop: any;
 
   constructor(private route: ActivatedRoute,
               private router: Router,
@@ -50,10 +52,17 @@ export class CurrentDetailComponent implements OnInit, OnDestroy {
     });
   }
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.nextStop = this.trip.getNextStop();
+    console.log(this.nextStop);
+  }
 
   ngOnDestroy() {
     this.sidebarService.showSidebar = true;
+  }
+
+  toggleMap() {
+    this.showMap = !this.showMap;
   }
 
   moveTostartPage() {

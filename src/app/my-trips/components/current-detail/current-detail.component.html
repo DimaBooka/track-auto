@@ -9,15 +9,18 @@
       <span>
         Tracking trip: <span>{{ trip.orderId }}</span>
       </span>
+      <span class="toggle-view-map d-xs-flex d-sm-flex d-md-none d-lg-none d-xl-none" (click)="toggleMap()">
+        <img [src]="showMap ? '/assets/Assets/dich2.jpg' : '/assets/Assets/dich.jpg'" alt="">
+      </span>
     </div>
 
-    <div class="main-info d-flex flex-column align-items-start justify-content-start">
+    <div class="main-info d-flex flex-column align-items-start justify-content-start" *ngIf="!showMap">
       <span class="direction">{{ trip.headerFrom }} to {{ trip.headerTo }}, {{ trip.city }}</span>
 
-      <app-distance-done *ngIf="!isPast && !isUpcoming" [small]="true" [estimation]="trip.estimatedDistance" [finished]="trip.finishedDistance"></app-distance-done>
+      <app-distance-done class="w-100" *ngIf="!isPast && !isUpcoming" [small]="true" [estimation]="trip.estimatedDistance" [finished]="trip.finishedDistance"></app-distance-done>
       <span class="past" *ngIf="isPast || isUpcoming">{{ trip.estimatedDistance | number : '1.1-1' }}kms</span>
 
-      <div class="d-flex w-100 align-items-center justify-content-between">
+      <div class="d-none d-xs-none d-sm-none d-md-flex d-lg-flex d-xl-flex w-100 align-items-center justify-content-between">
 
         <div class="driver-holder d-flex flex-column align-items-start justify-content-center">
           <div class="driver-name-hor d-flex align-items-start justify-content-center">
@@ -50,11 +53,27 @@
 
     </div>
 
-    <div class="mini-map">
+    <div class="mini-map" *ngIf="showMap" [ngClass]="{'no-next-stop': nextStop && !nextStop['stop']}">
       <app-map [trip]="trip"></app-map>
     </div>
 
-    <app-detail-stops [trip]="trip"></app-detail-stops>
+    <div *ngIf="showMap && nextStop && nextStop['stop']" class="next-stop d-xs-flex d-sm-flex d-md-none d-lg-none d-xl-none w-100 flex-column align-items-start justify-content-center">
+      <span class="next-stop-line">Next stop</span>
+      <div class="d-flex align-items-center justify-content-start">
+        <span class="icon">
+          <img *ngIf="nextStop['pickUp']" src="/assets/Assets-Common/Blue-Marker@2x.png" alt="/assets/Assets-Common/Stop@2x.png">
+          <img *ngIf="!nextStop['pickUp'] && !nextStop['dropOff']" src="/assets/Assets-Common/Stop@2x.png" alt="/assets/Assets-Common/Stop@2x.png">
+          <img *ngIf="nextStop['dropOff']" src="/assets/Assets-Common/Purple-Marker@2x.png" alt="/assets/Assets-Common/Stop@2x.png">
+          <span class="stop-index" *ngIf="nextStop['nextIndex'] !== null && nextStop['nextIndex'] !== undefined">{{ nextStop['nextIndex'] + 1 }}</span>
+        </span>
+        <span class="d-flex flex-column align-items-start justify-content-start">
+          <span class="stop-name" *ngIf="nextStop['stop'].name">{{ nextStop['stop'].name }}</span>
+          <span class="stop-address" *ngIf="nextStop['stop'].address">{{ nextStop['stop'].address }}</span>
+        </span>
+      </div>
+    </div>
+
+    <app-detail-stops *ngIf="!showMap" [trip]="trip"></app-detail-stops>
 
   </div>
 

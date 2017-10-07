@@ -76,6 +76,27 @@ export class Trip {
     }
   }
 
+  public getNextStop() {
+    const nextStop = {};
+
+    // if (this._pickUp.status !== "done") {
+    //   nextStop['stop'] = this._pickUp;
+    //   nextStop['pickUp'] = true;
+    // } else {
+debugger;
+      let nextIndex = this.getStopsCalculates().nextIndex;
+      if (nextIndex !== null && this.stops.length > 0) {
+        nextStop['stop'] = this.stops[nextIndex];
+        nextStop['nextIndex'] = nextIndex;
+      } else if (this._dropoff.status !== "done"){
+        nextStop['stop'] = this._dropoff;
+        nextStop['dropOff'] = true;
+      }
+    // }
+
+    return nextStop;
+  }
+
   constructor(
     private _status: string = "done",
     private _city: string = "",

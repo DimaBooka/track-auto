@@ -77,13 +77,46 @@ export class Trip {
   }
 
   public getNextStop() {
-    const nextStop = {};
+    var nextStop : any = {};
+    let all_stops : any = [];
 
-    // if (this._pickUp.status !== "done") {
-    //   nextStop['stop'] = this._pickUp;
-    //   nextStop['pickUp'] = true;
-    // } else {
-debugger;
+		// Push all stops to one array
+    all_stops.push(this._pickUp);
+    all_stops = all_stops.concat(this._stops);
+    all_stops.push(this._dropoff);
+
+    let obj: any;
+		
+		// Loop through this array. The first stop not in done state
+		// is the next stop
+    for (var index = 0; index < all_stops.length; index++) {
+      obj = all_stops[index];
+      nextStop = {};
+      //console.log(index, obj);
+      if (obj.status !== 'done') {
+        nextStop.stop = obj;
+        if (index == 0) {
+					// Index 0 is pickup
+          nextStop.isPickUp = true;
+        } else if (index == all_stops.length) {
+					// Index last is pickup
+          nextStop.isDropoff = true;
+        } else {
+					// Otherwise it is a stop
+          nextStop.isStop = true;
+          nextStop.stopIndex = index;
+        }
+        break;
+      }
+    }
+    //console.log(nextStop);
+
+    /*
+     if (this._pickUp.status !== "done") {
+       nextStop['stop'] = this._pickUp;
+       nextStop['pickUp'] = true;
+     } else {
+       //debugger;
       let nextIndex = this.getStopsCalculates().nextIndex;
       if (nextIndex !== null && this.stops.length > 0) {
         nextStop['stop'] = this.stops[nextIndex];
@@ -92,7 +125,8 @@ debugger;
         nextStop['stop'] = this._dropoff;
         nextStop['dropOff'] = true;
       }
-    // }
+// }
+     */
 
     return nextStop;
   }

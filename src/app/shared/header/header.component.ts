@@ -18,6 +18,8 @@ export class HeaderComponent implements OnInit {
   private tabs: any = Tabs;
   private currentTab: Tabs;
   private quickBook: boolean = false;
+  private quickBookStatus: string = "";
+  private quickBookMessage: string = "";
   private locations: UserLocation[];
   private filtered_locations: UserLocation[];
   private fromLocation: UserLocation;
@@ -37,8 +39,6 @@ export class HeaderComponent implements OnInit {
    */
   private truckTypeParamVal: string;// = this.truckTypeOptions[0].value;
   private truckTypeParamLabel: string;// = this.truckTypeOptions[0].label;
-  public _status: string = "";
-  public _message: string = "";
   public bookingId: string = "";
   public trackingURL: string = "";
   private coverage : any;
@@ -111,8 +111,8 @@ export class HeaderComponent implements OnInit {
       this.truckTypeParamVal
     ).subscribe((res: any) => {
     //console.log(res);
-      this._status = res.status;
-      this._message = res.message;
+      this.quickBookStatus = res.status;
+      this.quickBookMessage = res.message;
       this.bookingId = res.bookingId;
       this.trackingURL = res.trackingURL;
       this.tripCreatedOpen(tripCreated);
@@ -154,7 +154,7 @@ export class HeaderComponent implements OnInit {
     }
     var selected_city;
     var geopoint;
-    var selected_city_polygon = this.coverage_polygon[selected_city];
+    var selected_city_polygon;
 
     for (let city in this.coverage_polygon) {
       var coverage = this.coverage_polygon[city];
@@ -165,11 +165,12 @@ export class HeaderComponent implements OnInit {
         break;
       }
     }
+    console.log(selected_city);
 
     selected_city_polygon = this.coverage_polygon[selected_city];
-    console.log(this.locations);
+    console.log(selected_city_polygon);
     this.locations.forEach((obj, index) => {
-      console.log(obj);
+      //console.log(obj);
       geopoint = new google.maps.LatLng(obj.geopoint.lat, obj.geopoint.lng);
       if (google.maps.geometry.poly.containsLocation(geopoint, selected_city_polygon)) {
         this.filtered_locations.push(obj);

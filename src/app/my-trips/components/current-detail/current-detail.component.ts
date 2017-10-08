@@ -8,6 +8,8 @@ import { Tabs } from '../../../shared/models/tabs.enum';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { Http, Response, Headers, RequestOptions } from '@angular/http';
 import { PaymentService } from '../../../shared/services/paymentService';
+import { AngularFireDatabase, FirebaseObjectObservable } from 'angularfire2/database';
+import { AngularFireAuth } from 'angularfire2/auth';
 
 
 @Component({
@@ -28,6 +30,8 @@ export class CurrentDetailComponent implements OnInit, OnDestroy {
   private showMap: boolean = null;
   private nextStop: any;
 
+  firebaseObject: FirebaseObjectObservable<any>;
+  firebaseDb: AngularFireDatabase;
   constructor(private route: ActivatedRoute,
               private router: Router,
               private titleService: Title,
@@ -35,8 +39,11 @@ export class CurrentDetailComponent implements OnInit, OnDestroy {
               private tripsService: TripsService,
               private modalService: NgbModal,
               private _http: Http,
-              public paymentService: PaymentService
+              public paymentService: PaymentService,
+			  firebaseDb: AngularFireDatabase,
+			  public afAuth: AngularFireAuth,
   ) {
+	this.firebaseDb = firebaseDb;
     this.route.data.subscribe(trip => {
       this.trip = <Trip>trip.details;
       this.isPast = trip.past;
@@ -55,6 +62,22 @@ export class CurrentDetailComponent implements OnInit, OnDestroy {
   ngOnInit() {
     this.nextStop = this.trip.getNextStop();
     console.log(this.nextStop);
+
+    if (this.trip.status != 'done') {
+      this.tripsService.getFirebaseToken().subscribe((resp: string) => {
+        //console.log('got token');
+        //console.log(this.afAuth.auth.signInWithCustomToken(resp));
+      });
+      //console.log('subscribing');
+      var firebase_path = '/orders/v1/' + this.trip.orderId;
+      //console.log(firebase_path);
+      this.firebaseObject = this.firebaseDb.object(firebase_path, { preserveSnapshot: true });
+      this.firebaseObject.subscribe(snapshot => {
+        let data_bundle : any = JSON.parse(snapshot.val());
+        this.trip = new Trip();
+        this.trip.createByJson(data_bundle);
+      });
+    }
   }
 
   ngOnDestroy() {

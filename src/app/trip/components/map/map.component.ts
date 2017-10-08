@@ -6,6 +6,7 @@ import { DirectionsMapDirective } from "../../directives/map-directions.directiv
 import { MapsAPILoader } from '@agm/core';
 import { AngularFireDatabase, FirebaseObjectObservable } from 'angularfire2/database';
 import { AngularFireAuth } from 'angularfire2/auth';
+import { SimpleChanges } from '@angular/core';
 
 declare var google: any;
 var bounds: any;
@@ -93,12 +94,13 @@ export class MapComponent implements OnInit {
     //console.log(this.trace);
 
     // Pushing to array with all truck positions (pickup, dropoff, stops)
+    this.markers = [];
     this.markers.push(this.trip.pickUp, this.trip.dropoff);
 
     this.trip.stops.forEach((obj, index) => {
-        this.markerIterator = index + 1;
-        this.fullSVG = this.leftSVG + this.markerIterator + this.rightSVG;
-        obj.icon = 'data:image/svg+xml;charset=UTF-8;base64,' + btoa(this.fullSVG);
+      this.markerIterator = index + 1;
+      this.fullSVG = this.leftSVG + this.markerIterator + this.rightSVG;
+      obj.icon = 'data:image/svg+xml;charset=UTF-8;base64,' + btoa(this.fullSVG);
       this.markers.push(obj);
     });
 
@@ -195,5 +197,15 @@ export class MapComponent implements OnInit {
     //console.log('isNewLocationNewer', flag);
     return newer;
   }
+
+  
+	ngOnChanges(changes: SimpleChanges) {
+
+		this.trip = changes.trip.currentValue;
+		this.ngOnInit();
+		// You can also use categoryId.previousValue and 
+		// categoryId.firstChange for comparing old and new values
+
+	}
 
 }

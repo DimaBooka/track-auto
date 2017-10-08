@@ -17,7 +17,7 @@
     <div class="main-info d-flex flex-column align-items-start justify-content-start" *ngIf="!showMap">
       <span class="direction">{{ trip.headerFrom }} to {{ trip.headerTo }}, {{ trip.city }}</span>
 
-      <app-distance-done class="w-100" *ngIf="!isPast && !isUpcoming" [small]="true" [estimation]="trip.estimatedDistance" [finished]="trip.finishedDistance"></app-distance-done>
+      <app-distance-done class="w-100" *ngIf="!isPast && !isUpcoming" [fullWidth]="true" [small]="true" [estimation]="trip.estimatedDistance" [finished]="trip.finishedDistance"></app-distance-done>
       <span class="past" *ngIf="isPast || isUpcoming">{{ trip.estimatedDistance | number : '1.1-1' }}kms</span>
 
       <div class="d-none d-xs-none d-sm-none d-md-flex d-lg-flex d-xl-flex w-100 align-items-center justify-content-between">

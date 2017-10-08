@@ -30,8 +30,8 @@
   width: 190px !important;
 }
 
-//@media screen and (max-width: 340px) {
-//  .progress-distance {
-//    width: 140px !important;
-//  }
-//}
+@media screen and (max-width: 340px) {
+  .nofull-width {
+    width: 140px !important;
+  }
+}

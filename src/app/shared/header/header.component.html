@@ -34,7 +34,7 @@
             <div class="buttons-holder d-flex align-items-center justify-content-end">
               <button type="button" class="button-flat button-with-width" (click)="toggleQuckBook()">Cancel</button>
               <input class="button-flat button-blue button-with-width button-blue" type="submit" value="Book"
-                     [disabled]="!toLocation || !fromLocation || !checkValid()" [ngClass]="{disabled: !toLocation || !fromLocation}">
+                     [disabled]="false" [ngClass]="{disabled: !toLocation || !fromLocation}">
             </div>
 
           </form>
@@ -71,9 +71,11 @@
   <div class="modal-header black">
     <div class="header-holder w-100 d-flex flex-column align-items-center justify-content-center">
 
-      <div class="checker w-100 d-flex justify-content-center">
+      <div class="checker w-100 d-flex justify-content-center" [ngClass]="{'error-book' : quickBookStatus != 'PASS'}">
         <img *ngIf="quickBookStatus == 'PASS'" src="/assets/Assets-Common/ConfirmDone@2x.png" alt="">
-        <img *ngIf="quickBookStatus != 'PASS'" src="/assets/Assets-Common/RedError@2x.png" alt="">
+        <span class="circle-error" *ngIf="quickBookStatus != 'PASS'">
+          <img src="/assets/Assets-Common/Error@2x.png" alt="">
+        </span>
       </div>
 
       <div *ngIf="quickBookStatus == 'PASS'" class="head-modal d-flex flex-column align-items-center justify-content-center">

@@ -260,8 +260,26 @@
 
       img {
         position: absolute;
-        margin-top: 35px;
-        height: 110px;
+        margin-top: 20px;
+        height: 100px;
+      }
+
+      &.error-book {
+        background-color: #2e1317;
+
+        .circle-error {
+          position: absolute;
+          margin-top: 16px;
+          height: 100px;
+          width: 100px;
+          background: #fc3446;
+          border-radius: 150px;
+
+          img {
+            height: 85px;
+            margin: 7px;
+          }
+        }
       }
     }
 
@@ -374,6 +392,10 @@
   .header-holder {
     .checker img{
       margin-top: 14px !important;
+    }
+
+    .checker .circle-error img{
+      margin-top: 7px !important;
     }
   }
 }

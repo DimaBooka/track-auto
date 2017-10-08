@@ -125,7 +125,7 @@
     </div>
 
     <div class="buttons-holder">
-      <div class="d-flex align-items-center justify-content-center" *ngIf="trip.status != 'done'">
+      <div class="d-flex align-items-center justify-content-center" *ngIf="trip.status != 'done' && !isUpcoming">
         <ngx-qrcode [qrc-value] = "trip.trackingUrl"> </ngx-qrcode>
 
         <div class="text">

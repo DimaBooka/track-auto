@@ -17,10 +17,6 @@ export class DistanceDoneComponent implements OnInit {
 
   ngOnInit() {
     this._width = (100 * this.finished) / this.estimation;
-    if (this._width < 1) {
-      this._width = 50;
-    }
-    console.log(this._width);
   }
 
   public get width() {

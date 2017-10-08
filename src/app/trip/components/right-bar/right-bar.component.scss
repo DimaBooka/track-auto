@@ -174,3 +174,11 @@
     flex-direction: column;
   }
 }
+
+@media screen and (max-width: 1120px){
+  .horizontal-main {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+}

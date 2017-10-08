@@ -10,6 +10,14 @@ import { AngularFireAuth } from 'angularfire2/auth';
 declare var google: any;
 var bounds: any;
 
+/**********************************************
+ * Parameters to process location updates and
+ * filter out noise */
+const MIN_DISTANCE_DELTA_METERS = 10;
+const MIN_TIMEDELTA_MS = 1000;
+const MAX_SPEED_KMPH = 100;
+/*********************************************/
+
 @Component({
   selector: 'app-map',
   templateUrl: './map.component.html',
@@ -52,12 +60,15 @@ export class MapComponent implements OnInit {
   trace: any = [];
   routes: any = [];
 
+  strokeWeight: number = 4;
+  strokeColor: string = '#056DB4';
+
   @Input() trip: Trip;
   @Input() scrollwheel: boolean = true;
 
   firebaseObject: FirebaseObjectObservable<any>;
   firebaseDb: AngularFireDatabase;
-  data_bundle : any;
+  last_location: any = null;
 
   constructor(
     private _dataService: DataService,
@@ -66,7 +77,7 @@ export class MapComponent implements OnInit {
     private mapsAPILoader: MapsAPILoader,
     private tripsService: TripsService,
   ) {
-      console.log(afAuth);
+      //console.log(afAuth);
       this.firebaseDb = firebaseDb;
   }
 
@@ -79,7 +90,7 @@ export class MapComponent implements OnInit {
     this.trip.pickUp.icon = this.pickupMarkerImg;
     this.trip.dropoff.icon = this.dropoffMarkerImg;
     this.trace = this.trip.route;
-    console.log(this.trace);
+    //console.log(this.trace);
 
     // Pushing to array with all truck positions (pickup, dropoff, stops)
     this.markers.push(this.trip.pickUp, this.trip.dropoff);
@@ -107,52 +118,82 @@ export class MapComponent implements OnInit {
           [this.markers[i + 1].location.lat], [this.markers[i + 1].location.lng]]
       );
     }
-    console.log(this);
+    //console.log(this);
 
     this.mapsAPILoader.load().then(() => {
     });
 
-      console.log(this);
-      if (this.trip.status == 'ongoing') {
-          this.tripsService.getFirebaseToken().subscribe((resp: string) => {
-              console.log('got token');
-              console.log(this.afAuth.auth.signInWithCustomToken(resp));
-          });
-          console.log('subscribing');
-          var firebase_path = '/active_drivers/' + this.trip.driverMobile;
-          //console.log(firebase_path);
-          this.firebaseObject = this.firebaseDb.object('/active_drivers/' + this.trip.driverMobile, { preserveSnapshot: true });
-          this.firebaseObject.subscribe(snapshot => {
-              this.data_bundle = JSON.parse(snapshot.val());
-              //console.log(this.data_bundle);
-              if (this.data_bundle != null && this.truck_marker != null) {
-                  this.truck_marker.setPosition({
-                      lat : parseFloat(this.data_bundle.location.lat),
-                      lng : parseFloat(this.data_bundle.location.lon),
-                  });
-              }
-          });
-      }
+    //console.log(this);
+    if (this.trip.status == 'ongoing') {
+      this.tripsService.getFirebaseToken().subscribe((resp: string) => {
+        //console.log('got token');
+        //console.log(this.afAuth.auth.signInWithCustomToken(resp));
+      });
+      //console.log('subscribing');
+      var firebase_path = '/active_drivers/' + this.trip.driverMobile;
+      //console.log(firebase_path);
+      this.firebaseObject = this.firebaseDb.object('/active_drivers/' + this.trip.driverMobile, { preserveSnapshot: true });
+      this.firebaseObject.subscribe(snapshot => {
+        let data_bundle : any = JSON.parse(snapshot.val());
+        //console.log(data_bundle);
+        if (data_bundle != null && this.truck_marker != null && this.isNewLocationNewer(this.last_location, data_bundle)) {
+          let positionObject : any = {
+            lat : parseFloat(data_bundle.location.lat),
+            lng : parseFloat(data_bundle.location.lon),
+          };
+          this.last_location = data_bundle;
+          this.truck_marker.setPosition(positionObject);
+          this.trace.push(positionObject);
+        }
+      });
+    }
   };
 
-    onMapReady (map) {
-        console.log('onmapready');
-        this.map = map;
-        console.log(map);
-        if (this.trip.status == 'ongoing') {
-            this.truck_marker = new google.maps.Marker({
-                position: {lat: this.truck_lat, lng: this.truck_lng},
-                map: this.map,
-                icon: this.truckIcon,
-            });
-        }
-        bounds = new google.maps.LatLngBounds();
-        bounds.extend(this.trip.pickUp.location);
-        bounds.extend(this.trip.dropoff.location);
-        this.trip.stops.forEach((obj, index) => {
-            bounds.extend(obj.location);
-        });
-        this.map.fitBounds(bounds);
+  onMapReady (map) {
+    //console.log('onmapready');
+    this.map = map;
+    //console.log(map);
+    if (this.trip.status == 'ongoing') {
+      this.truck_marker = new google.maps.Marker({
+        position: {lat: this.truck_lat, lng: this.truck_lng},
+        map: this.map,
+        icon: this.truckIcon,
+      });
     }
+    bounds = new google.maps.LatLngBounds();
+    bounds.extend(this.trip.pickUp.location);
+    bounds.extend(this.trip.dropoff.location);
+    this.trip.stops.forEach((obj, index) => {
+      bounds.extend(obj.location);
+    });
+    this.map.fitBounds(bounds);
+  }
+
+  /* Sanity check if latest received location is actually up to date.
+   */
+  private isNewLocationNewer (old_location, new_location) {
+    if (old_location == null) {
+      return true;
+    } else if (new_location.accuracy_meters > 30) {
+      return false;
+    }
+    let old_: any = new Date(old_location.gpstimestamp);
+    let new_: any = new Date(new_location.gpstimestamp);
+    let distance_meters =  google.maps.geometry.spherical.computeDistanceBetween(
+      old_location.latlng,
+      new_location.latlng
+    );
+    //console.log(old_, new_);
+    let timedelta_ms: number = new_ - old_;
+    let speed_kmph: number = (distance_meters * 60 * 60) /timedelta_ms;
+    //console.log(timedelta_ms, distance_meters, speed_kmph);
+    let newer : boolean = (timedelta_ms > MIN_TIMEDELTA_MS && 
+      distance_meters > MIN_DISTANCE_DELTA_METERS &&
+      speed_kmph < MAX_SPEED_KMPH
+    );
+    //console.log(newer);
+    //console.log('isNewLocationNewer', flag);
+    return newer;
+  }
 
 }

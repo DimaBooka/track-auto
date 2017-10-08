@@ -57,19 +57,27 @@
             [driverName]="trip.drivenName"
             [driverMobile]="trip.driverMobile"
             [trackingUrl]="trip.trackingUrl"
+            [orderId]="trip.orderId"
         ></app-right-bar>
       </div>
 
-      <div class="hor-bar-book line-bottom-nomap w-100 d-flex align-items-center justify-content-start" *ngIf="bookingMode">
-        <div class="truck-type-hor d-flex align-items-center justify-content-center">
-          <div class="crop" style="background-color: rgb(216, 216, 216)">
-        <img src="{{ trip.truckURL }}" alt="">
+      <div class="hor-bar-book-main line-bottom-nomap w-100 d-flex align-items-center justify-content-between" *ngIf="bookingMode">
+
+        <div class="hor-bar-book w-100 d-flex align-items-center justify-content-start">
+          <div class="truck-type-hor d-flex align-items-center justify-content-center">
+            <div class="crop" style="background-color: rgb(216, 216, 216)">
+              <img src="{{ trip.truckURL }}" alt="">
+            </div>
+
+            <span>{{ trip.truckType }}</span>
           </div>
 
-          <span>{{ trip.truckType }}</span>
+          <span class="allocation">Driver will be allocated 2 hours before trip</span>
         </div>
 
-        <span class="allocation">Driver will be allocated 2 hours before trip</span>
+        <div class="d-flex align-items-center justify-content-end">
+          <span class="order-id">Trip ID : {{ trip.orderId }}</span>
+        </div>
       </div>
 
 

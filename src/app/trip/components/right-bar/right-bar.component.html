@@ -28,9 +28,9 @@
       </div>
     </div>
 
-      <div class="driver-mobile d-flex align-items-center justify-content-start">
+      <div class="driver-mobile with-margin-top d-flex align-items-center justify-content-start">
         <div class="driver d-flex align-items-center justify-content-center">
-            Trip ID : {{orderId}}
+            <span class="order-id">Trip ID : {{orderId}}</span>
         </div>
 
     </div>
@@ -57,33 +57,42 @@
 
 <ng-template #Horizontal>
   <div class="right-bar-holder-hor">
-    <div class="horizontal d-flex align-items-center justify-content-start">
+    <div class="horizontal-main d-flex align-items-center justify-content-between">
+      <div class="horizontal d-flex align-items-center justify-content-start">
 
-      <div class="truck-type-hor d-flex align-items-center justify-content-center">
-        <div class="crop" style="background-color: rgb(216, 216, 216)">
-			<img src="{{truckURL}}" alt="">
+        <div class="truck-type-hor d-flex align-items-center justify-content-center">
+          <div class="crop" style="background-color: rgb(216, 216, 216)">
+            <img src="{{truckURL}}" alt="">
+          </div>
+
+          <span>{{ truckType }}</span>
         </div>
 
-        <span>{{ truckType }}</span>
-      </div>
+        <div class="driver-name-hor d-flex align-items-start justify-content-center">
+          <div class="driver-hor d-flex align-items-center justify-content-center">
+            <img src="/assets/Assets-Where-Section/Contact@2x.png" alt="">
+            <span class="label">Driver: </span>
+          </div>
 
-      <div class="driver-name-hor d-flex align-items-start justify-content-center">
-        <div class="driver-hor d-flex align-items-center justify-content-center">
-          <img src="/assets/Assets-Where-Section/Contact@2x.png" alt="">
-          <span class="label">Driver: </span>
+          <span class="name">{{ driverName }}</span>
         </div>
 
-        <span class="name">{{ driverName }}</span>
-      </div>
+        <div class="driver-mobile-hor d-flex align-items-center justify-content-start">
+          <div class="driver-hor d-flex align-items-center justify-content-center">
+            <img src="/assets/Assets-Where-Section/MakeCall@2x.png" alt="">
+            <span class="label">Contact: </span>
+          </div>
 
-      <div class="driver-mobile-hor d-flex align-items-center justify-content-start">
-        <div class="driver-hor d-flex align-items-center justify-content-center">
-          <img src="/assets/Assets-Where-Section/MakeCall@2x.png" alt="">
-          <span class="label">Contact: </span>
+          <span class="mobile">{{ driverMobile }}</span>
         </div>
-
-        <span class="mobile">{{ driverMobile }}</span>
       </div>
+
+      <div class="driver-mobile-hor d-flex align-items-center justify-content-end">
+        <div class="driver-hor d-flex align-items-center justify-content-end">
+          <span class="name order-id">Trip ID : {{orderId}}</span>
+        </div>
+      </div>
+
     </div>
   </div>
 </ng-template>

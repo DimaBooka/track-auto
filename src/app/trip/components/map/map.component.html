@@ -33,7 +33,7 @@
 
       <!-- SHOW ROUTES -->
 
-	  <!--
+      <!--
       <div class="routes" *ngFor="let rst of routes; let i of index">
         <agm-map-directions
           [origin_lat]="rst[0]"
@@ -42,8 +42,8 @@
           [destination_lng]="rst[3]"
         ></agm-map-directions>
       </div>
-	  -->
-      <agm-polyline>
+      -->
+      <agm-polyline [strokeWeight]="strokeWeight" [strokeColor]="strokeColor">
         <div *ngFor="let p of trace" >
           <agm-polyline-point [latitude]="p.lat" [longitude]="p.lng">
           </agm-polyline-point>

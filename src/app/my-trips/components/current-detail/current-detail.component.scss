@@ -282,6 +282,15 @@
       color: black;
       padding: 4px 9px;
     }
+
+    &.disabled:hover {
+      border: none;
+      background-color: #87e9ff;
+      color: black;
+      padding: 3px 8px;
+    }
+
+
   }
 }
 
@@ -327,8 +336,8 @@
 
   .order-id {
     font-size: 14px;
-    font-weight: 600;
-    padding: 5px 0;
+    font-weight: 400;
+    padding: 18px 0 0 0;
   }
 
   .warning-alert {
@@ -374,8 +383,8 @@
 
       img {
         position: absolute;
-        margin-top: 35px;
-        height: 110px;
+        margin-top: 20px;
+        height: 100px;
       }
     }
 

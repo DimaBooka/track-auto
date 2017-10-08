@@ -20,7 +20,7 @@
 
     .done {
       position: absolute;
-      background-color: rgb(135, 233, 255);
+      background-color: #2ac169;
       height: 8px;
     }
   }
@@ -30,8 +30,8 @@
   width: 190px !important;
 }
 
-//@media screen and (max-width: 340px) {
-//  .progress-distance {
-//    width: 140px !important;
-//  }
-//}
+@media screen and (max-width: 340px) {
+  .nofull-width {
+    width: 140px !important;
+  }
+}

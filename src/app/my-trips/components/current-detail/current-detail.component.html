@@ -109,8 +109,8 @@
 
     </div>
 
-    <!-- TODO <div class="user d-flex align-items-center justify-content-center" (click)="tripDoneOpen(tripDone, trip)">-->
-    <div class="user d-flex align-items-center justify-content-center">
+    <div class="user d-flex align-items-center justify-content-center" (click)="tripDoneOpen(tripDone, trip)">
+    <!--<div class="user d-flex align-items-center justify-content-center">-->
       <img class="notifications" src="/assets/Assets-Common/Notifications.png">
       <div class="user-profile d-flex align-items-center justify-content-start" [hidden]="true" *ngIf="false">
 
@@ -125,7 +125,7 @@
     </div>
 
     <div class="buttons-holder">
-      <div class="d-flex align-items-center justify-content-center" *ngIf="trip.status != 'done'">
+      <div class="d-flex align-items-center justify-content-center" *ngIf="trip.status != 'done' && !isUpcoming">
         <ngx-qrcode [qrc-value] = "trip.trackingUrl"> </ngx-qrcode>
 
         <div class="text">
@@ -171,7 +171,7 @@
     <div class="header-holder w-100 d-flex flex-column align-items-center justify-content-center">
 
       <div class="checker w-100 d-flex justify-content-center">
-        <img src="/assets/Assets-Common/Done-Marker-Withoutlag@2x.png" alt="">
+        <img src="/assets/Assets/green-okay.png" alt="">
       </div>
 
       <div class="head-modal d-flex flex-column align-items-center justify-content-center">

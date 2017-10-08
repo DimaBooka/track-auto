@@ -95,6 +95,18 @@
 
 .first-section {
   height: 300px;
+
+  .with-margin-top {
+    margin-top: 50px;
+  }
+
+  .order-id {
+    font-size: 16px;
+    font-weight: 700;
+    color: #5e5e5e;
+    padding: 0;
+    white-space: nowrap;
+  }
 }
 
 .second-section {
@@ -135,6 +147,10 @@
 
     .name {
       padding-top: 4px;
+
+      &.order-id {
+        padding: 0;
+      }
     }
 
     .label {
@@ -164,6 +180,10 @@
 
   .first-section {
     height: auto !important;
+
+    .with-margin-top {
+      margin-top: 0;
+    }
   }
 
   .second-section {
@@ -172,5 +192,13 @@
 
   .right-bar-holder-hor .horizontal{
     flex-direction: column;
+  }
+}
+
+@media screen and (max-width: 1120px){
+  .horizontal-main {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
   }
 }

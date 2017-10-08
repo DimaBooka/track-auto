@@ -23,6 +23,7 @@ export class ListTripsComponent implements OnInit {
   private datetime: any;
   private trackingURL: string = "";
   private bookingId: string = "";
+  private invoiceShared: boolean = false;
   constructor(
       private router: Router,
       private modalService: NgbModal,
@@ -58,19 +59,21 @@ export class ListTripsComponent implements OnInit {
     this.usersShare = users;
   }
 
-  public shareInvoice(shareInvoice, trip: Trip) {
+  public openShareInvoice(shareInvoice, trip: Trip) {
+    this.invoiceShared = false;
     this.selectedTrip = trip;
-	  console.log(trip);
+    console.log(trip);
     this.modalService.open(shareInvoice).result.then((result) => {
       console.log(trip.orderRealId);
-      this.tripService.shareInvoice(trip.orderRealId, this.usersShare).subscribe((resp: any) => {
-		  //this.tripService.refreshTrips();
-      });
     }, (reason) => {
-
     });
   }
 
+  public shareInvoice() {
+      this.invoiceShared = true;
+      this.tripService.shareInvoice(this.selectedTrip.orderRealId, this.usersShare).subscribe((resp: any) => {
+      });
+  }
   public cancelBooking(cancelBooking, trip: Trip) {
     this.selectedTrip = trip;
     this.modalService.open(cancelBooking).result.then((result) => {

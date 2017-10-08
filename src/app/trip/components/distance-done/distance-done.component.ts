@@ -10,6 +10,7 @@ export class DistanceDoneComponent implements OnInit {
   @Input() estimation: number;
   @Input() finished: number;
   @Input() small: boolean;
+  @Input() fullWidth: boolean = false;
   private _width: number;
 
   constructor() {}

@@ -2,7 +2,7 @@
 
   <span class="info" [ngClass]="{'small-txt': small}"> {{ finished | number : '1.1-1'}}/{{ estimation | number : '1.1-1'}} kms done</span>
 
-  <div class="progress-distance">
+  <div class="progress-distance" [ngClass]="{'nofull-width': !fullWidth}">
     <span class="done" [ngStyle]="{'width': width + '%'}"></span>
   </div>
 

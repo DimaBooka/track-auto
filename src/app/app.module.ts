@@ -25,7 +25,10 @@ import { Ng2AutoCompleteModule } from 'ng2-auto-complete';
     BrowserModule,
     RouterModule.forRoot(appRoutes),
     NgbModule.forRoot(),
-    AgmCoreModule.forRoot(environment.google_maps),
+    AgmCoreModule.forRoot({
+      apiKey : environment.google_maps.apiKey,
+      libraries : ["geometry"],
+    }),
     Ng2AutoCompleteModule,
     NgxQRCodeModule,
     AngularFireModule.initializeApp(environment.firebase),

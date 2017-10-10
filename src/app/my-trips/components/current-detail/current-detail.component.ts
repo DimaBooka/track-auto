@@ -11,6 +11,7 @@ import { PaymentService } from '../../../shared/services/paymentService';
 import { AngularFireDatabase, FirebaseObjectObservable } from 'angularfire2/database';
 import { AngularFireAuth } from 'angularfire2/auth';
 
+const FIREBASE_ORDER_UPDATES_PATH = "/orders/v1/";
 
 @Component({
   selector: 'app-current-detail',
@@ -40,10 +41,10 @@ export class CurrentDetailComponent implements OnInit, OnDestroy {
               private modalService: NgbModal,
               private _http: Http,
               public paymentService: PaymentService,
-			  firebaseDb: AngularFireDatabase,
-			  public afAuth: AngularFireAuth,
+              firebaseDb: AngularFireDatabase,
+              public afAuth: AngularFireAuth,
   ) {
-	this.firebaseDb = firebaseDb;
+    this.firebaseDb = firebaseDb;
     this.route.data.subscribe(trip => {
       this.trip = <Trip>trip.details;
       this.isPast = trip.past;
@@ -69,13 +70,17 @@ export class CurrentDetailComponent implements OnInit, OnDestroy {
         //console.log(this.afAuth.auth.signInWithCustomToken(resp));
       });
       //console.log('subscribing');
-      var firebase_path = '/orders/v1/' + this.trip.orderId;
+      var firebase_path = FIREBASE_ORDER_UPDATES_PATH + this.trip.orderId;
       //console.log(firebase_path);
       this.firebaseObject = this.firebaseDb.object(firebase_path, { preserveSnapshot: true });
       this.firebaseObject.subscribe(snapshot => {
         let data_bundle : any = JSON.parse(snapshot.val());
+        let finishedDistance: number = this.trip.finishedDistance;
+        let estimatedDistance: number = this.trip.estimatedDistance;
         this.trip = new Trip();
         this.trip.createByJson(data_bundle);
+        this.trip.finishedDistance = finishedDistance;
+        this.trip.estimatedDistance = Math.max(finishedDistance, this.trip.finishedDistance);
       });
     }
   }
@@ -133,6 +138,16 @@ export class CurrentDetailComponent implements OnInit, OnDestroy {
 
   public initiatePayment(trip: Trip) {
       this.paymentService.initiatePayment(trip);
+  }
+
+  updateFinishedDistance(distanceUpdate) {
+    console.log('Receving Emit', this.trip.finishedDistance, distanceUpdate);
+    // Update distance only if trip is ongoing
+    // TODO: update the remaining distance based on current location
+    // of driver and the remaining stops
+    if (this.trip.status == 'ongoing' && this.trip.pickUp.time != '') {
+      this.trip.finishedDistance += distanceUpdate;
+    }
   }
 
 }

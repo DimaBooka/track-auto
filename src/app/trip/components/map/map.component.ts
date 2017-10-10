@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, EventEmitter, Output, OnInit } from '@angular/core';
 import { Trip } from '../../../shared/models/trip.model';
 import { DataService } from "../../../shared/services/data.service";
 import { TripsService } from '../../../shared/services/TripsService';
@@ -67,6 +67,10 @@ export class MapComponent implements OnInit {
   @Input() trip: Trip;
   @Input() scrollwheel: boolean = true;
 
+  // Emits the distance travelled from last location to the latest
+  // location update received from firebase
+  @Output() distanceUpdate = new EventEmitter<number>(); //number = 0;
+
   firebaseObject: FirebaseObjectObservable<any>;
   firebaseDb: AngularFireDatabase;
   last_location: any = null;
@@ -83,6 +87,16 @@ export class MapComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.myInit();
+
+    this.mapsAPILoader.load().then(() => {
+    });
+
+    this.trace = this.trip.route;
+    this.startRealTimeUpdates();
+  }
+
+  myInit() {
 
     // this.distanceData = this.trip;
     // Setting up map center location (pickup position)
@@ -90,7 +104,6 @@ export class MapComponent implements OnInit {
     this.lng = this.trip.pickUp.location.lng;
     this.trip.pickUp.icon = this.pickupMarkerImg;
     this.trip.dropoff.icon = this.dropoffMarkerImg;
-    this.trace = this.trip.route;
     //console.log(this.trace);
 
     // Pushing to array with all truck positions (pickup, dropoff, stops)
@@ -122,33 +135,7 @@ export class MapComponent implements OnInit {
     }
     //console.log(this);
 
-    this.mapsAPILoader.load().then(() => {
-    });
-
     //console.log(this);
-    if (this.trip.status == 'ongoing') {
-      this.tripsService.getFirebaseToken().subscribe((resp: string) => {
-        //console.log('got token');
-        //console.log(this.afAuth.auth.signInWithCustomToken(resp));
-      });
-      //console.log('subscribing');
-      var firebase_path = '/active_drivers/' + this.trip.driverMobile;
-      //console.log(firebase_path);
-      this.firebaseObject = this.firebaseDb.object('/active_drivers/' + this.trip.driverMobile, { preserveSnapshot: true });
-      this.firebaseObject.subscribe(snapshot => {
-        let data_bundle : any = JSON.parse(snapshot.val());
-        //console.log(data_bundle);
-        if (data_bundle != null && this.truck_marker != null && this.isNewLocationNewer(this.last_location, data_bundle)) {
-          let positionObject : any = {
-            lat : parseFloat(data_bundle.location.lat),
-            lng : parseFloat(data_bundle.location.lon),
-          };
-          this.last_location = data_bundle;
-          this.truck_marker.setPosition(positionObject);
-          this.trace.push(positionObject);
-        }
-      });
-    }
   };
 
   onMapReady (map) {
@@ -174,6 +161,7 @@ export class MapComponent implements OnInit {
   /* Sanity check if latest received location is actually up to date.
    */
   private isNewLocationNewer (old_location, new_location) {
+    console.log(old_location, new_location);
     if (old_location == null) {
       return true;
     } else if (new_location.accuracy_meters > 30) {
@@ -182,8 +170,8 @@ export class MapComponent implements OnInit {
     let old_: any = new Date(old_location.gpstimestamp);
     let new_: any = new Date(new_location.gpstimestamp);
     let distance_meters =  google.maps.geometry.spherical.computeDistanceBetween(
-      old_location.latlng,
-      new_location.latlng
+      new google.maps.LatLng(parseFloat(old_location.lat), parseFloat(old_location.lon)),
+      new google.maps.LatLng(parseFloat(new_location.lat), parseFloat(new_location.lon)),
     );
     //console.log(old_, new_);
     let timedelta_ms: number = new_ - old_;
@@ -193,19 +181,55 @@ export class MapComponent implements OnInit {
       distance_meters > MIN_DISTANCE_DELTA_METERS &&
       speed_kmph < MAX_SPEED_KMPH
     );
+
+    if (newer) {
+      console.log('Emitting finishedDistance');
+      this.distanceUpdate.emit(distance_meters/1000);
+    }
     //console.log(newer);
     //console.log('isNewLocationNewer', flag);
     return newer;
   }
 
+  startRealTimeUpdates() {
+    if (this.trip.status != 'ongoing') {
+      return;
+    }
+
+    this.tripsService.getFirebaseToken().subscribe((resp: string) => {
+      //console.log('got token');
+      //console.log(this.afAuth.auth.signInWithCustomToken(resp));
+    });
+    //console.log('subscribing');
+    var firebase_path = '/active_drivers/' + this.trip.driverMobile;
+    //console.log(firebase_path);
+    this.firebaseObject = this.firebaseDb.object(firebase_path, { preserveSnapshot: true });
+    this.firebaseObject.subscribe(snapshot => {
+      let data_bundle : any = JSON.parse(snapshot.val());
+      //console.log(data_bundle);
+      if (data_bundle != null && this.truck_marker != null && this.isNewLocationNewer(this.last_location, data_bundle.location)) {
+        let positionObject : any = {
+          lat : parseFloat(data_bundle.location.lat),
+          lng : parseFloat(data_bundle.location.lon),
+        };
+        this.last_location = data_bundle.location;
+        this.truck_marker.setPosition(positionObject);
+
+        // Push point to polyline only if it is ongoing trip
+        if (this.trip.status == 'ongoing' && this.trip.pickUp.time != '') {
+          this.trace.push(positionObject);
+        }
+      }
+    });
+  }
   
-	ngOnChanges(changes: SimpleChanges) {
+  ngOnChanges(changes: SimpleChanges) {
 
-		this.trip = changes.trip.currentValue;
-		this.ngOnInit();
-		// You can also use categoryId.previousValue and 
-		// categoryId.firstChange for comparing old and new values
+    this.trip = changes.trip.currentValue;
+    this.myInit();
+    // You can also use categoryId.previousValue and 
+    // categoryId.firstChange for comparing old and new values
 
-	}
+  }
 
 }

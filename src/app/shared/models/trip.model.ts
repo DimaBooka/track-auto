@@ -9,7 +9,7 @@ export class Trip {
     this._status = json["status"] || "done";
     this._city = json["city"] || "";
     this._estimatedDistance = json["estimated_distance"] ? +json["estimated_distance"] : 0;
-    this._totalDuration = json["total_duration"] ? +json["total_duration"] : 0;
+    this._totalDuration = json["total_duration"] || "";
     this._totalDistance = json["total_distance"] ? +json["total_distance"] : 0;
     this._orderId = json["order_id"] || "";
     this._orderKey = json["order_key"] || "";
@@ -135,7 +135,7 @@ export class Trip {
     private _status: string = "done",
     private _city: string = "",
     private _estimatedDistance: number = 0,
-    private _totalDuration: number = 0,
+    private _totalDuration: string = "",
     private _totalDistance: number = 0,
     private _orderId: string = "",
     private _orderKey: string = "",
@@ -188,7 +188,7 @@ export class Trip {
     return this._totalDuration;
   }
 
-  public set totalDuration(totalDuration: number) {
+  public set totalDuration(totalDuration: string) {
     this._totalDuration = totalDuration;
   }
 

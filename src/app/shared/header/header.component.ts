@@ -53,13 +53,6 @@ export class HeaderComponent implements OnInit {
     this._tripsService.getUserLocation().subscribe((res: UserLocation[]) => {
       this.locations = res;
     });
-    this._tripsService.getParams().subscribe((res: any) => {
-      console.log(res);
-      this.truckTypeOptions = res.vehicle_classes;
-      this.truckTypeParamVal = this.truckTypeOptions[0].value;
-      this.truckTypeParamLabel = this.truckTypeOptions[0].label;
-      this.coverage = res.city_coverage;
-    });
   }
 
   changeTab(tab: Tabs) {
@@ -134,16 +127,23 @@ export class HeaderComponent implements OnInit {
 
   ngOnInit() {
     this.mapsAPILoader.load().then(() => {
-      console.log(this.coverage);
-      console.log(google);
-      for (let city in this.coverage) {
-        var coverage = this.coverage[city];
-        this.coverage_polygon[city] = new google.maps.Polygon({
-          paths: coverage,
-          visible: false,
-        });
-      }
-      console.log(this.coverage_polygon);
+      this._tripsService.getParams().subscribe((res: any) => {
+          //console.log(res);
+        this.truckTypeOptions = res.vehicle_classes;
+        this.truckTypeParamVal = this.truckTypeOptions[0].value;
+        this.truckTypeParamLabel = this.truckTypeOptions[0].label;
+        this.coverage = res.city_coverage;
+          //console.log(this.coverage);
+          //console.log(google);
+        for (let city in this.coverage) {
+          var coverage = this.coverage[city];
+          this.coverage_polygon[city] = new google.maps.Polygon({
+            paths: coverage,
+            visible: false,
+          });
+        }
+          //console.log(this.coverage_polygon);
+      });
     });
   }
 
@@ -156,19 +156,21 @@ export class HeaderComponent implements OnInit {
     var geopoint;
     var selected_city_polygon;
 
+      //console.log(this.coverage_polygon);
     for (let city in this.coverage_polygon) {
       var coverage = this.coverage_polygon[city];
-      console.log(newValue.geopoint);
+        //console.log(newValue.geopoint, coverage);
       geopoint = new google.maps.LatLng(newValue.geopoint.lat, newValue.geopoint.lng);
+        //console.log(geopoint)
       if (google.maps.geometry.poly.containsLocation(geopoint, coverage)) {
         selected_city = city;
         break;
       }
     }
-    console.log(selected_city);
+      //console.log(selected_city);
 
     selected_city_polygon = this.coverage_polygon[selected_city];
-    console.log(selected_city_polygon);
+      //console.log(selected_city_polygon);
     this.locations.forEach((obj, index) => {
       //console.log(obj);
       geopoint = new google.maps.LatLng(obj.geopoint.lat, obj.geopoint.lng);

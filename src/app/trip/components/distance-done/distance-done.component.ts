@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { SimpleChanges } from '@angular/core';
 
 @Component({
   selector: 'app-distance-done',
@@ -7,8 +8,27 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 export class DistanceDoneComponent implements OnInit {
 
-  @Input() estimation: number;
-  @Input() finished: number;
+  private _estimation: number;
+  @Input() set estimation(value: number) {
+    this._estimation = value;
+  }
+  get estimation() {
+    return this._estimation;
+  }
+
+  private _finished: number;
+  @Input() set finished(value: number) {
+    console.log('set finished', value);
+    this._finished = value;
+    if (this._finished > this._estimation) {
+        this._estimation = this._finished;
+    }
+    this.ngOnInit();
+  }
+  get finished() {
+    return this._finished;
+  }
+
   @Input() small: boolean;
   @Input() fullWidth: boolean = false;
   private _width: number;

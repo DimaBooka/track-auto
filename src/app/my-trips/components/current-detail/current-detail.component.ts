@@ -74,7 +74,12 @@ export class CurrentDetailComponent implements OnInit, OnDestroy {
       //console.log(firebase_path);
       this.firebaseObject = this.firebaseDb.object(firebase_path, { preserveSnapshot: true });
       this.firebaseObject.subscribe(snapshot => {
-        let data_bundle : any = JSON.parse(snapshot.val());
+      let data_bundle : any = JSON.parse(snapshot.val());
+				// Sometimes data in firebase may not be there, but 
+				// this call still comes here. Handling that situation
+				if (data_bundle == null) {
+						return;
+				}
         let finishedDistance: number = this.trip.finishedDistance;
         let estimatedDistance: number = this.trip.estimatedDistance;
         this.trip = new Trip();

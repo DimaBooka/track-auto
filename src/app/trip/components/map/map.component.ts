@@ -9,7 +9,6 @@ import { AngularFireAuth } from 'angularfire2/auth';
 import { SimpleChanges } from '@angular/core';
 
 declare var google: any;
-var bounds: any;
 
 /**********************************************
  * Parameters to process location updates and
@@ -17,6 +16,7 @@ var bounds: any;
 const MIN_DISTANCE_DELTA_METERS = 10;
 const MIN_TIMEDELTA_MS = 1000;
 const MAX_SPEED_KMPH = 100;
+const AUTO_ZOOMOUT_SECONDS = 10;
 /*********************************************/
 
 @Component({
@@ -31,6 +31,7 @@ export class MapComponent implements OnInit {
   lat: number;
   lng: number;
 
+  bounds: any;
   truck_lat: number=0;
   truck_lng: number=0;
   truck_marker: any;
@@ -73,7 +74,8 @@ export class MapComponent implements OnInit {
 
   firebaseObject: FirebaseObjectObservable<any>;
   firebaseDb: AngularFireDatabase;
-  last_location: any = null;
+  lastLocation: any = null;
+  lastFitZoomTime: any = null;
 
   constructor(
     private _dataService: DataService,
@@ -138,6 +140,28 @@ export class MapComponent implements OnInit {
     //console.log(this);
   };
 
+  getBounds () {
+    let bounds: any = new google.maps.LatLngBounds();
+    bounds.extend(this.trip.pickUp.location);
+    bounds.extend(this.trip.dropoff.location);
+    this.trip.stops.forEach((obj, index) => {
+      bounds.extend(obj.location);
+    });
+    return bounds;
+  }
+
+  fitBounds() {
+    this.map.fitBounds(this.getBounds());
+  }
+
+  fitBoundsWithDriver(driverLocation: any) {
+    let now: any = new Date();
+    if (this.lastFitZoomTime == null || ((now - this.lastFitZoomTime)/1000 > AUTO_ZOOMOUT_SECONDS)) {
+      let bounds : any = this.getBounds();
+      bounds.extend(driverLocation);
+      this.map.fitBounds(bounds);
+    }
+  }
   onMapReady (map) {
     //console.log('onmapready');
     this.map = map;
@@ -148,20 +172,21 @@ export class MapComponent implements OnInit {
         map: this.map,
         icon: this.truckIcon,
       });
+      if (this.trip.route.length > 0) {
+        this.truck_marker.setPosition(this.trip.route[this.trip.route.length -1]);
+        this.fitBoundsWithDriver(this.trip.route[this.trip.route.length -1]);
+      } else {
+        this.fitBounds();
+      }
+    } else {
+      this.fitBounds();
     }
-    bounds = new google.maps.LatLngBounds();
-    bounds.extend(this.trip.pickUp.location);
-    bounds.extend(this.trip.dropoff.location);
-    this.trip.stops.forEach((obj, index) => {
-      bounds.extend(obj.location);
-    });
-    this.map.fitBounds(bounds);
   }
 
   /* Sanity check if latest received location is actually up to date.
    */
   private isNewLocationNewer (old_location, new_location) {
-    console.log(old_location, new_location);
+    //console.log(old_location, new_location);
     if (old_location == null) {
       return true;
     } else if (new_location.accuracy_meters > 30) {
@@ -183,7 +208,7 @@ export class MapComponent implements OnInit {
     );
 
     if (newer) {
-      console.log('Emitting finishedDistance');
+      //console.log('Emitting finishedDistance');
       this.distanceUpdate.emit(distance_meters/1000);
     }
     //console.log(newer);
@@ -207,13 +232,14 @@ export class MapComponent implements OnInit {
     this.firebaseObject.subscribe(snapshot => {
       let data_bundle : any = JSON.parse(snapshot.val());
       //console.log(data_bundle);
-      if (data_bundle != null && this.truck_marker != null && this.isNewLocationNewer(this.last_location, data_bundle.location)) {
+      if (data_bundle != null && this.truck_marker != null && this.isNewLocationNewer(this.lastLocation, data_bundle.location)) {
         let positionObject : any = {
           lat : parseFloat(data_bundle.location.lat),
           lng : parseFloat(data_bundle.location.lon),
         };
-        this.last_location = data_bundle.location;
+        this.lastLocation = data_bundle.location;
         this.truck_marker.setPosition(positionObject);
+        this.fitBoundsWithDriver(positionObject);
 
         // Push point to polyline only if it is ongoing trip
         if (this.trip.status == 'ongoing' && this.trip.pickUp.time != '') {

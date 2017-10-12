@@ -62,7 +62,7 @@ export class CurrentDetailComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.nextStop = this.trip.getNextStop();
-    console.log(this.nextStop);
+    //console.log(this.nextStop);
 
     if (this.trip.status != 'done') {
       this.tripsService.getFirebaseToken().subscribe((resp: string) => {
@@ -80,12 +80,14 @@ export class CurrentDetailComponent implements OnInit, OnDestroy {
 				if (data_bundle == null) {
 						return;
 				}
+        //console.log(this.trip.route.length);
         let finishedDistance: number = this.trip.finishedDistance;
         let estimatedDistance: number = this.trip.estimatedDistance;
         this.trip = new Trip();
         this.trip.createByJson(data_bundle);
+        //console.log(this.trip.route.length);
         this.trip.finishedDistance = finishedDistance;
-        this.trip.estimatedDistance = Math.max(finishedDistance, this.trip.finishedDistance);
+        this.trip.estimatedDistance = Math.max(finishedDistance, estimatedDistance);
       });
     }
   }
@@ -132,7 +134,7 @@ export class CurrentDetailComponent implements OnInit, OnDestroy {
   public cancelBooking(cancelBooking, trip: Trip) {
     this.selectedTrip = trip;
     this.modalService.open(cancelBooking).result.then((result) => {
-      console.log(trip.orderRealId);
+      //console.log(trip.orderRealId);
       this.tripsService.removeTrip(trip.orderRealId).subscribe((resp: any) => {
         this.tripsService.refreshTrips();
       });
@@ -146,7 +148,7 @@ export class CurrentDetailComponent implements OnInit, OnDestroy {
   }
 
   updateFinishedDistance(distanceUpdate) {
-    console.log('Receving Emit', this.trip.finishedDistance, distanceUpdate);
+    //console.log('Receving Emit', this.trip.finishedDistance, distanceUpdate);
     // Update distance only if trip is ongoing
     // TODO: update the remaining distance based on current location
     // of driver and the remaining stops

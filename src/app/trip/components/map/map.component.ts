@@ -160,6 +160,7 @@ export class MapComponent implements OnInit {
       let bounds : any = this.getBounds();
       bounds.extend(driverLocation);
       this.map.fitBounds(bounds);
+			this.lastFitZoomTime = now;
     }
   }
   onMapReady (map) {

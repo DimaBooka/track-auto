@@ -16,7 +16,7 @@ declare var google: any;
 const MIN_DISTANCE_DELTA_METERS = 10;
 const MIN_TIMEDELTA_MS = 1000;
 const MAX_SPEED_KMPH = 100;
-const AUTO_ZOOMOUT_SECONDS = 10;
+const AUTO_ZOOMOUT_SECONDS = 60;
 /*********************************************/
 
 @Component({

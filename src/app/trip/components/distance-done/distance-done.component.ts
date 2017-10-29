@@ -31,6 +31,7 @@ export class DistanceDoneComponent implements OnInit {
 
   @Input() small: boolean;
   @Input() fullWidth: boolean = false;
+  @Input() onWayToPickup: boolean = false;
   private _width: number;
 
   constructor() {}

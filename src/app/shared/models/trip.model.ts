@@ -27,6 +27,10 @@ export class Trip {
     this._paymentStatus = json["payment_status"] || "";
     this._dateSortable = json["date_sortable"] || "";
     this._orderRealId = json["order_real_id"] || "";
+    this.vehicleModel = json["vehicle_model"] || "";
+    this.vehicleNumber = json["vehicle_number"] || "";
+    this.pickup_distance = json["pickup_distance"] ? +json["pickup_distance"] : 0;
+    this.pickup_distance_done = json["pickup_distance_done"] ? +json["pickup_distance_done"] : 0;
 
     if (json["fare_breakup"]) {
       let fareBreakup = new FareBreakup();
@@ -77,7 +81,7 @@ export class Trip {
   }
 
   public getNextStop() {
-    var nextStop : any = {};
+    let nextStop : any = {};
     let all_stops : any = [];
 
 		// Push all stops to one array
@@ -86,10 +90,10 @@ export class Trip {
     all_stops.push(this._dropoff);
 
     let obj: any;
-		
+
 		// Loop through this array. The first stop not in done state
 		// is the next stop
-    for (var index = 0; index < all_stops.length; index++) {
+    for (let index = 0; index < all_stops.length; index++) {
       obj = all_stops[index];
       nextStop = {};
       //console.log(index, obj);
@@ -157,8 +161,12 @@ export class Trip {
     private _trackingUrl: string = "",
     private _finishedDistance: number = 0,
     private _route: any[] = [],
-    private _paymentStatus: string = 'unpaid'
-  ) {}
+    private _paymentStatus: string = 'unpaid',
+    public vehicleModel: any = null,
+    public vehicleNumber: string = "",
+    public pickup_distance: number = 0,
+    public pickup_distance_done: number = 0
+) {}
 
   public get status() {
     return this._status;

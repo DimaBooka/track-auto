@@ -11,7 +11,11 @@
       <div class="trip-main-info d-flex align-items-center justify-content-between">
 
         <span class="direction">{{ trip.headerFrom }} to {{ trip.headerTo }}, {{ trip.city }}</span>
-        <app-distance-done [fullWidth]="false" [estimation]="trip.estimatedDistance" [finished]="trip.finishedDistance"></app-distance-done>
+        <app-distance-done [fullWidth]="false" [estimation]="trip.estimatedDistance" *ngIf="trip.pickUp.status === 'done'"
+                           [finished]="trip.finishedDistance"></app-distance-done>
+        <app-distance-done [fullWidth]="false" [estimation]="trip.pickup_distance" *ngIf="trip.pickUp.status !== 'done'"
+                           [onWayToPickup]="true" [finished]="trip.pickup_distance_done"></app-distance-done>
+
 
       </div>
 

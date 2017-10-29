@@ -1,3 +1,15 @@
+<div class="before-pickup d-flex flex-column" *ngIf="position == 'on-way-pickup'">
+
+  <div class="left-line d-flex align-items-start justify-content-start">
+    <img class="sub-ico" src="/assets/Assets/dich3.jpg">
+    <div class="line d-flex align-items-center justify-content-center">
+      <div class="line-left"></div>
+    </div>
+  </div>
+
+  <span class="before-pickup-text">On the way to pickup point</span>
+</div>
+
 <div class="stop-start d-flex flex-column" *ngIf="position == 'stop-start'">
   <div class="done-line d-flex align-items-start justify-content-start">
 
@@ -5,7 +17,7 @@
       <img [src]="stop.status != 'done' ? '/assets/Assets-Common/Blue-Marker@2x.png' : '/assets/Assets-Common/Pickup-Done-Big@2x.png'">
       Pickup
     </span>
-    <div class="line d-flex align-items-center justify-content-center">
+    <div class="line d-flex align-items-center justify-content-center" *ngIf="!noLine">
       <div class="part-line"></div>
       <span class="done d-none d-sm-none d-md-none d-lg-none d-xl-block" *ngIf="stopsDone > 0">{{ stopsDone }} more {{ stopsDone > 1 ? 'stops' : 'stop' }} done</span>
       <span class="done d-none d-sm-none d-md-none d-lg-block d-xl-none" *ngIf="stopsDone > 0">{{ stopsDone }} done</span>
@@ -29,7 +41,7 @@
       Stop {{ stopsDone + 1 }}
     </span>
     <span class="line d-flex align-items-center justify-content-center">
-      <span class="part-line"></span>
+      <span class="line-left"></span>
 
       <span class="done d-none d-sm-none d-md-none d-lg-none d-xl-block" *ngIf="stopsLeft - 1 > 0">{{ stopsLeft - 1 }} more {{ stopsLeft - 1 > 1 ? 'stops' : 'stop' }}</span>
       <span class="done d-none d-sm-none d-md-none d-lg-block d-xl-none" *ngIf="stopsLeft - 1 > 0">{{ stopsLeft - 1 }}</span>

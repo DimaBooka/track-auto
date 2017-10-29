@@ -1,13 +1,22 @@
 <div class="stops row" *ngIf="calcs">
 
+  <div class="full-width col-sm-9" *ngIf="trip.pickUp && trip.pickUp.status !== 'done'">
+    <app-stop-item [position]="'on-way-pickup'"></app-stop-item>
+  </div>
+
+  <div class="full-width col-sm-3" *ngIf="trip.pickUp && trip.pickUp.status !== 'done'">
+    <app-stop-item [position]="'stop-start'" [stopsDone]="calcs.stopsDone" [stop]="trip.pickUp" [noLine]="true"></app-stop-item>
+  </div>
+
   <div class="full-width" [ngClass]="{ 'col-sm-5': calcs.nextIndex !== null && calcs.nextIndex !== 'null',
-                                       'col-sm-9': calcs.nextIndex === null || calcs.nextIndex === 'null' }">
+                                       'col-sm-9': calcs.nextIndex === null || calcs.nextIndex === 'null' }"
+       *ngIf="trip.pickUp && trip.pickUp.status === 'done'">
     <app-stop-item [position]="'stop-start'" [stopsDone]="calcs.stopsDone" [stop]="trip.pickUp"></app-stop-item>
   </div>
-  <div class="full-width col-sm-4" *ngIf="calcs.nextIndex !== null && calcs.nextIndex !== 'null'">
+  <div class="full-width col-sm-4" *ngIf="trip.pickUp && trip.pickUp.status === 'done' && calcs.nextIndex !== null && calcs.nextIndex !== 'null'">
     <app-stop-item [position]="'stop-next'" [stopsDone]="calcs.stopsDone" [stopsLeft]="calcs.stopsLeft" [stop]="stops[calcs.nextIndex]"></app-stop-item>
   </div>
-  <div class="full-width col-sm-3">
+  <div class="full-width col-sm-3" *ngIf="trip.pickUp && trip.pickUp.status === 'done'">
     <app-stop-item [position]="'stop-end'" [stop]="trip.dropoff"></app-stop-item>
   </div>
 

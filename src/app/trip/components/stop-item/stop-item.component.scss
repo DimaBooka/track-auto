@@ -1,4 +1,4 @@
-.time {
+.time-status {
   font-size: 16px;
   font-weight: 700;
   color: rgb(4, 130, 169);
@@ -8,16 +8,26 @@
   }
 }
 
-.point {
+.time {
+  color: #757E7F;
   font-size: 14px;
-  font-weight: 600;
-  color: rgb(4, 130, 169);
+  line-height: 21px;
+  margin-top: 5px;
+}
+
+.point {
+  color: #4E5454;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 21px;
+  white-space: nowrap;
 }
 
 .address, .name {
-  font-size: 15px;
-  font-weight: 700;
-  color: darkslategray;
+  color: #4E5454;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 24px;
   max-width: 150px;
 }
 

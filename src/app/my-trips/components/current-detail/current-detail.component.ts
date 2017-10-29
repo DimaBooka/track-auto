@@ -161,4 +161,8 @@ export class CurrentDetailComponent implements OnInit, OnDestroy {
     }
   }
 
+  public getDate(str: string) {
+    return str.replace(/-/g, ' ');
+  }
+
 }

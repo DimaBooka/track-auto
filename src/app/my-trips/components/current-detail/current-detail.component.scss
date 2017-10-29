@@ -723,6 +723,18 @@
     font-size: 14px;
     line-height: 21px;
   }
+
+  &__paid {
+    margin-bottom: 15px;
+
+    &__text {
+      height: 21px;
+      color: #757E7F;
+      font-size: 14px;
+      line-height: 21px;
+      text-align: center;
+    }
+  }
 }
 
 @media screen and (max-width: 767px) {

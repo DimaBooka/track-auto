@@ -128,7 +128,7 @@
 
     <div class="buttons-holder">
       <div class="d-flex align-items-center justify-content-center" *ngIf="trip.status != 'done' && !isUpcoming"
-           (click)="toggleShowCompleteTrip()">
+             (click)="toggleShowCompleteTrip()">
         <ngx-qrcode [qrc-value] = "trip.trackingUrl"> </ngx-qrcode>
 
         <div class="text">
@@ -165,9 +165,13 @@
   <div class="trip-complete__details w-100 d-flex flex-column align-items-start justify-content-center">
     <span class="trip-complete__text__price">Total cost is <img class="rupee" src="/assets/Assets/Black_Indian_Rupee_symbol.png" alt="">{{ trip.price }}</span>
 
-    <button class="w-100 button-flat button-black">Make Payment</button>
+    <button class="w-100 button-flat button-black" *ngIf="trip.paymentStatus != 'paid'">Make Payment</button>
 
-    <div class="trip-complete__hr-line d-flex align-items-center justify-content-shrink">
+    <div class="trip-complete__paid w-100" *ngIf="trip.paymentStatus == 'paid'">
+      <span class="trip-complete__paid__text">Payment made on {{ getDate(trip.date) }}</span>
+    </div>
+
+    <div class="trip-complete__hr-line d-flex align-items-center justify-content-shrink" *ngIf="trip.paymentStatus != 'paid'">
       <span class="hr-line"></span>
       <span class="hr-line-text">Other actions</span>
       <span class="hr-line"></span>

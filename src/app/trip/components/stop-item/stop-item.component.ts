@@ -13,7 +13,7 @@ export class StopItemComponent implements OnInit {
   @Input() position: string;
   @Input() stop: Stop | Pickup | DropOff;
   @Input() stopsLeft: number;
-  @Input() stopsDone: number;
+  @Input() stopsDone: number = 0;
   constructor() {}
 
   ngOnInit() {}

@@ -1,7 +1,10 @@
 <div class="stop-start d-flex flex-column" *ngIf="position == 'stop-start'">
   <div class="done-line d-flex align-items-start justify-content-start">
 
-    <span class="point">Departure</span>
+    <span class="point d-flex align-items-center">
+      <img [src]="stop.status == 'done' ? '/assets/Assets-Common/Blue-Marker@2x.png' : '/assets/Assets-Common/Pickup-Done-Big@2x.png'">
+      Pickup
+    </span>
     <div class="line d-flex align-items-center justify-content-center">
       <div class="part-line"></div>
       <span class="done d-none d-sm-none d-md-none d-lg-none d-xl-block" *ngIf="stopsDone > 0">{{ stopsDone }} more {{ stopsDone > 1 ? 'stops' : 'stop' }} done</span>
@@ -19,7 +22,10 @@
 <div class="stop-next d-flex flex-column" *ngIf="position == 'stop-next'">
   <div class="left-line d-flex align-items-start justify-content-start">
 
-    <span class="point next">Next Stop</span>
+    <span class="point next">
+      <img src="/assets/Assets-Common/Stop@2x.png">
+      Stop {{ stopsDone + 1 }}
+    </span>
     <span class="line d-flex align-items-center justify-content-center">
       <span class="part-line"></span>
 
@@ -36,7 +42,10 @@
 </div>
 
 <div class="stop-end d-flex flex-column" *ngIf="position == 'stop-end'">
-  <span class="point">Arrival</span>
+  <span class="point">
+    <img [src]="stop.status != 'done' ? '/assets/Assets-Common/Purple-Marker@2x.png' : '/assets/Assets-Common/Drop-Done-Big@2x.png'">
+    Delivery
+  </span>
   <span class="name" *ngIf="stop.name">{{ stop.name }}</span>
   <span class="address" *ngIf="stop.address">{{ stop.address }}</span>
   <span class="time" *ngIf="stop.time"><span *ngIf="stop.status === 'done'"><img src="/assets/Assets-Menu/ConfirmBlue@2x.png" alt=""></span>{{ stop.time }}</span>

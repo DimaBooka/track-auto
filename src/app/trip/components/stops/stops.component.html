@@ -5,7 +5,7 @@
     <app-stop-item [position]="'stop-start'" [stopsDone]="calcs.stopsDone" [stop]="trip.pickUp"></app-stop-item>
   </div>
   <div class="full-width col-sm-5" *ngIf="calcs.nextIndex !== null && calcs.nextIndex !== 'null'">
-    <app-stop-item [position]="'stop-next'" [stopsLeft]="calcs.stopsLeft" [stop]="stops[calcs.nextIndex]"></app-stop-item>
+    <app-stop-item [position]="'stop-next'" [stopsDone]="calcs.stopsDone" [stopsLeft]="calcs.stopsLeft" [stop]="stops[calcs.nextIndex]"></app-stop-item>
   </div>
   <div class="full-width col-sm-2">
     <app-stop-item [position]="'stop-end'" [stop]="trip.dropoff"></app-stop-item>

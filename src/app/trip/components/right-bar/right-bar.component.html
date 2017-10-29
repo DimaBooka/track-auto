@@ -4,10 +4,12 @@
     <div class="first-section-1">
       <div class="truck-type d-flex align-items-center justify-content-start">
         <div class="crop" style="background-color: rgb(216, 216, 216)">
-			<img src="{{truckURL}}" alt="">
+          <img src="{{truckURL}}" alt="">
         </div>
-
-        <span>{{ truckType }}</span>
+        <div class="d-flex flex-column align-items-start">
+          <span>{{ truckType }}</span>
+          <span class="vehicle-number">{{ vehicleNumber }}</span>
+        </div>
       </div>
 
       <div class="driver-name d-flex flex-column align-items-start justify-content-center">

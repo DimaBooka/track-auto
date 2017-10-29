@@ -15,6 +15,7 @@ export class RightBarComponent implements OnInit {
   @Input() horizontal: boolean = false;
   @Input() orderId: string;
   @Input() trackingUrl: string;
+  @Input() vehicleNumber: string;
   constructor(private router: Router) {}
 
   ngOnInit() {}

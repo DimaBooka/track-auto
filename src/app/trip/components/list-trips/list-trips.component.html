@@ -29,7 +29,7 @@
           <app-right-bar
             [truckType]="trip.truckType" [driverName]="trip.drivenName"
             [orderId]="trip.orderId" [driverMobile]="trip.driverMobile"
-            [trackingUrl]="trip.trackingUrl" [truckURL]="trip.truckURL"
+            [trackingUrl]="trip.trackingUrl" [truckURL]="trip.truckURL" [vehicleNumber]="trip.vehicleNumber"
           ></app-right-bar>
         </div>
       </div>
@@ -57,11 +57,9 @@
       <div class="hor-bar-nomap line-bottom-nomap w-100" *ngIf="!bookingMode">
         <app-right-bar
             [horizontal]="true" [truckType]="trip.truckType"
-      [truckURL]="trip.truckURL"
-            [driverName]="trip.drivenName"
-            [driverMobile]="trip.driverMobile"
-            [trackingUrl]="trip.trackingUrl"
-            [orderId]="trip.orderId"
+            [truckURL]="trip.truckURL" [driverName]="trip.drivenName"
+            [driverMobile]="trip.driverMobile" [trackingUrl]="trip.trackingUrl"
+            [orderId]="trip.orderId" [vehicleNumber]="trip.vehicleNumber"
         ></app-right-bar>
       </div>
 

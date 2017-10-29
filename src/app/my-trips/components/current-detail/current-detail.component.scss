@@ -251,6 +251,19 @@
     color: black;
   }
 
+  &.button-black {
+    border: 1px solid #141515;
+    background-color: #141515;
+    color: rgb(128, 230, 247);
+
+    &:hover {
+      border: 1px solid rgb(128, 230, 247);
+      background-color: transparent;
+      padding: 8px 8px;
+      color: black;
+    }
+  }
+
   &[disabled] {
     padding: 6px 8px;
     border:none;
@@ -606,5 +619,114 @@
     color: #5e5e5e;
     font-size: 15px;
     font-weight: 700;
+  }
+}
+
+
+.trip-complete {
+  position: fixed;
+  background-color: white;
+  top: 10px;
+  left: 370px;
+  width: 256px;
+  box-shadow: 0 2px 25px 0 rgba(0,0,0,0.5);
+
+  &__text {
+    height: 24px;
+    color: #000000;
+    font-size: 16px;
+    line-height: 24px;
+
+    &__price {
+      height: 32px;
+      color: #4E5454;
+      font-size: 22px;
+      line-height: 32px;
+
+      .rupee {
+        height: 17px;
+        position: relative;
+        top: -2px;
+      }
+    }
+  }
+
+  &__message {
+    padding: 15.5px 0 15.5px 20px;
+    border-bottom: 2px solid #F0F5F7;
+
+    img {
+      width: 41px;
+    }
+
+    span {
+      padding-left: 16px;
+    }
+  }
+
+  &__hr-line {
+    width: 100%;
+    justify-content: space-between;
+    margin: 19px 0;
+
+    .hr-line {
+      box-sizing: border-box;
+      height: 1px;
+      width: 62px;
+      border: 1px solid #F0F5F7;
+
+      &-text {
+        height: 21px;
+        color: #BBC2C4;
+        font-size: 14px;
+        font-weight: 500;
+        line-height: 21px;
+      }
+    }
+  }
+
+  &__details {
+    padding: 10px 20px;
+
+    .first-button {
+      padding-left: 15px;
+      padding-right: 15px;
+
+      &:hover {
+        padding-left: 16px;
+        padding-right: 16px;
+      }
+    }
+
+    .second-button {
+      padding-left: 26px;
+      padding-right: 26px;
+      margin-left: 10px;
+
+      &:hover {
+        padding-left: 27px;
+        padding-right: 27px;
+      }
+    }
+
+    .button-black {
+      margin-top: 10px;
+    }
+  }
+
+  &__email {
+    cursor: pointer;
+    margin-top: 15px;
+    margin-bottom: 20px;
+    height: 21px;
+    color: #0180A8;
+    font-size: 14px;
+    line-height: 21px;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .trip-complete {
+    left: calc(calc(100% - 256px)/2);
   }
 }

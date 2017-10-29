@@ -127,7 +127,8 @@
     </div>
 
     <div class="buttons-holder">
-      <div class="d-flex align-items-center justify-content-center" *ngIf="trip.status != 'done' && !isUpcoming">
+      <div class="d-flex align-items-center justify-content-center" *ngIf="trip.status != 'done' && !isUpcoming"
+           (click)="toggleShowCompleteTrip()">
         <ngx-qrcode [qrc-value] = "trip.trackingUrl"> </ngx-qrcode>
 
         <div class="text">
@@ -153,6 +154,35 @@
   </div>
 </div>
 
+<div class="trip-complete d-flex flex-column align-items-start justify-content-center" *ngIf="showCompleteTrip">
+
+  <div class="trip-complete__message w-100 d-flex align-items-center">
+    <img src="/assets/Assets/green-okay.png" alt="">
+
+    <span class="trip-complete__text">This trip is complete</span>
+  </div>
+
+  <div class="trip-complete__details w-100 d-flex flex-column align-items-start justify-content-center">
+    <span class="trip-complete__text__price">Total cost is <img class="rupee" src="/assets/Assets/Black_Indian_Rupee_symbol.png" alt="">{{ trip.price }}</span>
+
+    <button class="w-100 button-flat button-black">Make Payment</button>
+
+    <div class="trip-complete__hr-line d-flex align-items-center justify-content-shrink">
+      <span class="hr-line"></span>
+      <span class="hr-line-text">Other actions</span>
+      <span class="hr-line"></span>
+    </div>
+
+    <div class="buttons w-100 d-flex align-items-center justify-content-center">
+      <button class="first-button button-flat" (click)="moveToInvoice(trip.orderId)">Print Invoice</button>
+      <a href="/?rebook={{trip.orderId}}" target="_blank" class="second-button button-flat button-blue" >Rebook</a>
+    </div>
+
+    <span class="trip-complete__email" (click)="open(shareContent, trip)">Share invoice by mail</span>
+  </div>
+
+</div>
+
 <ng-template #shareContent let-c="close" let-d="dismiss">
   <div class="modal-header">
     <h4 class="modal-title">Share invoice</h4>
@@ -167,84 +197,84 @@
   </div>
 </ng-template>
 
-<ng-template #tripDone let-c="close" let-d="dismiss">
+<!--<ng-template #tripDone let-c="close" let-d="dismiss">-->
 
-  <div class="modal-header black">
-    <div class="header-holder w-100 d-flex flex-column align-items-center justify-content-center">
+  <!--<div class="modal-header black">-->
+    <!--<div class="header-holder w-100 d-flex flex-column align-items-center justify-content-center">-->
 
-      <div class="checker w-100 d-flex justify-content-center">
-        <img src="/assets/Assets/green-okay.png" alt="">
-      </div>
+      <!--<div class="checker w-100 d-flex justify-content-center">-->
+        <!--<img src="/assets/Assets/green-okay.png" alt="">-->
+      <!--</div>-->
 
-      <div class="head-modal d-flex flex-column align-items-center justify-content-center">
-        <h4 class="modal-title">Your trip is complete</h4>
-        <span class="order-id">Booking ID : {{ selectedTrip.orderId  }}</span>
-      </div>
+      <!--<div class="head-modal d-flex flex-column align-items-center justify-content-center">-->
+        <!--<h4 class="modal-title">Your trip is complete</h4>-->
+        <!--<span class="order-id">Booking ID : {{ selectedTrip.orderId  }}</span>-->
+      <!--</div>-->
 
-    </div>
-  </div>
+    <!--</div>-->
+  <!--</div>-->
 
-  <div class="modal-body black">
+  <!--<div class="modal-body black">-->
 
-    <div class="paid-money d-flex flex-column align-items-start justify-content-start">
+    <!--<div class="paid-money d-flex flex-column align-items-start justify-content-start">-->
 
-      <div class="border-holder d-flex w-100 align-items-center justify-content-between">
-        <div class="d-flex flex-column align-items-start justify-content-start">
+      <!--<div class="border-holder d-flex w-100 align-items-center justify-content-between">-->
+        <!--<div class="d-flex flex-column align-items-start justify-content-start">-->
 
-          <span class="price d-flex align-items-end justify-content-end">
-            <span class="label">Total Cost</span>
-            <span class="currency">
-              <img src="/assets/Assets/White_Indian_Rupee_symbol.png" alt="">
-            </span>
-            <span class="price-val">{{ selectedTrip.price }}</span>
-          </span>
+          <!--<span class="price d-flex align-items-end justify-content-end">-->
+            <!--<span class="label">Total Cost</span>-->
+            <!--<span class="currency">-->
+              <!--<img src="/assets/Assets/White_Indian_Rupee_symbol.png" alt="">-->
+            <!--</span>-->
+            <!--<span class="price-val">{{ selectedTrip.price }}</span>-->
+          <!--</span>-->
 
-          <span class="past">{{ selectedTrip.estimatedDistance | number : '1.1-1' }}kms</span>
-        </div>
+          <!--<span class="past">{{ selectedTrip.estimatedDistance | number : '1.1-1' }}kms</span>-->
+        <!--</div>-->
 
-        <button class="button-flat button-flat-out" (click)="d('Cross click')">Make Payment</button>
-      </div>
+        <!--<button class="button-flat button-flat-out" (click)="d('Cross click')">Make Payment</button>-->
+      <!--</div>-->
 
-    </div>
+    <!--</div>-->
 
-    <span class="direction">{{ selectedTrip.headerFrom }} to {{ selectedTrip.headerTo }}, {{ selectedTrip.city }}</span>
+    <!--<span class="direction">{{ selectedTrip.headerFrom }} to {{ selectedTrip.headerTo }}, {{ selectedTrip.city }}</span>-->
 
-    <div class="driver-info d-flex align-items-center justify-content-between">
+    <!--<div class="driver-info d-flex align-items-center justify-content-between">-->
 
-      <div class="driver-holder d-flex flex-column align-items-start justify-content-center">
-        <div class="driver-name-hor d-flex align-items-start justify-content-center">
-          <div class="driver-hor d-flex align-items-center justify-content-center">
-            <img src="/assets/Assets-Where-Section/Contact@2x.png" alt="">
-            <span class="label">Driver: </span>
-          </div>
+      <!--<div class="driver-holder d-flex flex-column align-items-start justify-content-center">-->
+        <!--<div class="driver-name-hor d-flex align-items-start justify-content-center">-->
+          <!--<div class="driver-hor d-flex align-items-center justify-content-center">-->
+            <!--<img src="/assets/Assets-Where-Section/Contact@2x.png" alt="">-->
+            <!--<span class="label">Driver: </span>-->
+          <!--</div>-->
 
-          <span class="name">{{ selectedTrip.drivenName }}</span>
-        </div>
+          <!--<span class="name">{{ selectedTrip.drivenName }}</span>-->
+        <!--</div>-->
 
-        <div class="driver-mobile-hor d-flex align-items-center justify-content-start">
-          <div class="driver-hor d-flex align-items-center justify-content-center">
-            <img src="/assets/Assets-Where-Section/MakeCall@2x.png" alt="">
-          </div>
+        <!--<div class="driver-mobile-hor d-flex align-items-center justify-content-start">-->
+          <!--<div class="driver-hor d-flex align-items-center justify-content-center">-->
+            <!--<img src="/assets/Assets-Where-Section/MakeCall@2x.png" alt="">-->
+          <!--</div>-->
 
-          <span class="mobile">{{ selectedTrip.driverMobile }}</span>
-        </div>
-      </div>
+          <!--<span class="mobile">{{ selectedTrip.driverMobile }}</span>-->
+        <!--</div>-->
+      <!--</div>-->
 
-      <div class="truck-type-hor d-flex align-items-center justify-content-center">
-        <div class="crop" style="background-color: rgb(216, 216, 216)">
-          <img src="{{selectedTrip.truckURL}}" alt="">
-        </div>
+      <!--<div class="truck-type-hor d-flex align-items-center justify-content-center">-->
+        <!--<div class="crop" style="background-color: rgb(216, 216, 216)">-->
+          <!--<img src="{{selectedTrip.truckURL}}" alt="">-->
+        <!--</div>-->
 
-        <span>{{ selectedTrip.truckType }}</span>
-      </div>
+        <!--<span>{{ selectedTrip.truckType }}</span>-->
+      <!--</div>-->
 
-    </div>
+    <!--</div>-->
 
-  </div>
-  <div class="modal-footer black">
-    <button type="button" class="button-flat button-blue" (click)="c('Close click'); moveTostartPage()">Go back to home page</button>
-  </div>
-</ng-template>
+  <!--</div>-->
+  <!--<div class="modal-footer black">-->
+    <!--<button type="button" class="button-flat button-blue" (click)="c('Close click'); moveTostartPage()">Go back to home page</button>-->
+  <!--</div>-->
+<!--</ng-template>-->
 
 <ng-template #cancelBookingModal let-c="close" let-d="dismiss">
   <div class="modal-header">

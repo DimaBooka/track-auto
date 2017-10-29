@@ -23,14 +23,14 @@ const FIREBASE_ORDER_UPDATES_PATH = "/orders/v1/";
 
 export class CurrentDetailComponent implements OnInit, OnDestroy {
 
-  private trip: Trip;
-  private isPast: boolean = false;
-  private isUpcoming: boolean = false;
-  private usersShare: string[] = [];
-  private selectedTrip: Trip;
-  private showMap: boolean = null;
-  private nextStop: any;
-
+  public trip: Trip;
+  public isPast: boolean = false;
+  public isUpcoming: boolean = false;
+  public usersShare: string[] = [];
+  public selectedTrip: Trip;
+  public showMap: boolean = null;
+  public nextStop: any;
+  public showCompleteTrip: boolean = false;
   firebaseObject: FirebaseObjectObservable<any>;
   firebaseDb: AngularFireDatabase;
   constructor(private route: ActivatedRoute,
@@ -70,12 +70,12 @@ export class CurrentDetailComponent implements OnInit, OnDestroy {
         //console.log(this.afAuth.auth.signInWithCustomToken(resp));
       });
       //console.log('subscribing');
-      var firebase_path = FIREBASE_ORDER_UPDATES_PATH + this.trip.orderId;
+      const firebase_path = FIREBASE_ORDER_UPDATES_PATH + this.trip.orderId;
       //console.log(firebase_path);
       this.firebaseObject = this.firebaseDb.object(firebase_path, { preserveSnapshot: true });
       this.firebaseObject.subscribe(snapshot => {
       let data_bundle : any = JSON.parse(snapshot.val());
-				// Sometimes data in firebase may not be there, but 
+				// Sometimes data in firebase may not be there, but
 				// this call still comes here. Handling that situation
 				if (data_bundle == null) {
 						return;
@@ -145,6 +145,10 @@ export class CurrentDetailComponent implements OnInit, OnDestroy {
 
   public initiatePayment(trip: Trip) {
       this.paymentService.initiatePayment(trip);
+  }
+
+  public toggleShowCompleteTrip() {
+    this.showCompleteTrip = !this.showCompleteTrip;
   }
 
   updateFinishedDistance(distanceUpdate) {

@@ -4,7 +4,7 @@ import { API_RAZORPAY } from '../constants';
 import { Trip } from '../models/trip.model';
 import { environment } from '../../../environments/environment';
 
-declare var Razorpay: any;
+declare const Razorpay: any;
 
 @Injectable()
 export class PaymentService {
@@ -17,7 +17,7 @@ export class PaymentService {
         let amount: any = (trip.price * 100).toString();
         let this_trip: any = trip;
         let this_http: any = this._http;
-        var options = {
+        const options = {
             "key": environment.razorpay_api_key,
             "amount": amount,
             "name": "blowhorn",

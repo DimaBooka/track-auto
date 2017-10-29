@@ -5,7 +5,7 @@
   background-color: white;
 
   .sidebar {
-    width: 350px;
+    width: 380px;
     height: 100%;
     background-color: rgb(240, 245, 247);
     box-shadow: 0 0 5px 3px #cecece;
@@ -111,8 +111,8 @@
   }
 
   .map {
-    margin-left: 350px;
-    width: calc(100% - 350px);
+    margin-left: 380px;
+    width: calc(100% - 380px);
     height: 100%;
     position: relative;
 
@@ -622,12 +622,11 @@
   }
 }
 
-
 .trip-complete {
   position: fixed;
   background-color: white;
   top: 10px;
-  left: 370px;
+  left: 400px;
   width: 256px;
   box-shadow: 0 2px 25px 0 rgba(0,0,0,0.5);
 
@@ -739,6 +738,34 @@
 
 @media screen and (max-width: 767px) {
   .trip-complete {
-    left: calc(calc(100% - 256px)/2);
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    top: auto;
+    z-index: 10;
+
+    .cancel {
+      position: absolute;
+      right: 8px;
+      top: 8px;
+    }
+
+    &__message {
+      padding-left: 0;
+      justify-content: center;
+    }
+
+    &__details {
+      width: 256px !important;
+    }
+  }
+
+  .trip-complete-around {
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    z-index: 5;
   }
 }

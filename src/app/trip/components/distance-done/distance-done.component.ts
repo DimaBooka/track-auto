@@ -32,6 +32,7 @@ export class DistanceDoneComponent implements OnInit {
   @Input() small: boolean;
   @Input() fullWidth: boolean = false;
   @Input() onWayToPickup: boolean = false;
+  @Input() color: string = "#2ac169";
   private _width: number;
 
   constructor() {}

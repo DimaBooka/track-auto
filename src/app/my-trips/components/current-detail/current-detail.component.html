@@ -127,7 +127,8 @@
     </div>
 
     <div class="buttons-holder">
-      <div class="d-flex align-items-center justify-content-center" *ngIf="trip.status != 'done' && !isUpcoming">
+      <div class="d-flex align-items-center justify-content-center" *ngIf="trip.status != 'done' && !isUpcoming"
+             (click)="toggleShowCompleteTrip()">
         <ngx-qrcode [qrc-value] = "trip.trackingUrl"> </ngx-qrcode>
 
         <div class="text">
@@ -154,6 +155,9 @@
 </div>
 
 <div class="trip-complete d-flex flex-column align-items-start justify-content-center" *ngIf="showCompleteTrip">
+  <span class="cancel d-xs-flex d-sm-flex d-md-none d-lg-none d-xl-none" (click)="toggleShowCompleteTrip()">
+    <img src="/assets/Assets/Cancel.png" alt="">
+  </span>
 
   <div class="trip-complete__message w-100 d-flex align-items-center">
     <img src="/assets/Assets/green-okay.png" alt="">
@@ -161,30 +165,33 @@
     <span class="trip-complete__text">This trip is complete</span>
   </div>
 
-  <div class="trip-complete__details w-100 d-flex flex-column align-items-start justify-content-center">
-    <span class="trip-complete__text__price">Total cost is <img class="rupee" src="/assets/Assets/Black_Indian_Rupee_symbol.png" alt="">{{ trip.price }}</span>
+  <div class="w-100 d-flex align-items-center justify-content-center">
+    <div class="trip-complete__details w-100 d-flex flex-column align-items-start justify-content-center">
+      <span class="trip-complete__text__price">Total cost is <img class="rupee" src="/assets/Assets/Black_Indian_Rupee_symbol.png" alt="">{{ trip.price }}</span>
 
-    <button class="w-100 button-flat button-black" *ngIf="trip.paymentStatus != 'paid'">Make Payment</button>
+      <button class="w-100 button-flat button-black" *ngIf="trip.paymentStatus != 'paid'">Make Payment</button>
 
-    <div class="trip-complete__paid w-100" *ngIf="trip.paymentStatus == 'paid'">
-      <span class="trip-complete__paid__text">Payment made on {{ getDate(trip.date) }}</span>
+      <div class="trip-complete__paid w-100" *ngIf="trip.paymentStatus == 'paid'">
+        <span class="trip-complete__paid__text">Payment made on {{ getDate(trip.date) }}</span>
+      </div>
+
+      <div class="trip-complete__hr-line d-flex align-items-center justify-content-shrink" *ngIf="trip.paymentStatus != 'paid'">
+        <span class="hr-line"></span>
+        <span class="hr-line-text">Other actions</span>
+        <span class="hr-line"></span>
+      </div>
+
+      <div class="buttons w-100 d-flex align-items-center justify-content-center">
+        <button class="first-button button-flat" (click)="moveToInvoice(trip.orderId)">Print Invoice</button>
+        <a href="/?rebook={{trip.orderId}}" target="_blank" class="second-button button-flat button-blue" >Rebook</a>
+      </div>
+
+      <span class="trip-complete__email" (click)="open(shareContent, trip)">Share invoice by mail</span>
     </div>
-
-    <div class="trip-complete__hr-line d-flex align-items-center justify-content-shrink" *ngIf="trip.paymentStatus != 'paid'">
-      <span class="hr-line"></span>
-      <span class="hr-line-text">Other actions</span>
-      <span class="hr-line"></span>
-    </div>
-
-    <div class="buttons w-100 d-flex align-items-center justify-content-center">
-      <button class="first-button button-flat" (click)="moveToInvoice(trip.orderId)">Print Invoice</button>
-      <a href="/?rebook={{trip.orderId}}" target="_blank" class="second-button button-flat button-blue" >Rebook</a>
-    </div>
-
-    <span class="trip-complete__email" (click)="open(shareContent, trip)">Share invoice by mail</span>
   </div>
 
 </div>
+<div class="trip-complete-around" *ngIf="showCompleteTrip" (click)="toggleShowCompleteTrip()"></div>
 
 <ng-template #shareContent let-c="close" let-d="dismiss">
   <div class="modal-header">

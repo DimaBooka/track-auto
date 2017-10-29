@@ -12,4 +12,3 @@ export const API_LOCATIONS = `${API_URL}/location`;
 export const API_PARAMS = `${API_URL}/params`;
 export const API_SHARE_INVOICE = `${API_URL}/invoice`;
 export const API_FIREBASE_TOKEN = `${API_URL}/firebasetoken`;
-

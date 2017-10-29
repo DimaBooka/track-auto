@@ -24,6 +24,18 @@
   height: calc(100vh - 210px);
 }
 
+.before-pickup {
+  background: white;
+  padding: 16px 0 24px 27px;
+
+  .before-pickup-text {
+    color: #4E5454;
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 20px;
+  }
+}
+
 @media screen and (max-width: 767px) {
   .overflowScroll {
     height: calc(100vh - 157px);

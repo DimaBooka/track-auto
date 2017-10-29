@@ -3,8 +3,8 @@
 
   .info {
     color: #4E5454;
-    font-size: 18px;
-    line-height: 27px;
+    font-size: 16px;
+    line-height: 21px;
     padding: 0 8px 3px 0;
 
     &.small-txt {
@@ -17,7 +17,8 @@
     width: calc(100% - 126px);
     height: 8px;
     overflow: hidden;
-    background-color: #747e7f;
+    border: 1px solid #DFE6E8;
+    background-color: #F0F5F7;
 
     .done {
       position: absolute;
@@ -30,7 +31,7 @@
   width: 190px !important;
 }
 
-@media screen and (max-width: 340px) {
+@media screen and (max-width: 357px) {
   .nofull-width {
     width: 140px !important;
   }

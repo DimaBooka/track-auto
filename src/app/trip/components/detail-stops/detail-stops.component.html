@@ -2,7 +2,7 @@
 
   <div class="before-pickup d-flex flex-column align-items-start">
     <span class="before-pickup-text">On the way to pickup point</span>
-    <app-distance-done [finished]="trip.pickup_distance_done"
+    <app-distance-done [finished]="trip.pickup_distance_done" [small]="true"
                        [estimation]="trip.pickup_distance" [color]="'#FF6E80'"></app-distance-done>
   </div>
 
@@ -19,4 +19,3 @@
   </div>
 
 </div>
-

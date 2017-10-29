@@ -17,6 +17,7 @@
       color: darkslategray;
       background: white;
       border-bottom: 1px solid #e4e4e4;
+      min-height: 54px;
 
       .logo {
         img {
@@ -34,6 +35,7 @@
       padding: 10px 10px 10px 14px;
       background-color: white;
       border-bottom: 1px solid #e4e4e4;
+      min-height: 200px;
 
       app-distance-done {
         margin: 8px 0;
@@ -47,45 +49,35 @@
       }
 
       .direction {
-        font-size: 14px;
-        font-weight: 700;
+        font-size: 16px;
+        font-weight: 500;
         color: rgb(14, 114, 182);
       }
 
-      .truck-type-hor {
-        margin-left: 10px;
-        padding-right: 15px;
-
-        span {
-          font-size: 15px;
-          font-weight: 600;
-          color: #5e5e5e;
-        }
+      .driver-label {
+        font-size: 13px;
+        font-weight: 400;
+        color: #64b2ca;
       }
 
-      .driver-name-hor, .driver-mobile-hor {
-        margin: 5px 0;
+      .driver-name {
+        padding-top: 5px;
+        padding-bottom: 10px;
+      }
 
-        .name, .mobile {
-          font-size: 14px;
-          font-weight: 700;
-          color: #5e5e5e;
-          padding: 0 16px 0 7px;
-        }
+      .driver-mobile {
+        padding-bottom: 15px;
+      }
 
-        img {
-          height: 22px;
-        }
+      .driver-name, .vehicle, .driver-mobile, .vehicle-number {
+        color: #4E5454;
+        font-size: 16px;
+        font-weight: 500;
+        line-height: 20px;
+      }
 
-        .name {
-          padding-top: 1px;
-        }
-
-        .label {
-          color: #747e7f;
-          font-size: 14px;
-          padding: 0 0 0 7px;
-        }
+      .driver-mobile, .vehicle-number {
+        font-weight: 400;
       }
 
       .crop {

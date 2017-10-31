@@ -21,6 +21,7 @@
 
   <div class="timing d-flex flex-column align-items-end justify-content-start">
     <span class="time" *ngIf="stop.time">{{ stop.time }}</span>
+    <span class="time" *ngIf="stop.status !== 'done'">Estd Arrival</span>
     <span class="waiting" *ngIf="stop.waitingDuration">{{ stop.waitingDuration }}</span>
   </div>
 

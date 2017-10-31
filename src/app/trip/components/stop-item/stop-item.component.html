@@ -29,7 +29,9 @@
   <span class="name" *ngIf="stop.name">{{ stop.name }}</span>
   <span class="address" *ngIf="stop.address">{{ stop.address }}</span>
   <span class="time-status" *ngIf="stop.time && stop.status === 'done'"><img src="/assets/Assets-Menu/ConfirmBlue@2x.png" alt="">{{ stop.time }}</span>
+  <!-- TODO
   <span class="time" *ngIf="stop.time && stop.status === 'done'">Reached in 23mins</span>
+  -->
   <span class="time" *ngIf="stop.time && stop.status !== 'done'">Arriving : {{ stop.time }}</span>
 </div>
 

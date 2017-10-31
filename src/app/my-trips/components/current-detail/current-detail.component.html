@@ -22,7 +22,7 @@
       <span class="past" *ngIf="trip.status=='done'">{{ trip.estimatedDistance | number : '1.1-1' }}kms in {{ trip.totalDuration }}</span>
 
       <div class="w-100 d-flex flex-column alight-items-start justify-content-center">
-        <span class="driver-label">Driver & Vegicle Details</span>
+        <span class="driver-label">Driver & Vehicle Details</span>
         <span class="driver-name">{{ trip.drivenName }}</span>
 
         <div class="d-flex align-items-start justify-content-between">
@@ -120,7 +120,8 @@
         </div>
       </div>
 
-      <div class="buttons d-flex align-items-center justify-content-center" *ngIf="trip.status == 'done'">
+      <!-- TODO Remove the bottom print and rebook option since the floating one is present -->
+      <div class="buttons d-flex align-items-center justify-content-center" *ngIf="false">
         <button class="button-flat" (click)="moveToInvoice(trip.orderId)">Print Invoice</button>
         <!-- TODO <button class="button-flat" (click)="open(shareContent, trip)">Email Invoice</button>-->
         <!--<button class="button-flat button-flat-out">Rebook</button>-->
@@ -153,7 +154,7 @@
     <div class="trip-complete__details w-100 d-flex flex-column align-items-start justify-content-center">
       <span class="trip-complete__text__price">Total cost is <img class="rupee" src="/assets/Assets/Black_Indian_Rupee_symbol.png" alt="">{{ trip.price }}</span>
 
-      <button class="w-100 button-flat button-black" *ngIf="trip.paymentStatus != 'paid'">Make Payment</button>
+      <button class="w-100 button-flat button-black" *ngIf="trip.paymentStatus != 'paid'" (click)="initiatePayment(trip)">Make Payment</button>
 
       <div class="trip-complete__paid w-100" *ngIf="trip.paymentStatus == 'paid'">
         <span class="trip-complete__paid__text">Payment made on {{ getDate(trip.date) }}</span>
@@ -170,7 +171,9 @@
         <a href="/?rebook={{trip.orderId}}" target="_blank" class="second-button button-flat button-blue" >Rebook</a>
       </div>
 
+    <!-- TODO
       <span class="trip-complete__email" (click)="open(shareContent, trip)">Share invoice by mail</span>
+      -->
     </div>
   </div>
 

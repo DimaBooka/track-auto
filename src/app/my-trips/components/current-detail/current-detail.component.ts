@@ -49,6 +49,7 @@ export class CurrentDetailComponent implements OnInit, OnDestroy {
       this.trip = <Trip>trip.details;
       this.isPast = trip.past;
       this.isUpcoming = trip.upcoming;
+      this.showCompleteTrip = (this.trip.status == 'done');
 
       if (this.tripsService.currentTab === Tabs.PastTrips)
         this.isPast = true;
@@ -75,11 +76,11 @@ export class CurrentDetailComponent implements OnInit, OnDestroy {
       this.firebaseObject = this.firebaseDb.object(firebase_path, { preserveSnapshot: true });
       this.firebaseObject.subscribe(snapshot => {
       let data_bundle : any = JSON.parse(snapshot.val());
-				// Sometimes data in firebase may not be there, but
-				// this call still comes here. Handling that situation
-				if (data_bundle == null) {
-						return;
-				}
+        // Sometimes data in firebase may not be there, but
+        // this call still comes here. Handling that situation
+        if (data_bundle == null) {
+            return;
+        }
         //console.log(this.trip.route.length);
         let finishedDistance: number = this.trip.finishedDistance;
         let estimatedDistance: number = this.trip.estimatedDistance;

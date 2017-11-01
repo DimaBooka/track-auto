@@ -47,6 +47,7 @@ export class CurrentDetailComponent implements OnInit, OnDestroy {
     this.firebaseDb = firebaseDb;
     this.route.data.subscribe(trip => {
       this.trip = <Trip>trip.details;
+      //console.log(this.trip);
       this.isPast = trip.past;
       this.isUpcoming = trip.upcoming;
       this.showCompleteTrip = (this.trip.status == 'done');
@@ -81,14 +82,31 @@ export class CurrentDetailComponent implements OnInit, OnDestroy {
         if (data_bundle == null) {
             return;
         }
+        let trip = new Trip();
+        trip.createByJson(data_bundle);
+
+        //console.log(trip.last_modified, this.trip.last_modified);
+        // Compare this times and only update if the trip data is newer.
+        // Firebase just sends an update initially
+        if (trip.last_modified > this.trip.last_modified)
+          this.trip = trip;
+        /*
         //console.log(this.trip.route.length);
         let finishedDistance: number = this.trip.finishedDistance;
         let estimatedDistance: number = this.trip.estimatedDistance;
+        let pickup_distance: number = this.trip.pickup_distance;
         this.trip = new Trip();
         this.trip.createByJson(data_bundle);
         //console.log(this.trip.route.length);
         this.trip.finishedDistance = finishedDistance;
         this.trip.estimatedDistance = Math.max(finishedDistance, estimatedDistance);
+
+        if (this.trip.status == 'ongoing') {
+          if (this.trip.pickUp.time == '') {
+          this.trip.pickup_distance = Math.max(pickup_distance, this.trip.pickup_distance) ;
+          }
+        }
+        */
       });
     }
   }
@@ -157,8 +175,15 @@ export class CurrentDetailComponent implements OnInit, OnDestroy {
     // Update distance only if trip is ongoing
     // TODO: update the remaining distance based on current location
     // of driver and the remaining stops
-    if (this.trip.status == 'ongoing' && this.trip.pickUp.time != '') {
-      this.trip.finishedDistance += distanceUpdate;
+    if (this.trip.status == 'ongoing') {
+        //console.log('this.trip.pickUp.time', this.trip.pickUp.time);
+      if (this.trip.pickUp.status == 'done') {
+        this.trip.finishedDistance += distanceUpdate;
+        //console.log('Updating finished Distance');
+      } else {
+        this.trip.pickup_distance_done += distanceUpdate;
+        //console.log('Updating pickup Distance done');
+      }
     }
   }
 

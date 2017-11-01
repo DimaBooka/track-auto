@@ -31,6 +31,7 @@ export class Trip {
     this.vehicleNumber = json["vehicle_number"] || "";
     this.pickup_distance = json["pickup_distance"] ? +json["pickup_distance"] : 0;
     this.pickup_distance_done = json["pickup_distance_done"] ? +json["pickup_distance_done"] : 0;
+    this.last_modified = json["last_modified"] || '';
 
     if (json["fare_breakup"]) {
       let fareBreakup = new FareBreakup();
@@ -165,7 +166,8 @@ export class Trip {
     public vehicleModel: any = null,
     public vehicleNumber: string = "",
     public pickup_distance: number = 0,
-    public pickup_distance_done: number = 0
+    public pickup_distance_done: number = 0,
+    public last_modified: string = ""
 ) {}
 
   public get status() {

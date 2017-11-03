@@ -1,5 +1,6 @@
 import { BaseClass } from './base.class';
 import { LocationStop } from './location.model';
+import { Contact } from './contact.model';
 
 export class Pickup extends BaseClass{
 
@@ -11,7 +12,8 @@ export class Pickup extends BaseClass{
     address: string = "",
     waitingDuration: string = "",
     location: LocationStop = new LocationStop(),
-    time: string = ""
+    time: string = "",
+    contact: Contact = new Contact()
   ) {
     super(status, icon, distance, name, address, waitingDuration, location, time)
   }

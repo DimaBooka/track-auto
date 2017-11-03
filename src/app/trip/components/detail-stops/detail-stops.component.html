@@ -1,9 +1,10 @@
 <div class="stops" [ngClass]="{overflowScroll: overflowScroll}">
 
-  <div class="before-pickup d-flex flex-column align-items-start" *ngIf="trip.status=='ongoing' && trip.pickUp.status=='pending'">
+  <div class="before-pickup d-flex flex-column align-items-start" *ngIf="trip.status=='ongoing'">
     <span class="before-pickup-text">On the way to pickup point</span>
     <app-distance-done [finished]="trip.pickup_distance_done" [small]="true"
                        [estimation]="trip.pickup_distance" [color]="'#FF6E80'"></app-distance-done>
+    <div class="line" [ngClass]="{'solid': trip.pickUp.status == 'done'}" [ngStyle]="{'height': (height ? height : 35) + 'px'}"></div>
   </div>
 
   <div class="stop">

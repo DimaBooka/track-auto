@@ -27,12 +27,26 @@
 .before-pickup {
   background: white;
   padding: 16px 0 24px 27px;
+  position: relative;
 
   .before-pickup-text {
     color: #4E5454;
     font-size: 16px;
     font-weight: 500;
     line-height: 20px;
+  }
+
+  .line {
+    width: 1px;
+    border: 1px dashed #535353;
+    position: absolute;
+    z-index: 1;
+    top: 60px;
+    left: 28px;
+
+    .solid {
+      border: 1px solid #535353;
+    };
   }
 }
 

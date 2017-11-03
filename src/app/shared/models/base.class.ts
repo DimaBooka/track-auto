@@ -1,4 +1,5 @@
 import { LocationStop } from './location.model';
+import { Contact } from './contact.model';
 
 export class BaseClass {
 
@@ -15,6 +16,13 @@ export class BaseClass {
       location.createByJson(json["location"]);
       this._location = location;
     }
+
+    if(json["contact"]) {
+      let contact = new Contact();
+      contact.createByJson(json["location"]);
+      this.contact = contact;
+    }
+
   }
 
   constructor(
@@ -25,7 +33,8 @@ export class BaseClass {
     private _address: string = "",
     private _waitingDuration: string = "",
     private _location: LocationStop = new LocationStop(),
-    private _time: string = ""
+    private _time: string = "",
+    public contact: Contact = new Contact()
   ) {}
 
   public get status(){

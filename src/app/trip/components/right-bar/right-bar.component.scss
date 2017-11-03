@@ -159,9 +159,12 @@
 
     .name {
       padding-top: 4px;
-
       &.order-id {
         padding: 0;
+        color: #4E5454;
+        font-size: 18px;
+        line-height: 27px;
+        font-weight: 400;
       }
     }
 

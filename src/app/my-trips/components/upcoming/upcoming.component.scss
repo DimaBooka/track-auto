@@ -4,6 +4,13 @@
   background-color: white;
   position: relative;
   padding: 12px 15px 12px 12px;
+
+  span {
+    color: #4E5454;
+    font-size: 20px;
+    font-weight: 300;
+    line-height: 29px;
+  }
 }
 
 @media screen and (max-width: 767px){

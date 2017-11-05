@@ -15,15 +15,15 @@
   </div>
 
   <div class="stop">
-    <app-detail-stop [stop]="trip.pickUp" [name]="'pickup'" [index]=""></app-detail-stop>
+    <app-detail-stop [stop]="trip.pickUp" [name]="'pickup'" [index]="1"></app-detail-stop>
   </div>
 
   <div class="stop" *ngFor="let stop of trip.stops; let i = index;">
-    <app-detail-stop [stop]="stop" [name]="'stop'" [index]="i + 1"></app-detail-stop>
+    <app-detail-stop [stop]="stop" [name]="'stop'" [index]="i + 1" [isStop]="true"></app-detail-stop>
   </div>
 
   <div class="stop">
-    <app-detail-stop [stop]="trip.dropoff" [lastStop]="true" [index]="" [name]="'dropoff'"></app-detail-stop>
+    <app-detail-stop [stop]="trip.dropoff" [lastStop]="true" [index]="trip.stops.length + 1" [name]="'dropoff'"></app-detail-stop>
   </div>
 
 </div>

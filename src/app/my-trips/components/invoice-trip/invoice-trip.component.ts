@@ -33,8 +33,6 @@ export class InvoiceTripComponent implements OnInit, OnDestroy {
   }
 
   print() {
-    document.body.style.width = "1000px";
     window.print();
-    document.body.style.width = "100%";
   }
 }

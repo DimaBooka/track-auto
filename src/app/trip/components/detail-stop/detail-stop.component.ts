@@ -12,6 +12,7 @@ export class DetailStopComponent implements OnInit {
   @Input() lastStop: boolean = false;
   @Input() name: string;
   @Input() index: number;
+  @Input() isStop: boolean = false;
   constructor() {}
 
   ngOnInit() {}

@@ -16,6 +16,7 @@ import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { AngularFireAuthModule } from 'angularfire2/auth';
 import { environment } from '../environments/environment';
 import { Ng2AutoCompleteModule } from 'ng2-auto-complete';
+import { LocationsModule } from './locations/locations.module';
 
 @NgModule({
   declarations: [
@@ -37,6 +38,7 @@ import { Ng2AutoCompleteModule } from 'ng2-auto-complete';
     MyTripsModule,
     TripModule,
     SharedModule,
+    LocationsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

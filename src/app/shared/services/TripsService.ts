@@ -73,7 +73,7 @@ export class TripsService {
       .catch(HandleError);
   }
 
-  public getUserLocation() {
+  public getLocations() {
     return this._http.get(API_LOCATIONS).map((resp: any) => {
       let response = JSON.parse(resp._body);
       let locations: UserLocation[] = [];
@@ -85,6 +85,35 @@ export class TripsService {
       });
 
       return locations;
+    });
+  }
+
+  public createLocation(location: UserLocation) {
+    return this._http.post(API_LOCATIONS, location).map((resp: any) => {
+      let response = JSON.parse(resp._body);
+      return response;
+    });
+  }
+
+  public updateLocation(location: UserLocation) {
+    return this._http.patch(`API_LOCATIONS/${location.id}`, location).map((resp: any) => {
+      let response = JSON.parse(resp._body);
+      let locations: UserLocation[] = [];
+debugger;
+      response.map((item: JSON) => {
+        let userLocation = new UserLocation();
+        userLocation.createByJson(item);
+        locations.push(userLocation);
+      });
+
+      return locations;
+    });
+  }
+
+  public removeLocation(locationId: number) {
+    return this._http.delete(`API_LOCATIONS/${locationId}`).map((resp: any) => {
+      let response = JSON.parse(resp._body);
+      return response;
     });
   }
 

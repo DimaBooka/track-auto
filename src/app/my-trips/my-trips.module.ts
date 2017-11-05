@@ -14,8 +14,8 @@ import { NgxQRCodeModule } from 'ngx-qrcode2';
   imports: [
     CommonModule,
     TripModule,
-	SharedModule,
-	NgxQRCodeModule
+    SharedModule,
+    NgxQRCodeModule
   ],
   declarations: [
     CurrentComponent,

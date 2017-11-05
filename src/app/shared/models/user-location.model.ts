@@ -5,6 +5,10 @@ import { GeoPoint } from "./geopoint.model";
 export class UserLocation {
 
   createByJson(json: JSON) {
+    if(json['id']) {
+      this.id = +json['id'];
+    }
+
     if (json["address"]) {
       let address = new AddressLocation();
       address.createByJson(json["address"]);
@@ -23,15 +27,24 @@ export class UserLocation {
       this._geopoint = geopoint;
     }
 
-	this._name = json["name"];
+	  this._name = json["name"];
   }
 
   constructor(
+    private _id: number = 0,
     private _address: AddressLocation = new AddressLocation(),
     private _contact: Contact = new Contact(),
     private _geopoint: GeoPoint = new GeoPoint(),
     private _name: string = ""
   ) {}
+
+  public get id() {
+    return this._id;
+  }
+
+  public set id(id: number) {
+    this._id = id;
+  }
 
   public get address() {
     return this._address;

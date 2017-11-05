@@ -50,7 +50,7 @@ export class HeaderComponent implements OnInit {
               private mapsAPILoader: MapsAPILoader,
               private modalService: NgbModal) {
     this.currentTab = this._tripsService.currentTab;
-    this._tripsService.getUserLocation().subscribe((res: UserLocation[]) => {
+    this._tripsService.getLocations().subscribe((res: UserLocation[]) => {
       this.locations = res;
     });
   }

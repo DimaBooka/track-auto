@@ -1,0 +1,112 @@
+<div class="locations-header d-flex align-items-center justify-content-between">
+  <h1>Saved Locations</h1>
+  <!--<button class="button-flat-out" (click)="createLocationOpen(createLocation)">Create location</button>-->
+  <button class="button-flat-out">Create location</button>
+</div>
+<div class="search-bar d-flex align-items-center justify-content-start">
+  <span class="text">{{ (locations.length > 9 ? '' : '0') + locations.length }} saved locations</span>
+
+  <div class="search-input-holder">
+    <input type="text" [(ngModel)]="search" (keyup)="filterLocations()">
+    <img src="/assets/Assets-Common/search.png" alt="">
+  </div>
+</div>
+
+<div class="locations-holder d-flex flex-column">
+
+  <div class="location-name-columns d-flex align-items-start justify-content-start">
+    <div class="fragment-1 d-flex flex-column align-items-start justify-content-start">
+      <span class="location-head">Location Name</span>
+    </div>
+
+    <div class="fragment-2 d-flex flex-column align-items-start justify-content-start">
+      <span>Location Address</span>
+    </div>
+
+    <div class="fragment-3 d-flex flex-column align-items-start justify-content-start">
+      <span class="location-head">Contact Details</span>
+    </div>
+
+    <div class="fragment-4 d-flex flex-column align-items-start justify-content-start">
+      <span class="location-head">More</span>
+    </div>
+  </div>
+
+  <div class="location d-flex align-items-start justify-content-start" *ngFor="let location of filteredLocations">
+    <div class="fragment-1 d-flex flex-column align-items-start justify-content-start">
+      <span class="location-text">{{ location.name }}</span>
+    </div>
+
+    <div class="fragment-2 d-flex flex-column align-items-start justify-content-start">
+      <span class="location-text" *ngIf="location.address.fullAddress">{{ location.address.fullAddress }}</span>
+      <span class="location-text" *ngIf="!location.address.fullAddress">
+        {{ location.address.line }}
+        {{ location.address.state }}
+        {{ location.address.area }}
+        {{ location.address.landmark }}
+        {{ location.address.city }}
+        {{ location.address.postalCode }}
+      </span>
+    </div>
+
+    <div class="fragment-3 d-flex flex-column align-items-start justify-content-start">
+      <span class="location-text">{{ location.contact.name }}</span>
+      <span class="location-text">{{ location.contact.mobile }}</span>
+    </div>
+
+    <div class="fragment-4 d-flex flex-column align-items-start justify-content-start">
+      <div class="buttons-holder d-flex align-items-start justify-content-start">
+        <button class="button button-flat" (click)="deleteLocationOpen(deleteLocation, location)">Delete</button>
+        <!--<button class="button button-flat button-blue" (click)="editLocationOpen(editLocation, location)">Edit</button>-->
+        <button class="button button-flat button-blue">Edit</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<ng-template #deleteLocation let-c="close" let-d="dismiss">
+  <div class="delete modal-header">
+    <h4 class="modal-title question">Are you sure you want to delete this location?</h4>
+  </div>
+  <div class="delete modal-body d-flex flex-column align-items-start justify-content-center">
+    <span class="order-id">{{ selectedLocation.name }}</span>
+    <span class="warning-alert w-100">
+      <span class="warning">
+        <img src="/assets/Assets-Common/RedError@2x.png" alt="">
+      </span>
+      <span class="message">Warning! This cannot be undone.</span>
+    </span>
+  </div>
+  <div class="delete modal-footer">
+    <button type="button" class="button-flat" (click)="d('Cross click')">No</button>
+    <button type="button" class="button-flat button-blue" (click)="c('Close click')">Yes</button>
+  </div>
+</ng-template>
+
+<!--<ng-template #editLocation let-c="close" let-d="dismiss">-->
+  <!--<div class="modal-header">-->
+    <!--<h4 class="modal-title question">Edit location {{ selectedLocation.name }}</h4>-->
+  <!--</div>-->
+  <!--<div class="modal-body d-flex flex-column align-items-start justify-content-center">-->
+    <!--<span class="order-id">Location name</span>-->
+    <!--<span>fields here</span>-->
+  <!--</div>-->
+  <!--<div class="modal-footer">-->
+    <!--<button type="button" class="button-flat" (click)="d('Cross click')">Save</button>-->
+    <!--<button type="button" class="button-flat button-blue" (click)="c('Close click')">Cancel</button>-->
+  <!--</div>-->
+<!--</ng-template>-->
+
+<!--<ng-template #createLocation let-c="close" let-d="dismiss">-->
+  <!--<div class="modal-header">-->
+    <!--<h4 class="modal-title question">Create new location</h4>-->
+  <!--</div>-->
+  <!--<div class="modal-body d-flex flex-column align-items-start justify-content-center">-->
+    <!--<span>fields here</span>-->
+  <!--</div>-->
+  <!--<div class="modal-footer">-->
+    <!--<button type="button" class="button-flat" (click)="d('Cross click')">Create</button>-->
+    <!--<button type="button" class="button-flat button-blue" (click)="c('Close click')">Cancel</button>-->
+  <!--</div>-->
+<!--</ng-template>-->

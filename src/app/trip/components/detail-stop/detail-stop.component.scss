@@ -76,23 +76,23 @@
       };
     }
 
-    .distance {
-      position: absolute;
-      top: 95px;
-      right: -37px;
-      background-color: #DFE6E8;
-      border-radius: 18px;
-      z-index: 1;
-      color: #4E5454;
-      font-size: 14px;
-      line-height: 21px;
-      padding: 5px 8px;
-    }
-
     .small-image-stop {
       height: 44px !important;
       left: 3px !important;
     }
+  }
+
+  .distance {
+    position: absolute;
+    bottom: -39px;
+    left: 53px;
+    background-color: #DFE6E8;
+    border-radius: 18px;
+    z-index: 1;
+    color: #4E5454;
+    font-size: 14px;
+    line-height: 21px;
+    padding: 5px 8px;
   }
 
   .info {

@@ -12,7 +12,6 @@
       </span>
         <span class="index" *ngIf="stop.status !== 'done' && isStop">{{ index }}</span>
         <div class="line" *ngIf="!lastStop" [ngClass]="{'solid': stop.status === 'done' }" [ngStyle]="{height: 150 + 'px', 'z-index': index+1}"></div>
-        <!--<div class="distance" *ngIf="stop.status === 'done' && !lastStop">{{ stop.distance }} km</div>-->
       </div>
     </div>
 
@@ -33,5 +32,7 @@
     <img src="/assets/Assets-Where-Section/Contact@2x.png" alt="">
     <span>{{ stop.contact.name }}awdawdawda | awdawdawd{{ stop.contact.mobile }}</span>
   </div>
+
+  <div class="distance" *ngIf="stop.status === 'done' && !lastStop">{{ stop.distance }} km</div>
 
 </div>

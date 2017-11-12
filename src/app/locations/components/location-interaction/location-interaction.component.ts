@@ -15,6 +15,7 @@ export class LocationInteractionComponent implements OnInit {
   public location: UserLocation = new UserLocation();
   public id: string;
   public locationGroup: FormGroup;
+  public showMap: boolean = null;
   constructor(
     private router: Router,
     private route: ActivatedRoute,
@@ -26,6 +27,7 @@ export class LocationInteractionComponent implements OnInit {
   ngOnInit() {
     this.id = this.route.snapshot.params['id'];
 
+    // Component handle both creation and edit of saved location
     if (this.id) {
 
       this.route.data.subscribe(trip => {
@@ -47,6 +49,10 @@ export class LocationInteractionComponent implements OnInit {
     }
   }
 
+  toggleMap() {
+    this.showMap = !this.showMap;
+  }
+
   initForm() {
     this.locationGroup = this.fb.group({
       name: [this.location.name, [Validators.required]],
@@ -59,6 +65,15 @@ export class LocationInteractionComponent implements OnInit {
       contactName: [this.location.contact.name, [Validators.required]],
       contactNumber: [this.location.contact.mobile, [Validators.required]],
     });
+  }
+
+  // need to call when user click on map to new address
+  // (create new component for this with map),
+  // create new UserLocation object there pass it to emit output which call this method
+  updateLocationValue(location: UserLocation) {
+    this.location = location;
+    this.locationGroup.reset();
+    this.initForm();
   }
 
   goToLocations() {

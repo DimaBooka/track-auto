@@ -24,6 +24,16 @@
         line-height: 29px;
         margin: 21px 25px;
       }
+
+      .toggle-view-map {
+        position: absolute;
+        right: 20px;
+        top: 0;
+
+        img {
+          height: 30px;
+        }
+      }
     }
 
     .block-label {
@@ -122,7 +132,7 @@
   }
 }
 
-@media screen and (max-width: 567px) {
+@media screen and (max-width: 767px) {
 
   .sidebar {
     width: 100% !important;

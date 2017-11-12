@@ -7,14 +7,22 @@
       <span>
           Edit Location
       </span>
+
+      <span class="toggle-view-map d-xs-flex d-sm-flex d-md-none d-lg-none d-xl-none" (click)="toggleMap()">
+        <img [src]="showMap ? '/assets/Assets/dich2.jpg' : '/assets/Assets/dich.jpg'" alt="">
+      </span>
     </div>
 
-    <div class="location-name w-100 d-flex flex-column align-items-start justify-content-center">
+    <div class="mini-map" *ngIf="showMap">
+      New Map component should be here with output: (updatedLocation)="updateLocationValue($event)"
+    </div>
+
+    <div class="location-name w-100 d-flex flex-column align-items-start justify-content-center" *ngIf="!showMap">
       <span class="block-label">Location Name</span>
       <input class="blue-input" type="text" formControlName="name">
     </div>
 
-    <div class="location-address w-100 d-flex flex-column align-items-start justify-content-center">
+    <div class="location-address w-100 d-flex flex-column align-items-start justify-content-center" *ngIf="!showMap">
       <span class="block-label">Address</span>
 
       <label for="flat">Flat number / Building Name</label>
@@ -36,7 +44,7 @@
       </div>
     </div>
 
-    <div class="location-contact w-100 d-flex flex-column align-items-start justify-content-center">
+    <div class="location-contact w-100 d-flex flex-column align-items-start justify-content-center" *ngIf="!showMap">
       <span class="block-label">Location Contact</span>
 
       <label for="name">Contact Name</label>
@@ -46,14 +54,14 @@
       <input type="text" id="number" formControlName="contactNumber">
     </div>
 
-    <div class="buttons-holder">
+    <div class="buttons-holder" *ngIf="!showMap">
       <input type="button" class="button-flat" value="Cancel" (click)="goToLocations()">
       <input type="submit" class="button-flat button-blue" [value]="id ? 'Save Changes' : 'Create'" [disabled]="!locationGroup.valid">
     </div>
   </form>
 
   <div class="map">
-    Map should be here.
+    New Map component should be here with output: (updatedLocation)="updateLocationValue($event)"
   </div>
 
 </div>

@@ -32,6 +32,7 @@ export class LocationInteractionComponent implements OnInit {
 
       this.route.data.subscribe(trip => {
         if (trip.details.length > 0) {
+          // this.location = <UserLocation>trip.details;
           this.location = <UserLocation>trip.details.filter(location => location.id === +this.id)[0];
           if (!this.location) { this.goToLocations(); }
 

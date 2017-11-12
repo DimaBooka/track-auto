@@ -38,7 +38,8 @@
   </div>
 
   <ng-template #noMap>
-    <div class="trip-nomap d-flex flex-column align-items-center justify-content-center" *ngFor="let trip of trips">
+    <div class="trip-nomap d-flex flex-column align-items-center justify-content-center"
+         *ngFor="let trip of trips" [ngStyle]="{'margin-top': trip.status === 'upcoming' ? '3px' : '30px'}">
 
       <div class="trip-main-info-nomap line-bottom-nomap w-100 d-flex align-items-center justify-content-between">
         <div class="date-direction d-flex align-items-center justify-content-center">
@@ -71,7 +72,7 @@
               <img src="{{ trip.truckURL }}" alt="">
             </div>
 
-            <span class="truck-type-hor">{{ trip.truckType }}</span>
+            <span class="truck-type-hor-text">{{ trip.truckType }}</span>
           </div>
 
           <span class="allocation">Driver will be allocated 2 hours before trip</span>

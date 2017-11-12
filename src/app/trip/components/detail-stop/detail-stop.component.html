@@ -21,16 +21,16 @@
     </div>
 
     <div class="timing d-flex flex-column align-items-end justify-content-start">
-      <span class="time time-red" *ngIf="stop.time">{{ stop.time }}</span>
+      <span class="time time-red" [ngClass]="{'time-red': stop.status !== 'done'}" *ngIf="stop.time">{{ stop.time }}</span>
       <span class="time" *ngIf="stop.status !== 'done'">Estd Arrival</span>
       <span class="waiting" *ngIf="stop.waitingDuration">{{ stop.waitingDuration }}</span>
     </div>
   </div>
 
   <div class="contact-info d-flex align-items-center justify-content-center"
-       *ngIf="true">
+       *ngIf="stop.contact.name && stop.contact.mobile">
     <img src="/assets/Assets-Where-Section/Contact@2x.png" alt="">
-    <span>{{ stop.contact.name }}awdawdawda | awdawdawd{{ stop.contact.mobile }}</span>
+    <span>{{ stop.contact.name }} | {{ stop.contact.mobile }}</span>
   </div>
 
   <div class="distance" *ngIf="stop.status === 'done' && !lastStop">{{ stop.distance }} km</div>

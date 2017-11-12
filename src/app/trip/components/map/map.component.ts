@@ -89,13 +89,15 @@ export class MapComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.myInit();
+    if (this.trip) {
+      this.myInit();
 
-    this.mapsAPILoader.load().then(() => {
-    });
+      this.mapsAPILoader.load().then(() => {
+      });
 
-    this.trace = this.trip.route;
-    this.startRealTimeUpdates();
+      this.trace = this.trip.route;
+      this.startRealTimeUpdates();
+    }
   }
 
   myInit() {
@@ -203,7 +205,7 @@ export class MapComponent implements OnInit {
     let timedelta_ms: number = new_ - old_;
     let speed_kmph: number = (distance_meters * 60 * 60) /timedelta_ms;
     //console.log(timedelta_ms, distance_meters, speed_kmph);
-    let newer : boolean = (timedelta_ms > MIN_TIMEDELTA_MS && 
+    let newer : boolean = (timedelta_ms > MIN_TIMEDELTA_MS &&
       distance_meters > MIN_DISTANCE_DELTA_METERS &&
       speed_kmph < MAX_SPEED_KMPH
     );
@@ -249,12 +251,12 @@ export class MapComponent implements OnInit {
       }
     });
   }
-  
+
   ngOnChanges(changes: SimpleChanges) {
 
     this.trip = changes.trip.currentValue;
     this.myInit();
-    // You can also use categoryId.previousValue and 
+    // You can also use categoryId.previousValue and
     // categoryId.firstChange for comparing old and new values
 
   }

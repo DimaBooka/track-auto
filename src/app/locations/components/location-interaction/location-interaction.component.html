@@ -1,0 +1,59 @@
+<div class="saved-location d-flex justify-content-stretch">
+
+  <form class="sidebar d-flex flex-column align-items-stretch justify-content-start"
+        (submit)="onSubmit()" [formGroup]="locationGroup">
+
+    <div class="head d-flex align-items-center justify-content-start">
+      <span>
+          Edit Location
+      </span>
+    </div>
+
+    <div class="location-name w-100 d-flex flex-column align-items-start justify-content-center">
+      <span class="block-label">Location Name</span>
+      <input class="blue-input" type="text" formControlName="name">
+    </div>
+
+    <div class="location-address w-100 d-flex flex-column align-items-start justify-content-center">
+      <span class="block-label">Address</span>
+
+      <label for="flat">Flat number / Building Name</label>
+      <input type="text" id="flat" formControlName="flat">
+
+      <label for="street">Street / Cross / Main</label>
+      <input type="text" id="street" formControlName="line">
+
+      <div class="d-flex w-100 align-items-center justify-content-between">
+        <div class="short d-flex flex-column">
+          <label for="city">City</label>
+          <input type="text" id="city" formControlName="city">
+        </div>
+
+        <div class="short d-flex flex-column">
+          <label for="pin-code">PIN Code</label>
+          <input type="text" id="pin-code" formControlName="code">
+        </div>
+      </div>
+    </div>
+
+    <div class="location-contact w-100 d-flex flex-column align-items-start justify-content-center">
+      <span class="block-label">Location Contact</span>
+
+      <label for="name">Contact Name</label>
+      <input type="text" id="name" formControlName="contactName">
+
+      <label for="number">Contact Number</label>
+      <input type="text" id="number" formControlName="contactNumber">
+    </div>
+
+    <div class="buttons-holder">
+      <input type="button" class="button-flat" value="Cancel" (click)="goToLocations()">
+      <input type="submit" class="button-flat button-blue" [value]="id ? 'Save Changes' : 'Create'" [disabled]="!locationGroup.valid">
+    </div>
+  </form>
+
+  <div class="map">
+    Map should be here.
+  </div>
+
+</div>

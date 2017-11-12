@@ -15,6 +15,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { NgxQRCodeModule } from 'ngx-qrcode2';
 import { DatePickerModule } from 'angular-io-datepicker';
 import { OverlayModule } from "angular-io-overlay/src/overlay";
+import { DetailLocationResolver } from './resolvers/details-location.resolver';
 
 @NgModule({
   imports: [
@@ -32,6 +33,6 @@ import { OverlayModule } from "angular-io-overlay/src/overlay";
   ],
   declarations: [HeaderComponent, SidebarComponent],
   exports: [HeaderComponent, SidebarComponent],
-  providers: [TripsService, DetailResolver, SidebarService, DataService]
+  providers: [TripsService, DetailResolver, DetailLocationResolver, SidebarService, DataService]
 })
 export class SharedModule { }

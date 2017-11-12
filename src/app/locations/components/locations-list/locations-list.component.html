@@ -1,7 +1,7 @@
 <div class="locations-header d-flex align-items-center justify-content-between">
   <h1>Saved Locations</h1>
   <!--<button class="button-flat-out" (click)="createLocationOpen(createLocation)">Create location</button>-->
-  <button class="button-flat-out">Create location</button>
+  <button class="button-flat-out" routerLink="/locations/create">Create location</button>
 </div>
 <div class="search-bar d-flex align-items-center justify-content-start">
   <span class="text">{{ (locations.length > 9 ? '' : '0') + locations.length }} saved locations</span>
@@ -58,7 +58,7 @@
       <div class="buttons-holder d-flex align-items-start justify-content-start">
         <button class="button button-flat" (click)="deleteLocationOpen(deleteLocation, location)">Delete</button>
         <!--<button class="button button-flat button-blue" (click)="editLocationOpen(editLocation, location)">Edit</button>-->
-        <button class="button button-flat button-blue">Edit</button>
+        <button class="button button-flat button-blue" [routerLink]="['/locations', location.id]">Edit</button>
       </div>
     </div>
   </div>

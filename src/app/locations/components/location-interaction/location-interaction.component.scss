@@ -1,0 +1,139 @@
+@import "../../../shared/styles/buttons-styles";
+
+.saved-location {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  background-color: white;
+
+  .sidebar {
+    width: 380px;
+    height: 100%;
+    background-color: white;
+    box-shadow: 0 0 5px 3px #cecece;
+    position: absolute;
+
+    .head {
+      background: white;
+      border-bottom: 1px solid #e4e4e4;
+
+      span {
+        color: #4E5454;
+        font-size: 20px;
+        font-weight: 500;
+        line-height: 29px;
+        margin: 21px 25px;
+      }
+    }
+
+    .block-label {
+      color: #FF6E80;
+      font-size: 14px;
+      font-weight: 500;
+      letter-spacing: 1px;
+      line-height: 21px;
+    }
+
+    label {
+      color: #A5B0B2;
+      font-size: 10px;
+      line-height: 14px;
+      margin: 0;
+      margin-top: 10px;
+    }
+
+    input[type="text"] {
+      border: none;
+      border-bottom: 1px solid #F0F5F7;;
+      width: 100%;
+      outline: none;
+      color: #4E5454;
+      font-size: 16px;
+      line-height: 24px;
+
+      &.blue-input {
+        color: #0180A8;
+        font-size: 16px;
+        font-weight: 500;
+        line-height: 24px;
+      }
+    }
+
+    .location-name,
+    .location-address,
+    .location-contact {
+      padding: 0 20px;
+    }
+
+    .location-name { margin-top: 22px }
+    .location-address {
+      margin-top: 47px;
+
+      .short {
+        input {
+          width: 80%;
+        }
+      }
+    }
+    .location-contact { margin-top: 55px }
+
+    .buttons-holder {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      padding: 18px 20px;
+      border-top: 1px solid #cecece;
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      background-color:  white;
+
+      .button-flat {
+        padding: 8px 20px;
+        font-size: 13px;
+
+        &:hover {
+          padding: 9px 21px;
+        }
+      }
+
+      .button-flat:disabled,
+      .button-flat:disabled:hover {
+        padding: 8px 20px !important;
+      }
+
+      .button-blue {
+        margin-left: 12px;
+      }
+    }
+  }
+
+  app-map {
+    height: 100%;
+    width: 100%;
+  }
+
+  .map {
+    margin-left: 380px;
+    width: calc(100% - 380px);
+    height: 100%;
+    position: relative;
+  }
+}
+
+@media screen and (max-width: 567px) {
+
+  .sidebar {
+    width: 100% !important;
+
+    .location-address,
+    .location-contact {
+      margin-top: 25px !important;
+    }
+  }
+
+  .map {
+    display: none;
+  }
+}

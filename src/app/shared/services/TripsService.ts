@@ -88,6 +88,15 @@ export class TripsService {
     });
   }
 
+  public getLocation(id: string | number) {
+    return this._http.get(`${API_LOCATIONS}/${id}`).map((resp: any) => {
+      let response = JSON.parse(resp._body);
+      let userLocation = new UserLocation();
+      userLocation.createByJson(response);
+      return userLocation ;
+    });
+  }
+
   public createLocation(location: UserLocation) {
     return this._http.post(API_LOCATIONS, location).map((resp: any) => {
       let response = JSON.parse(resp._body);
@@ -96,17 +105,11 @@ export class TripsService {
   }
 
   public updateLocation(location: UserLocation) {
-    return this._http.patch(`API_LOCATIONS/${location.id}`, location).map((resp: any) => {
+    return this._http.patch(`${API_LOCATIONS}/${location.id}`, location).map((resp: any) => {
       let response = JSON.parse(resp._body);
-      let locations: UserLocation[] = [];
-debugger;
-      response.map((item: JSON) => {
-        let userLocation = new UserLocation();
-        userLocation.createByJson(item);
-        locations.push(userLocation);
-      });
-
-      return locations;
+      let userLocation = new UserLocation();
+      userLocation.createByJson(response);
+      return userLocation;
     });
   }
 

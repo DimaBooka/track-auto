@@ -4,6 +4,8 @@ import { CurrentDetailComponent } from './my-trips/components/current-detail/cur
 import { DetailResolver } from './shared/resolvers/details.resolver';
 import { InvoiceTripComponent } from './my-trips/components/invoice-trip/invoice-trip.component';
 import { LocationsListComponent } from './locations/components/locations-list/locations-list.component';
+import { DetailLocationResolver } from './shared/resolvers/details-location.resolver';
+import { LocationInteractionComponent } from './locations/components/location-interaction/location-interaction.component';
 
 export const appRoutes: Routes = [
   { path: '', redirectTo: 'mytrips', pathMatch: 'full' },
@@ -22,6 +24,12 @@ export const appRoutes: Routes = [
     }
   },
   { path: 'mytrips', component: MytripsMainComponent },
-  { path: 'locations', component: LocationsListComponent}
+  { path: 'locations', component: LocationsListComponent },
+  { path: 'locations/create', component: LocationInteractionComponent },
+  { path: 'locations/:id', component: LocationInteractionComponent,
+    resolve: {
+      details: DetailLocationResolver
+    }
+  }
   // { path: '**', component: NoContentComponent },
 ];
